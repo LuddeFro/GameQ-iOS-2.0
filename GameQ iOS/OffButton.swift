@@ -31,31 +31,32 @@ import UIKit
         //move the initial point of the path
         //to the start of the horizontal stroke
         plusPath.moveToPoint(CGPoint(
-            x:bounds.width/2 - plusWidth/2 - 1.5,
-            y:bounds.height/2 - plusWidth/2 - 1.5))
+            x:bounds.width/2 - plusWidth/2 + 4.5,
+            y:bounds.height/2 - plusWidth/2 + 4.5))
         
         //add a point to the path at the end of the stroke
         plusPath.addLineToPoint(CGPoint(
-            x:bounds.width/2 + plusWidth/2 + 1.5,
-            y:bounds.height/2 + plusWidth/2 + 1.5))
+            x:bounds.width/2 + plusWidth/2 - 4.5,
+            y:bounds.height/2 + plusWidth/2 - 4.5))
         
         //Vertical Line
         
         //move to the start of the vertical stroke
         plusPath.moveToPoint(CGPoint(
-            x:bounds.width/2 + plusWidth/2 + 1.5,
-            y:bounds.height/2 - plusWidth/2 - 1.5))
+            x:bounds.width/2 + plusWidth/2 - 4.5,
+            y:bounds.height/2 - plusWidth/2 + 4.5))
         
         //add the end point to the vertical stroke
         plusPath.addLineToPoint(CGPoint(
-            x:bounds.width/2 - plusWidth/2 - 1.5,
-            y:bounds.height/2 + plusWidth/2 + 1.5))
+            x:bounds.width/2 - plusWidth/2 + 4.5,
+            y:bounds.height/2 + plusWidth/2 - 4.5))
         
         
         if(off){self.layer.borderColor = Colors().Orange.CGColor
         Colors().Orange.setStroke()}
-        else{self.layer.borderColor = Colors().ThinLineGray.CGColor
-        Colors().ThinLineGray.setStroke()}
+        else{
+        self.layer.borderColor = Colors().ButtonOffGray.CGColor
+        Colors().ButtonOffGray.setStroke()}
         
         //draw the stroke
         plusPath.stroke()

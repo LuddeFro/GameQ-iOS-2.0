@@ -14,7 +14,10 @@ struct Colors {
     let LineGray = UIColor(netHex:0x323f4f)
     let Orange = UIColor(netHex:0xFF6861)
     let MainGray = UIColor(netHex:0x4C5A6D)
-    let NavGray = UIColor(netHex:0x303A48)
-    let ThinLineGray = UIColor(netHex: 0x555C6A)
-    let LeftGray = UIColor(netHex:0x394353)
+    let NavGray = UIColor(netHex:0x212b36)
+    let ThinLineGray = UIColor(netHex: 0x34404d)
+    let LeftGray = UIColor(netHex:0x293643)
+    let NameGray = UIColor(netHex: 0xe0e4ea)
+    let MenuTextGray = UIColor(netHex: 0xb6bfc6)
+    let ButtonOffGray = UIColor(netHex: 0x546575)
 }

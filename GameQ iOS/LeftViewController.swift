@@ -18,6 +18,13 @@ class LeftViewController : UIViewController {
     @IBOutlet weak var onButtonThree: OnButton!
     @IBOutlet weak var offButtonThree: OffButton!
     
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var labelOne: UILabel!
+    @IBOutlet weak var labelTwo: UILabel!
+    @IBOutlet weak var labelThree: UILabel!
+    @IBOutlet weak var labelFour: UILabel!
+    @IBOutlet weak var labelFive: UILabel!
+    @IBOutlet weak var labelSix: UILabel!
     
     @IBAction func pressedOnButtonOne(sender: OnButton) {
     sender.on = true
@@ -82,6 +89,12 @@ class LeftViewController : UIViewController {
         
         self.view.backgroundColor = Colors().LeftGray
         leftNavBar.backgroundColor = Colors().NavGray
-
+        userName.textColor = Colors().NameGray
+        labelOne.textColor = Colors().MenuTextGray
+        labelTwo.textColor = Colors().MenuTextGray
+        labelThree.textColor = Colors().MenuTextGray
+        labelFour.textColor = Colors().MenuTextGray
+        labelFive.textColor = Colors().MenuTextGray
+        labelSix.textColor = Colors().MenuTextGray
         }
 }
