@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE7E5F821B3C5DCC00DEB007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */; };
+		AE7E5F851B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5F831B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld */; };
+		AE7E5F871B3C5DCC00DEB007 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5F861B3C5DCC00DEB007 /* MainViewController.swift */; };
+		AE7E5F8A1B3C5DCC00DEB007 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7E5F881B3C5DCC00DEB007 /* Main.storyboard */; };
+		AE7E5F8C1B3C5DCC00DEB007 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE7E5F8B1B3C5DCC00DEB007 /* Images.xcassets */; };
+		AE7E5F8F1B3C5DCC00DEB007 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E5F8D1B3C5DCC00DEB007 /* LaunchScreen.xib */; };
+		AE7E5F9B1B3C5DCD00DEB007 /* GameQ_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5F9A1B3C5DCD00DEB007 /* GameQ_iOSTests.swift */; };
+		AE7E5FA51B3C5E4D00DEB007 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FA41B3C5E4D00DEB007 /* LeftViewController.swift */; };
+		AE7E5FA71B3C5EF200DEB007 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FA61B3C5EF200DEB007 /* SlideMenuController.swift */; };
+		AE7E5FAB1B3C5F1900DEB007 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FA91B3C5F1900DEB007 /* UIViewControllerExtension.swift */; };
+		AE7E5FAD1B3C61D700DEB007 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FAC1B3C61D700DEB007 /* StringExtension.swift */; };
+		AE7E5FB21B3C69DF00DEB007 /* QueueTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FB01B3C69DF00DEB007 /* QueueTimer.swift */; };
+		AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FB41B3C6BDF00DEB007 /* ColorExtension.swift */; };
+		AE7E5FB91B3C7B2200DEB007 /* ReadyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FB81B3C7B2200DEB007 /* ReadyTimer.swift */; };
+		AEE826AF1B3DA13700FF1A26 /* OffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE826AE1B3DA13700FF1A26 /* OffButton.swift */; };
+		AEE826B11B3DA44500FF1A26 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE826B01B3DA44500FF1A26 /* Colors.swift */; };
+		AEE826B31B3DAA2300FF1A26 /* OnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE826B21B3DAA2300FF1A26 /* OnButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE7E5F951B3C5DCD00DEB007 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE7E5F741B3C5DCC00DEB007 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE7E5F7B1B3C5DCC00DEB007;
+			remoteInfo = "GameQ iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE7E5F7C1B3C5DCC00DEB007 /* GameQ iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameQ iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7E5F801B3C5DCC00DEB007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE7E5F841B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameQ_iOS.xcdatamodel; sourceTree = "<group>"; };
+		AE7E5F861B3C5DCC00DEB007 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AE7E5F891B3C5DCC00DEB007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE7E5F8B1B3C5DCC00DEB007 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AE7E5F8E1B3C5DCC00DEB007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AE7E5F941B3C5DCD00DEB007 /* GameQ iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GameQ iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7E5F991B3C5DCD00DEB007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE7E5F9A1B3C5DCD00DEB007 /* GameQ_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameQ_iOSTests.swift; sourceTree = "<group>"; };
+		AE7E5FA41B3C5E4D00DEB007 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		AE7E5FA61B3C5EF200DEB007 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		AE7E5FA91B3C5F1900DEB007 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		AE7E5FAC1B3C61D700DEB007 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		AE7E5FB01B3C69DF00DEB007 /* QueueTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTimer.swift; sourceTree = "<group>"; };
+		AE7E5FB41B3C6BDF00DEB007 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		AE7E5FB81B3C7B2200DEB007 /* ReadyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyTimer.swift; sourceTree = "<group>"; };
+		AEE826AE1B3DA13700FF1A26 /* OffButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffButton.swift; sourceTree = "<group>"; };
+		AEE826B01B3DA44500FF1A26 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AEE826B21B3DAA2300FF1A26 /* OnButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE7E5F791B3C5DCC00DEB007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7E5F911B3C5DCD00DEB007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE7E5F731B3C5DCC00DEB007 = {
+			isa = PBXGroup;
+			children = (
+				AE7E5F7E1B3C5DCC00DEB007 /* GameQ iOS */,
+				AE7E5F971B3C5DCD00DEB007 /* GameQ iOSTests */,
+				AE7E5F7D1B3C5DCC00DEB007 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE7E5F7D1B3C5DCC00DEB007 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE7E5F7C1B3C5DCC00DEB007 /* GameQ iOS.app */,
+				AE7E5F941B3C5DCD00DEB007 /* GameQ iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE7E5F7E1B3C5DCC00DEB007 /* GameQ iOS */ = {
+			isa = PBXGroup;
+			children = (
+				AE7E5FAE1B3C66EE00DEB007 /* Main */,
+				AE7E5FAF1B3C66F800DEB007 /* View Controllers */,
+				AE7E5F7F1B3C5DCC00DEB007 /* Supporting Files */,
+			);
+			path = "GameQ iOS";
+			sourceTree = "<group>";
+		};
+		AE7E5F7F1B3C5DCC00DEB007 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AEE826AE1B3DA13700FF1A26 /* OffButton.swift */,
+				AEE826B21B3DAA2300FF1A26 /* OnButton.swift */,
+				AE7E5FB01B3C69DF00DEB007 /* QueueTimer.swift */,
+				AE7E5FB81B3C7B2200DEB007 /* ReadyTimer.swift */,
+				AEE826B01B3DA44500FF1A26 /* Colors.swift */,
+				AE7E5FA91B3C5F1900DEB007 /* UIViewControllerExtension.swift */,
+				AE7E5FAC1B3C61D700DEB007 /* StringExtension.swift */,
+				AE7E5FB41B3C6BDF00DEB007 /* ColorExtension.swift */,
+				AE7E5F8B1B3C5DCC00DEB007 /* Images.xcassets */,
+				AE7E5F831B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld */,
+				AE7E5F801B3C5DCC00DEB007 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE7E5F971B3C5DCD00DEB007 /* GameQ iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE7E5F9A1B3C5DCD00DEB007 /* GameQ_iOSTests.swift */,
+				AE7E5F981B3C5DCD00DEB007 /* Supporting Files */,
+			);
+			path = "GameQ iOSTests";
+			sourceTree = "<group>";
+		};
+		AE7E5F981B3C5DCD00DEB007 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE7E5F991B3C5DCD00DEB007 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE7E5FAE1B3C66EE00DEB007 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AE7E5F881B3C5DCC00DEB007 /* Main.storyboard */,
+				AE7E5F8D1B3C5DCC00DEB007 /* LaunchScreen.xib */,
+				AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		AE7E5FAF1B3C66F800DEB007 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE7E5F861B3C5DCC00DEB007 /* MainViewController.swift */,
+				AE7E5FA41B3C5E4D00DEB007 /* LeftViewController.swift */,
+				AE7E5FA61B3C5EF200DEB007 /* SlideMenuController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE7E5F7B1B3C5DCC00DEB007 /* GameQ iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE7E5F9E1B3C5DCD00DEB007 /* Build configuration list for PBXNativeTarget "GameQ iOS" */;
+			buildPhases = (
+				AE7E5F781B3C5DCC00DEB007 /* Sources */,
+				AE7E5F791B3C5DCC00DEB007 /* Frameworks */,
+				AE7E5F7A1B3C5DCC00DEB007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GameQ iOS";
+			productName = "GameQ iOS";
+			productReference = AE7E5F7C1B3C5DCC00DEB007 /* GameQ iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE7E5F931B3C5DCD00DEB007 /* GameQ iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE7E5FA11B3C5DCD00DEB007 /* Build configuration list for PBXNativeTarget "GameQ iOSTests" */;
+			buildPhases = (
+				AE7E5F901B3C5DCD00DEB007 /* Sources */,
+				AE7E5F911B3C5DCD00DEB007 /* Frameworks */,
+				AE7E5F921B3C5DCD00DEB007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE7E5F961B3C5DCD00DEB007 /* PBXTargetDependency */,
+			);
+			name = "GameQ iOSTests";
+			productName = "GameQ iOSTests";
+			productReference = AE7E5F941B3C5DCD00DEB007 /* GameQ iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE7E5F741B3C5DCC00DEB007 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Fabian Wikström";
+				TargetAttributes = {
+					AE7E5F7B1B3C5DCC00DEB007 = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = NZ5DEAP476;
+					};
+					AE7E5F931B3C5DCD00DEB007 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = AE7E5F7B1B3C5DCC00DEB007;
+					};
+				};
+			};
+			buildConfigurationList = AE7E5F771B3C5DCC00DEB007 /* Build configuration list for PBXProject "GameQ iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE7E5F731B3C5DCC00DEB007;
+			productRefGroup = AE7E5F7D1B3C5DCC00DEB007 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE7E5F7B1B3C5DCC00DEB007 /* GameQ iOS */,
+				AE7E5F931B3C5DCD00DEB007 /* GameQ iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE7E5F7A1B3C5DCC00DEB007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7E5F8A1B3C5DCC00DEB007 /* Main.storyboard in Resources */,
+				AE7E5F8F1B3C5DCC00DEB007 /* LaunchScreen.xib in Resources */,
+				AE7E5F8C1B3C5DCC00DEB007 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7E5F921B3C5DCD00DEB007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE7E5F781B3C5DCC00DEB007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7E5F871B3C5DCC00DEB007 /* MainViewController.swift in Sources */,
+				AEE826B11B3DA44500FF1A26 /* Colors.swift in Sources */,
+				AE7E5FB91B3C7B2200DEB007 /* ReadyTimer.swift in Sources */,
+				AE7E5FA71B3C5EF200DEB007 /* SlideMenuController.swift in Sources */,
+				AE7E5FA51B3C5E4D00DEB007 /* LeftViewController.swift in Sources */,
+				AE7E5FAD1B3C61D700DEB007 /* StringExtension.swift in Sources */,
+				AE7E5F821B3C5DCC00DEB007 /* AppDelegate.swift in Sources */,
+				AEE826B31B3DAA2300FF1A26 /* OnButton.swift in Sources */,
+				AE7E5FAB1B3C5F1900DEB007 /* UIViewControllerExtension.swift in Sources */,
+				AE7E5F851B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld in Sources */,
+				AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */,
+				AE7E5FB21B3C69DF00DEB007 /* QueueTimer.swift in Sources */,
+				AEE826AF1B3DA13700FF1A26 /* OffButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7E5F901B3C5DCD00DEB007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7E5F9B1B3C5DCD00DEB007 /* GameQ_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE7E5F961B3C5DCD00DEB007 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE7E5F7B1B3C5DCC00DEB007 /* GameQ iOS */;
+			targetProxy = AE7E5F951B3C5DCD00DEB007 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE7E5F881B3C5DCC00DEB007 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE7E5F891B3C5DCC00DEB007 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE7E5F8D1B3C5DCC00DEB007 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE7E5F8E1B3C5DCC00DEB007 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE7E5F9C1B3C5DCD00DEB007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE7E5F9D1B3C5DCD00DEB007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE7E5F9F1B3C5DCD00DEB007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "GameQ iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE7E5FA01B3C5DCD00DEB007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "GameQ iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AE7E5FA21B3C5DCD00DEB007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "GameQ iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ iOS.app/GameQ iOS";
+			};
+			name = Debug;
+		};
+		AE7E5FA31B3C5DCD00DEB007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "GameQ iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ iOS.app/GameQ iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE7E5F771B3C5DCC00DEB007 /* Build configuration list for PBXProject "GameQ iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7E5F9C1B3C5DCD00DEB007 /* Debug */,
+				AE7E5F9D1B3C5DCD00DEB007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE7E5F9E1B3C5DCD00DEB007 /* Build configuration list for PBXNativeTarget "GameQ iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7E5F9F1B3C5DCD00DEB007 /* Debug */,
+				AE7E5FA01B3C5DCD00DEB007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE7E5FA11B3C5DCD00DEB007 /* Build configuration list for PBXNativeTarget "GameQ iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7E5FA21B3C5DCD00DEB007 /* Debug */,
+				AE7E5FA31B3C5DCD00DEB007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AE7E5F831B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AE7E5F841B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodel */,
+			);
+			currentVersion = AE7E5F841B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodel */;
+			path = GameQ_iOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AE7E5F741B3C5DCC00DEB007 /* Project object */;
+}

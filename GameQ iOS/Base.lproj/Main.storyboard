@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Left View Controller-->
+        <scene sceneID="qoU-aJ-EC3">
+            <objects>
+                <viewController storyboardIdentifier="LeftViewController" id="4cz-lt-BXL" customClass="LeftViewController" customModule="GameQ_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hPF-Sk-IbE"/>
+                        <viewControllerLayoutGuide type="bottom" id="WIQ-D1-cDp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CoU-43-ofq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="LeftNavBar" translatesAutoresizingMaskIntoConstraints="NO" id="f8u-8b-2fQ">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="65"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWM-Hn-4gN" customClass="OffButton" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="261" y="77" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="pressedOffButtonOne:" destination="4cz-lt-BXL" eventType="touchUpInside" id="SgN-58-Xrz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMO-Xh-vbO" customClass="OffButton" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="261" y="128" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="pressedOffButtonTwo:" destination="4cz-lt-BXL" eventType="touchUpInside" id="563-pK-Uhd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00R-R4-guW" customClass="OffButton" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="261" y="177" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="pressedOffButtonThree:" destination="4cz-lt-BXL" eventType="touchUpInside" id="Zih-ee-Vn3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f4-TK-ErN" customClass="OnButton" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="208" y="77" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="pressedOnButtonOne:" destination="4cz-lt-BXL" eventType="touchUpInside" id="UzF-WM-5n0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjR-Qb-3GJ" customClass="OnButton" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="208" y="128" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="pressedOnButtonTwo:" destination="4cz-lt-BXL" eventType="touchUpInside" id="Svp-3W-tnd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mw-EJ-Ry8" customClass="OnButton" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="208" y="177" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="pressedOnButtonThree:" destination="4cz-lt-BXL" eventType="touchUpInside" id="5DH-LY-de4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="nWM-Hn-4gN"/>
+                                <exclude reference="WMO-Xh-vbO"/>
+                                <exclude reference="00R-R4-guW"/>
+                                <exclude reference="7f4-TK-ErN"/>
+                                <exclude reference="AjR-Qb-3GJ"/>
+                                <exclude reference="6mw-EJ-Ry8"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="nWM-Hn-4gN"/>
+                                <include reference="WMO-Xh-vbO"/>
+                                <include reference="00R-R4-guW"/>
+                                <include reference="7f4-TK-ErN"/>
+                                <include reference="AjR-Qb-3GJ"/>
+                                <include reference="6mw-EJ-Ry8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="leftNavBar" destination="f8u-8b-2fQ" id="udA-wu-bws"/>
+                        <outlet property="offButtonOne" destination="nWM-Hn-4gN" id="vj3-C8-VDQ"/>
+                        <outlet property="offButtonThree" destination="00R-R4-guW" id="nPA-d5-ocP"/>
+                        <outlet property="offButtonTwo" destination="WMO-Xh-vbO" id="d2A-Vv-GQJ"/>
+                        <outlet property="onButtonOne" destination="7f4-TK-ErN" id="Wxk-WA-gyV"/>
+                        <outlet property="onButtonThree" destination="6mw-EJ-Ry8" id="ukM-rx-GvC"/>
+                        <outlet property="onButtonTwo" destination="AjR-Qb-3GJ" id="a6b-xe-Zwc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGs-Pt-EJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="-282"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="GameQ_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1w0-3n-Xjp" customClass="QueueTimer" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="106" y="107" width="387" height="387"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1w0-3n-Xjp" secondAttribute="height" multiplier="1:1" id="xFr-P1-8B7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cG-Su-1dH" customClass="ReadyTimer" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="85" y="85" width="429" height="429"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1cG-Su-1dH" secondAttribute="height" multiplier="1:1" id="RTD-Hb-L0f"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="1cG-Su-1dH" secondAttribute="centerY" id="4rD-hb-8tL"/>
+                            <constraint firstItem="1w0-3n-Xjp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:1.55" id="V2S-oW-Bny"/>
+                            <constraint firstItem="1cG-Su-1dH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:1.4" id="YCG-ha-sEP"/>
+                            <constraint firstAttribute="centerY" secondItem="1w0-3n-Xjp" secondAttribute="centerY" id="lgF-Fr-PDM"/>
+                            <constraint firstAttribute="centerX" secondItem="1w0-3n-Xjp" secondAttribute="centerX" id="vhm-Lx-XXQ"/>
+                            <constraint firstAttribute="centerX" secondItem="1cG-Su-1dH" secondAttribute="centerX" id="yBN-QT-vSg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="queueTimer" destination="1w0-3n-Xjp" id="uKp-fp-7NN"/>
+                        <outlet property="readyTimer" destination="1cG-Su-1dH" id="Ats-Fe-vdz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878" y="-360"/>
+        </scene>
+    </scenes>
+</document>
