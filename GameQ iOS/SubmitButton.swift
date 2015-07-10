@@ -1,16 +1,15 @@
 //
-//  LogOutButton.swift
+//  SubmitButton.swift
 //  GameQ iOS
 //
-//  Created by Fabian Wikström on 6/27/15.
+//  Created by Ludvig Fröberg on 10/07/15.
 //  Copyright (c) 2015 Fabian Wikström. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-@IBDesignable class LogOutButton: UIButton {
-    
+class SubmitButton: UIButton {
+
     override func drawRect(rect: CGRect) {
         self.layer.backgroundColor = Colors().Orange.CGColor
         self.layer.cornerRadius = 5
@@ -20,5 +19,5 @@ import UIKit
         self.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
         self.layer.borderColor = Colors().Orange.CGColor
     }
-}
 
+}

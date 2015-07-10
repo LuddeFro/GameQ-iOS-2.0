@@ -14,30 +14,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private func createMenuView() {
-        
-        // create viewController code...
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
-        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
-        
-        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-        
-        leftViewController.mainViewController = nvc
-        
-        let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
-        
-        self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
-        self.window?.rootViewController = slideMenuController
-        self.window?.makeKeyAndVisible()
-    }
+    
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        println("launching")
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
+            UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
-        self.createMenuView()
+        application.registerForRemoteNotifications()
+        application.setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
+        application.statusBarStyle = UIStatusBarStyle.LightContent
+        
+        
         
         return true
+    }
+    
+    // MARK: - Push notifications
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        println("got Push inApp")
+        var message:String = "Your queue has ended!"
+        if let aps:Dictionary<String, AnyObject> = userInfo["aps"] as AnyObject? as? Dictionary<String, AnyObject> {
+            println("aps dictionary constructed")
+            println("aps: \(aps)")
+            if let alert:String = aps["alert"] as? String {
+                message = alert
+            }
+        }
+        var alert = UIAlertController(title: "GameQ", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("APNS register successful")
+        
+        let newToken:String = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "")
+        if let oldToken:String = ConnectionHandler.loadToken() {
+            println("newToken: \(newToken) oldToken: \(oldToken)")
+            if newToken == oldToken {
+                println("same old token as usual")
+                
+                //if token exists and is same, do nothing
+                return
+            }
+            ConnectionHandler.updateToken(newToken, finalCallBack: {
+                (success:Bool, error:String?) in
+                if success {
+                    println("successfully updated token")
+                } else {
+                    println("Unsuccessful token update")
+                    var alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                }
+            })
+            println("replacing old token \(oldToken) with new token \(newToken)")
+            return
+        }
+        println("saving token")
+        return
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("APNS did fail to rgister for remote notifications with error: \(error)")
     }
 
     func applicationWillResignActive(application: UIApplication) {

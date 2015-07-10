@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */; };
+		83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */; };
+		83EB5E861B4FDD9600B9FC96 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */; };
+		83EB5E881B4FF4BC00B9FC96 /* MenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E871B4FF4BC00B9FC96 /* MenuLabel.swift */; };
+		83EB5E8A1B500B1200B9FC96 /* StatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E891B500B1200B9FC96 /* StatusLabel.swift */; };
+		83EB5E8C1B500B2200B9FC96 /* ForgotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E8B1B500B2200B9FC96 /* ForgotButton.swift */; };
+		83EB5E8E1B500B3200B9FC96 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E8D1B500B3200B9FC96 /* SignInButton.swift */; };
+		83EB5E901B502BC200B9FC96 /* ConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E8F1B502BC200B9FC96 /* ConnectionHandler.swift */; };
+		83EB5E921B503A1F00B9FC96 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E911B503A1F00B9FC96 /* Regex.swift */; };
 		AE7E5F821B3C5DCC00DEB007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */; };
 		AE7E5F851B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5F831B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld */; };
 		AE7E5F871B3C5DCC00DEB007 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5F861B3C5DCC00DEB007 /* MainViewController.swift */; };
@@ -41,6 +50,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GQTextField.swift; sourceTree = "<group>"; };
+		83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
+		83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		83EB5E871B4FF4BC00B9FC96 /* MenuLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLabel.swift; sourceTree = "<group>"; };
+		83EB5E891B500B1200B9FC96 /* StatusLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusLabel.swift; sourceTree = "<group>"; };
+		83EB5E8B1B500B2200B9FC96 /* ForgotButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotButton.swift; sourceTree = "<group>"; };
+		83EB5E8D1B500B3200B9FC96 /* SignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
+		83EB5E8F1B502BC200B9FC96 /* ConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionHandler.swift; sourceTree = "<group>"; };
+		83EB5E911B503A1F00B9FC96 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		AE7E5F7C1B3C5DCC00DEB007 /* GameQ iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameQ iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7E5F801B3C5DCC00DEB007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,12 +139,20 @@
 				AEE826B21B3DAA2300FF1A26 /* OnButton.swift */,
 				AEEB099D1B3EED6300544356 /* LogInButton.swift */,
 				AEEB099A1B3EE97200544356 /* LogOutButton.swift */,
+				83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */,
+				83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */,
+				83EB5E871B4FF4BC00B9FC96 /* MenuLabel.swift */,
+				83EB5E891B500B1200B9FC96 /* StatusLabel.swift */,
+				83EB5E8B1B500B2200B9FC96 /* ForgotButton.swift */,
+				83EB5E8D1B500B3200B9FC96 /* SignInButton.swift */,
+				83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */,
 				AEE282741B3EBF6700F74086 /* DividerLine.swift */,
 				AE7E5FB01B3C69DF00DEB007 /* QueueTimer.swift */,
 				AE7E5FB81B3C7B2200DEB007 /* ReadyTimer.swift */,
 				AEE826B01B3DA44500FF1A26 /* Colors.swift */,
 				AE7E5FA91B3C5F1900DEB007 /* UIViewControllerExtension.swift */,
 				AE7E5FAC1B3C61D700DEB007 /* StringExtension.swift */,
+				83EB5E911B503A1F00B9FC96 /* Regex.swift */,
 				AE7E5FB41B3C6BDF00DEB007 /* ColorExtension.swift */,
 				AE7E5F8B1B3C5DCC00DEB007 /* Images.xcassets */,
 				AE7E5F831B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld */,
@@ -158,6 +184,7 @@
 				AE7E5F881B3C5DCC00DEB007 /* Main.storyboard */,
 				AE7E5F8D1B3C5DCC00DEB007 /* LaunchScreen.xib */,
 				AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */,
+				83EB5E8F1B502BC200B9FC96 /* ConnectionHandler.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -275,22 +302,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7E5F871B3C5DCC00DEB007 /* MainViewController.swift in Sources */,
+				83EB5E861B4FDD9600B9FC96 /* FeedbackView.swift in Sources */,
 				AEEB099E1B3EED6300544356 /* LogInButton.swift in Sources */,
 				AEE826B11B3DA44500FF1A26 /* Colors.swift in Sources */,
 				AE7E5FB91B3C7B2200DEB007 /* ReadyTimer.swift in Sources */,
+				83EB5E8C1B500B2200B9FC96 /* ForgotButton.swift in Sources */,
 				AE7E5FA71B3C5EF200DEB007 /* SlideMenuController.swift in Sources */,
+				83EB5E8A1B500B1200B9FC96 /* StatusLabel.swift in Sources */,
 				AE7E5FA51B3C5E4D00DEB007 /* LeftViewController.swift in Sources */,
 				AEEB099B1B3EE97200544356 /* LogOutButton.swift in Sources */,
+				83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */,
 				AE7E5FAD1B3C61D700DEB007 /* StringExtension.swift in Sources */,
 				AE7E5F821B3C5DCC00DEB007 /* AppDelegate.swift in Sources */,
+				83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */,
 				AEE826B31B3DAA2300FF1A26 /* OnButton.swift in Sources */,
 				AE7E5FAB1B3C5F1900DEB007 /* UIViewControllerExtension.swift in Sources */,
+				83EB5E881B4FF4BC00B9FC96 /* MenuLabel.swift in Sources */,
+				83EB5E8E1B500B3200B9FC96 /* SignInButton.swift in Sources */,
 				AE7E5F851B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld in Sources */,
 				AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */,
 				AEEB09A01B3EEDA800544356 /* LoginViewController.swift in Sources */,
+				83EB5E901B502BC200B9FC96 /* ConnectionHandler.swift in Sources */,
 				AEE282751B3EBF6700F74086 /* DividerLine.swift in Sources */,
 				AE7E5FB21B3C69DF00DEB007 /* QueueTimer.swift in Sources */,
 				AEE826AF1B3DA13700FF1A26 /* OffButton.swift in Sources */,
+				83EB5E921B503A1F00B9FC96 /* Regex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

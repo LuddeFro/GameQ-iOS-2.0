@@ -14,11 +14,13 @@ import UIKit
 @IBDesignable class LogInButton: UIButton {
     
     override func drawRect(rect: CGRect) {
-        self.backgroundColor = UIColor.clearColor()
+        self.layer.backgroundColor = Colors().Orange.CGColor
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 3
-        self.titleLabel!.textColor = Colors().LightBlue
-        self.layer.borderColor = Colors().LightBlue.CGColor
+        self.titleLabel!.textColor = UIColor.whiteColor()
+        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        self.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
+        self.layer.borderColor = Colors().Orange.CGColor
     }
 }
 

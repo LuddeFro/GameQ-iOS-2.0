@@ -27,7 +27,7 @@ import UIKit
         
         //set the path's line width to the height of the stroke
         plusPath.lineWidth = plusHeight
-        
+    
         //move the initial point of the path
         //to the start of the horizontal stroke
         plusPath.moveToPoint(CGPoint(
