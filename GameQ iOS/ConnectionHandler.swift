@@ -10,13 +10,16 @@ import Foundation
 import UIKit
 import CoreData
 
+
+
 class ConnectionHandler : NSObject {
     
-    static let baseURL:String = "http://server.gameq.io:8080/computer/"
+    static let baseURL:String = "http://server.gameq.io:8080/ios/"
     static let deviceIdKey:String = "device_id_key"
     static let passwordKey:String = "password_key"
     static let emailKey:String = "email_key"
     static let tokenKey:String = "token_key"
+    static var firstLogin:Bool = true
     private static var sessionId:String = ""
     
     
@@ -59,7 +62,14 @@ class ConnectionHandler : NSObject {
         task.resume()
     }
     
-    static func login(email:String, password:String, finalCallBack:(success:Bool, err:String?)->()) {
+    static func login(email:String, password password1:String, finalCallBack:(success:Bool, err:String?)->()) {
+        var password:String = password1
+        if !firstLogin {
+            password = sha256(password1)
+            firstLogin = false
+        }
+        //println("PASSWORD: \(password)")
+        
         let apiExtension = "login"
         var diString = ""
         if let deviceId = loadDeviceId() {
@@ -127,7 +137,8 @@ class ConnectionHandler : NSObject {
         })
     }
     
-    static func register(email:String, password:String, finalCallBack:(success:Bool, err:String?)->()) {
+    static func register(email:String, password password1:String, finalCallBack:(success:Bool, err:String?)->()) {
+        let password = sha256(password1)
         let apiExtension = "register"
         var diString = ""
         if let deviceId = loadDeviceId() {
@@ -165,7 +176,7 @@ class ConnectionHandler : NSObject {
     
     
     
-    static func getStatus(finalCallBack:(success:Bool, err:String?, status:Int?, game:Int?)->()) {
+    static func getStatus(finalCallBack:(success:Bool, err:String?, status:Int, game:Int?)->()) {
         let apiExtension = "getStatus"
         var diString = ""
         if let deviceId = loadDeviceId() {
@@ -176,7 +187,7 @@ class ConnectionHandler : NSObject {
             var success:Bool = false
             var err:String? = nil
             var game:Int? = nil
-            var status:Int? = nil
+            var status:Int = 0
             
             
             if let json = responseJSON as? Dictionary<String, AnyObject> {
@@ -282,7 +293,9 @@ class ConnectionHandler : NSObject {
     }
     
     
-    static func updatePassword(email:String, password:String, newPassword:String, finalCallBack:(success:Bool, err:String?)->()) {
+    static func updatePassword(email:String, password password1:String, newPassword newPassword1:String, finalCallBack:(success:Bool, err:String?)->()) {
+        let password = sha256(password1)
+        let newPassword = sha256(newPassword1)
         let apiExtension = "updatePassword"
         var diString = ""
         if let deviceId = loadDeviceId() {
@@ -343,12 +356,14 @@ class ConnectionHandler : NSObject {
                     s = true
                     self.login(email, password: password, finalCallBack: { (success:Bool, err:String?) in
                         finalCallBack(success: success, err: err)
+                        self.firstLogin = false
                     })
                 }
             }
         }
         if !s {
             finalCallBack(success: false, err: "Unable to load previous login details!")
+            firstLogin = false
         }
     }
     
@@ -481,6 +496,15 @@ class ConnectionHandler : NSObject {
             return nil
         }
         
+    }
+    
+    
+    static func sha256(aString : String) -> String {
+        var data:NSData = aString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+        var hash = [UInt8](count: Int(CC_SHA256_DIGEST_LENGTH), repeatedValue: 0)
+        CC_SHA256(data.bytes, CC_LONG(data.length), &hash)
+        let res = NSData(bytes: hash, length: Int(CC_SHA256_DIGEST_LENGTH))
+        return res.description.stringByReplacingOccurrencesOfString("<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "")
     }
     
     

@@ -209,8 +209,8 @@
                                     <constraint firstAttribute="height" constant="1" id="x6Q-PU-Tk8"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBF-cT-dMo" customClass="LogOutButton" customModule="GameQ_iOS" customModuleProvider="target">
-                                <rect key="frame" x="85" y="555" width="160" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBF-cT-dMo" customClass="LogOutButton" customModule="GameQ_iOS" customModuleProvider="target">
+                                <rect key="frame" x="70" y="555" width="160" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="bb0-AE-KoC"/>
                                     <constraint firstAttribute="height" constant="30" id="hpy-1P-iQq"/>
@@ -223,8 +223,8 @@
                                     <action selector="pressedLogout:" destination="4cz-lt-BXL" eventType="touchUpInside" id="9Kl-lt-DXt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiM-a4-Mei" userLabel="FeedbackButton">
-                                <rect key="frame" x="0.0" y="190" width="300" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiM-a4-Mei" userLabel="FeedbackButton">
+                                <rect key="frame" x="0.0" y="201" width="300" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="vdD-FP-bba"/>
                                 </constraints>
@@ -348,8 +348,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-q1-McR">
-                                <rect key="frame" x="155" y="527" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-q1-McR">
+                                <rect key="frame" x="140" y="527" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="jLN-JO-7GA"/>
                                     <constraint firstAttribute="height" constant="20" id="rfK-o0-v4x"/>
@@ -512,9 +512,23 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cG-Su-1dH" customClass="ReadyTimer" customModule="GameQ_iOS" customModuleProvider="target">
                                 <rect key="frame" x="85" y="85" width="429" height="429"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-cZ-QAU" customClass="PulsatingLabel" customModule="GameQ_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="143" y="154" width="142" height="121"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="142" id="rvd-eW-wVC"/>
+                                            <constraint firstAttribute="height" constant="121" id="teR-bx-z2l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1cG-Su-1dH" secondAttribute="height" multiplier="1:1" id="RTD-Hb-L0f"/>
+                                    <constraint firstAttribute="centerX" secondItem="k8p-cZ-QAU" secondAttribute="centerX" id="rZL-AR-432"/>
+                                    <constraint firstAttribute="centerY" secondItem="k8p-cZ-QAU" secondAttribute="centerY" id="sg9-pf-qoo"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0O-i3-VdQ">
@@ -527,7 +541,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heroes of the Storm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-wp-gZZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heroes of the Storm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-wp-gZZ" customClass="MenuLabel" customModule="GameQ_iOS" customModuleProvider="target">
                                 <rect key="frame" x="158" y="554" width="283" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="cUV-ne-Xe0"/>
@@ -537,7 +551,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BQ-jk-UVm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BQ-jk-UVm" customClass="MenuLabel" customModule="GameQ_iOS" customModuleProvider="target">
                                 <rect key="frame" x="176" y="585" width="247" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="E8I-CN-1al"/>
@@ -567,11 +581,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="game" destination="tJe-wp-gZZ" id="AKj-xD-xD2"/>
                         <outlet property="gameqLabel" destination="N0O-i3-VdQ" id="Z9a-Lw-5mb"/>
-                        <outlet property="queueTimer" destination="1w0-3n-Xjp" id="uKp-fp-7NN"/>
+                        <outlet property="lblCountdown" destination="k8p-cZ-QAU" id="mke-eK-RbK"/>
+                        <outlet property="lblGame" destination="tJe-wp-gZZ" id="fj2-Br-7qm"/>
+                        <outlet property="lblStatus" destination="7BQ-jk-UVm" id="baV-zg-66p"/>
                         <outlet property="readyTimer" destination="1cG-Su-1dH" id="Ats-Fe-vdz"/>
-                        <outlet property="status" destination="7BQ-jk-UVm" id="2mf-Gu-Hic"/>
+                        <outlet property="spinner" destination="1w0-3n-Xjp" id="3Qn-qn-KBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -590,6 +605,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-2i-IG6" userLabel="btnResignKeyboard">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedResignKeyboard:" destination="X5F-L9-JHb" eventType="touchUpInside" id="9ay-Cg-VuI"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1o-qn-xDf" customClass="SignInButton" customModule="GameQ_iOS" customModuleProvider="target">
                                 <rect key="frame" x="15" y="540" width="570" height="45"/>
                                 <constraints>
@@ -632,7 +656,7 @@
                                     <constraint firstAttribute="height" constant="13" id="9n8-ki-PZU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNS-PE-Zbt" customClass="GQTextField" customModule="GameQ_iOS" customModuleProvider="target">
@@ -659,6 +683,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="K3e-ES-Wni" firstAttribute="top" secondItem="Z0o-2i-IG6" secondAttribute="bottom" id="2Kh-u5-OJ0"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="top" secondItem="Ykj-Rj-Y9s" secondAttribute="bottom" constant="7" id="2ew-lR-Rxr"/>
                             <constraint firstItem="Ykj-Rj-Y9s" firstAttribute="trailing" secondItem="wNS-PE-Zbt" secondAttribute="trailing" id="3DG-xv-KER"/>
                             <constraint firstItem="Ykj-Rj-Y9s" firstAttribute="leading" secondItem="wNS-PE-Zbt" secondAttribute="leading" id="67E-iu-kdl"/>
@@ -678,6 +703,9 @@
                             <constraint firstAttribute="trailing" secondItem="3Ap-8d-T0Y" secondAttribute="trailing" constant="15" id="Xhp-Ez-qod"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="top" secondItem="atw-uJ-Irr" secondAttribute="top" id="XmN-Di-FTW"/>
                             <constraint firstItem="K3e-ES-Wni" firstAttribute="top" secondItem="d1o-qn-xDf" secondAttribute="bottom" constant="15" id="Yvb-uc-KWF"/>
+                            <constraint firstAttribute="trailing" secondItem="Z0o-2i-IG6" secondAttribute="trailing" id="a2P-DM-ujZ"/>
+                            <constraint firstItem="Z0o-2i-IG6" firstAttribute="top" secondItem="yTK-Gn-Ho1" secondAttribute="top" id="f2h-Ar-sUc"/>
+                            <constraint firstItem="Z0o-2i-IG6" firstAttribute="leading" secondItem="yTK-Gn-Ho1" secondAttribute="leading" id="jY3-i6-0DN"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="leading" secondItem="Ykj-Rj-Y9s" secondAttribute="leading" id="lFC-hV-Hyo"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="leading" secondItem="atw-uJ-Irr" secondAttribute="leading" id="mxD-ZW-fYi"/>
                             <constraint firstItem="Ykj-Rj-Y9s" firstAttribute="top" secondItem="wNS-PE-Zbt" secondAttribute="bottom" constant="7" id="qxV-yx-Xep"/>
@@ -690,6 +718,7 @@
                         <outlet property="activityIndicator" destination="y5S-88-faB" id="Vjs-d6-TP7"/>
                         <outlet property="btnBottom" destination="d1o-qn-xDf" id="jgF-m2-eq4"/>
                         <outlet property="btnForgot" destination="atw-uJ-Irr" id="V8z-pv-4uy"/>
+                        <outlet property="btnResignKeyboard" destination="Z0o-2i-IG6" id="cVF-rn-reN"/>
                         <outlet property="btnTop" destination="3Ap-8d-T0Y" id="Mfy-tn-Kdt"/>
                         <outlet property="lblStatus" destination="syv-r1-sHf" id="XG9-wV-HlR"/>
                         <outlet property="statusYMargin" destination="864-je-RfW" id="b9U-Qv-wsc"/>

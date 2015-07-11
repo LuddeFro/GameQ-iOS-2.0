@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83357CC91B5168EF002CA1B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CC81B5168EF002CA1B7 /* GameStatus.swift */; };
+		83357CCB1B5173AF002CA1B7 /* PulsatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */; };
+		83E2A1A01B507E9B00FD24EB /* NotifCustom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */; };
+		83E2A1A11B507E9B00FD24EB /* NotifCustom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */; };
 		83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */; };
 		83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */; };
 		83EB5E861B4FDD9600B9FC96 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */; };
@@ -50,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83357CBE1B5132A8002CA1B7 /* GameQ iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GameQ iOS-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		83357CC81B5168EF002CA1B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsatingLabel.swift; sourceTree = "<group>"; };
+		83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotifCustom1.aif; sourceTree = "<group>"; };
 		83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GQTextField.swift; sourceTree = "<group>"; };
 		83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
@@ -141,7 +149,9 @@
 				AEEB099A1B3EE97200544356 /* LogOutButton.swift */,
 				83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */,
 				83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */,
+				83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */,
 				83EB5E871B4FF4BC00B9FC96 /* MenuLabel.swift */,
+				83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */,
 				83EB5E891B500B1200B9FC96 /* StatusLabel.swift */,
 				83EB5E8B1B500B2200B9FC96 /* ForgotButton.swift */,
 				83EB5E8D1B500B3200B9FC96 /* SignInButton.swift */,
@@ -185,6 +195,8 @@
 				AE7E5F8D1B3C5DCC00DEB007 /* LaunchScreen.xib */,
 				AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */,
 				83EB5E8F1B502BC200B9FC96 /* ConnectionHandler.swift */,
+				83357CC81B5168EF002CA1B7 /* GameStatus.swift */,
+				83357CBE1B5132A8002CA1B7 /* GameQ iOS-Bridging-Header.h */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -281,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E2A1A01B507E9B00FD24EB /* NotifCustom1.aif in Resources */,
 				AE7E5F8A1B3C5DCC00DEB007 /* Main.storyboard in Resources */,
 				AE7E5F8F1B3C5DCC00DEB007 /* LaunchScreen.xib in Resources */,
 				AE7E5F8C1B3C5DCC00DEB007 /* Images.xcassets in Resources */,
@@ -291,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E2A1A11B507E9B00FD24EB /* NotifCustom1.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +329,7 @@
 				AE7E5FAD1B3C61D700DEB007 /* StringExtension.swift in Sources */,
 				AE7E5F821B3C5DCC00DEB007 /* AppDelegate.swift in Sources */,
 				83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */,
+				83357CCB1B5173AF002CA1B7 /* PulsatingLabel.swift in Sources */,
 				AEE826B31B3DAA2300FF1A26 /* OnButton.swift in Sources */,
 				AE7E5FAB1B3C5F1900DEB007 /* UIViewControllerExtension.swift in Sources */,
 				83EB5E881B4FF4BC00B9FC96 /* MenuLabel.swift in Sources */,
@@ -323,6 +338,7 @@
 				AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */,
 				AEEB09A01B3EEDA800544356 /* LoginViewController.swift in Sources */,
 				83EB5E901B502BC200B9FC96 /* ConnectionHandler.swift in Sources */,
+				83357CC91B5168EF002CA1B7 /* GameStatus.swift in Sources */,
 				AEE282751B3EBF6700F74086 /* DividerLine.swift in Sources */,
 				AE7E5FB21B3C69DF00DEB007 /* QueueTimer.swift in Sources */,
 				AEE826AF1B3DA13700FF1A26 /* OffButton.swift in Sources */,
@@ -455,10 +471,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "GameQ iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -466,10 +489,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "GameQ iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
 			};
 			name = Release;
 		};

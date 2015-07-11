@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var btnBottom: LogInButton!
     @IBOutlet weak var btnTop: LogInButton!
@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtConfirmPassword: GQTextField!
     @IBOutlet weak var btnForgot: UIButton!
     
+    @IBOutlet weak var btnResignKeyboard: UIButton!
     var bolReportingForgottenPassword:Bool = false
     var bolSigningUp:Bool = false
     
@@ -29,6 +30,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors().MainGray
+        println("SHA::::")
+        println(ConnectionHandler.sha256("hejsan"))
+        txtEmail.delegate = self
+        txtPassword.delegate = self
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -43,11 +49,19 @@ class LoginViewController: UIViewController {
                     self.createMainView()
                 } else {
                     //do nothing
+                    self.txtEmail.becomeFirstResponder()
                 }
             }
         })
+
     }
     
+    
+    @IBAction func pressedResignKeyboard(sender: AnyObject) {
+        txtEmail.resignFirstResponder()
+        txtPassword.resignFirstResponder()
+        txtConfirmPassword.resignFirstResponder()
+    }
     
     @IBAction func pressedBottomButton(sender: AnyObject) {
         if bolReportingForgottenPassword {
@@ -252,4 +266,41 @@ class LoginViewController: UIViewController {
     
     
     
+    //MARK UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == txtEmail {
+            if bolReportingForgottenPassword {
+                pressedTopButton(btnTop)
+            } else {
+                txtPassword.becomeFirstResponder()
+            }
+        } else if textField == txtPassword {
+            if bolSigningUp {
+                txtConfirmPassword.becomeFirstResponder()
+            } else {
+                pressedTopButton(btnTop)
+            }
+        } else if textField == txtConfirmPassword {
+            pressedTopButton(btnTop)
+        }
+        return false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        btnResignKeyboard.hidden = false
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        btnResignKeyboard.hidden = true
+    }
+    
+                                             
+    
+    
 }
+
+
+
+
