@@ -10,7 +10,6 @@
 		83357CC91B5168EF002CA1B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CC81B5168EF002CA1B7 /* GameStatus.swift */; };
 		83357CCB1B5173AF002CA1B7 /* PulsatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */; };
 		83E2A1A01B507E9B00FD24EB /* NotifCustom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */; };
-		83E2A1A11B507E9B00FD24EB /* NotifCustom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */; };
 		83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */; };
 		83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */; };
 		83EB5E861B4FDD9600B9FC96 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */; };
@@ -67,7 +66,7 @@
 		83EB5E8D1B500B3200B9FC96 /* SignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		83EB5E8F1B502BC200B9FC96 /* ConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionHandler.swift; sourceTree = "<group>"; };
 		83EB5E911B503A1F00B9FC96 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
-		AE7E5F7C1B3C5DCC00DEB007 /* GameQ iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameQ iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7E5F7C1B3C5DCC00DEB007 /* GameQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7E5F801B3C5DCC00DEB007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE7E5F811B3C5DCC00DEB007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE7E5F841B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameQ_iOS.xcdatamodel; sourceTree = "<group>"; };
@@ -124,7 +123,7 @@
 		AE7E5F7D1B3C5DCC00DEB007 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AE7E5F7C1B3C5DCC00DEB007 /* GameQ iOS.app */,
+				AE7E5F7C1B3C5DCC00DEB007 /* GameQ.app */,
 				AE7E5F941B3C5DCD00DEB007 /* GameQ iOSTests.xctest */,
 			);
 			name = Products;
@@ -229,7 +228,7 @@
 			);
 			name = "GameQ iOS";
 			productName = "GameQ iOS";
-			productReference = AE7E5F7C1B3C5DCC00DEB007 /* GameQ iOS.app */;
+			productReference = AE7E5F7C1B3C5DCC00DEB007 /* GameQ.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AE7E5F931B3C5DCD00DEB007 /* GameQ iOSTests */ = {
@@ -304,7 +303,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83E2A1A11B507E9B00FD24EB /* NotifCustom1.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,14 +470,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gustaf Håkansson (8SESAM49N2)";
 				INFOPLIST_FILE = "GameQ iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GameQ;
+				PROVISIONING_PROFILE = "b9a374dd-af98-467c-983a-73bb7e77f738";
 				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -490,14 +489,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gustaf Håkansson (8SESAM49N2)";
 				INFOPLIST_FILE = "GameQ iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GameQ;
+				PROVISIONING_PROFILE = "b9a374dd-af98-467c-983a-73bb7e77f738";
 				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
 			};
 			name = Release;
@@ -517,7 +517,7 @@
 				INFOPLIST_FILE = "GameQ iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ iOS.app/GameQ iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ.app/GameQ";
 			};
 			name = Debug;
 		};
@@ -532,7 +532,7 @@
 				INFOPLIST_FILE = "GameQ iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ iOS.app/GameQ iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ.app/GameQ";
 			};
 			name = Release;
 		};

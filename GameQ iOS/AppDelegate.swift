@@ -9,11 +9,12 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    var mainViewController:MainViewController = MainViewController()
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -25,6 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
         application.statusBarStyle = UIStatusBarStyle.LightContent
         
+        if let launchOs = launchOptions {
+            var alert = UIAlertController(title: "GameQ", message: launchOs.description, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        
+        
+        
+        
         
         
         return true
@@ -35,16 +46,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         println("got Push inApp")
         var message:String = "Your queue has ended!"
+        println("what am i getting? \(userInfo)")
         if let aps:Dictionary<String, AnyObject> = userInfo["aps"] as AnyObject? as? Dictionary<String, AnyObject> {
             println("aps dictionary constructed")
             println("aps: \(aps)")
             if let alert:String = aps["alert"] as? String {
                 message = alert
             }
+            if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
+            {
+                //opened from a push notification when the app was on background
+            } else {
+                if let sound:String = aps["sound"] as? String {
+                    var soundID:SystemSoundID = SystemSoundID()
+                    let soundArr = split(sound) {$0 == "."}
+                    let path = NSBundle.mainBundle().pathForResource(soundArr[0], ofType: soundArr[1])
+                    var bodyf:NSFileHandle = NSFileHandle(forReadingAtPath: path!)!
+                    let body = bodyf.availableData
+                    let url = NSURL(fileURLWithPath: path!, isDirectory: false)
+                    AudioServicesCreateSystemSoundID(url as! CFURLRef, &soundID)
+                    AudioServicesPlaySystemSound(soundID)
+                }
+            }
+            
         }
+        if let acceptBefore:Int = userInfo["accept_before"] as AnyObject? as? Int {
+            mainViewController.startReadyCountdown(acceptBefore)
+            println("accept time:")
+            println(acceptBefore - Int(NSDate().timeIntervalSince1970))
+        }
+        /*
         var alert = UIAlertController(title: "GameQ", message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)*/
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -59,20 +93,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //if token exists and is same, do nothing
                 return
             }
-            ConnectionHandler.updateToken(newToken, finalCallBack: {
-                (success:Bool, error:String?) in
-                if success {
-                    println("successfully updated token")
-                } else {
-                    println("Unsuccessful token update")
-                    var alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-                }
-            })
+            ConnectionHandler.saveToken(newToken)
+            if let dummy:String = ConnectionHandler.loadEmail() { // if logged in
+                ConnectionHandler.updateToken(newToken, finalCallBack: {
+                    (success:Bool, error:String?) in
+                    if success {
+                        println("successfully updated token")
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            println("Unsuccessful token update")
+                            var alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                        })
+                    }
+                })
+            }
+            
             println("replacing old token \(oldToken) with new token \(newToken)")
             return
         }
+        
+        ConnectionHandler.saveToken(newToken)
         println("saving token")
         return
     }

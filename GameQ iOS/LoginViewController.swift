@@ -49,7 +49,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.createMainView()
                 } else {
                     //do nothing
-                    self.txtEmail.becomeFirstResponder()
                 }
             }
         })

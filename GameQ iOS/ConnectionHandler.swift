@@ -77,7 +77,7 @@ class ConnectionHandler : NSObject {
         }
         var tokenString = ""
         if let token = loadToken() { //only mobile
-            tokenString = "token=\(token)"
+            tokenString = "push_token=\(token)"
         }
         let arguments = "email=\(email)&password=\(password)&\(tokenString)&\(diString)"
         postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
@@ -176,7 +176,7 @@ class ConnectionHandler : NSObject {
     
     
     
-    static func getStatus(finalCallBack:(success:Bool, err:String?, status:Int, game:Int?)->()) {
+    static func getStatus(finalCallBack:(success:Bool, err:String?, status:Int, game:Int?, acceptBefore:Int)->()) {
         let apiExtension = "getStatus"
         var diString = ""
         if let deviceId = loadDeviceId() {
@@ -188,10 +188,11 @@ class ConnectionHandler : NSObject {
             var err:String? = nil
             var game:Int? = nil
             var status:Int = 0
-            
+            var acceptBefore:Int = 0
             
             if let json = responseJSON as? Dictionary<String, AnyObject> {
                 success = self.getIntFrom(json, key: "success") != 0
+                acceptBefore = self.getIntFrom(json, key: "accept_before")
                 if !success {
                     err = self.getStringFrom(json, key: "error")
                 } else {
@@ -206,7 +207,7 @@ class ConnectionHandler : NSObject {
                 println("json parse fail")
             }
             
-            finalCallBack(success: success, err: err, status:status, game:game)
+            finalCallBack(success: success, err: err, status:status, game:game, acceptBefore:acceptBefore)
         })
     }
     
@@ -377,7 +378,7 @@ class ConnectionHandler : NSObject {
     
     
     
-    private static func saveToken(token:String) {
+    static func saveToken(token:String) {
         saveSingle(tokenKey, value: token)
     }
     

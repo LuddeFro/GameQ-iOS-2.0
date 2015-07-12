@@ -4,3 +4,5 @@
 
 #import <CommonCrypto/CommonCrypto.h>
 #import <CommonCrypto/CommonDigest.h>
+
+#import <AudioToolbox/AudioToolbox.h>

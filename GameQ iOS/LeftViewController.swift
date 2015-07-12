@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeftViewController : UIViewController {
+class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var leftNavBar: UIView!
     
@@ -19,6 +19,7 @@ class LeftViewController : UIViewController {
     @IBOutlet weak var offButtonThree: OffButton!
     @IBOutlet weak var lblUserEmail: MenuLabel!
     
+    @IBOutlet weak var btnResignFirstResponder: UIButton!
     @IBOutlet weak var btnTutorial: UIButton!
     @IBOutlet weak var btnChangePassword: UIButton!
     @IBOutlet weak var btnFeedback: UIButton!
@@ -148,6 +149,12 @@ class LeftViewController : UIViewController {
         
     }
     
+    @IBAction func pressedResignFirstResponder(sender: AnyObject) {
+        txtConfirmPassword.resignFirstResponder()
+        txtFeedback.resignFirstResponder()
+        txtNewPassword.resignFirstResponder()
+        txtOldPassword.resignFirstResponder()
+    }
     @IBAction func pressedOnButtonOne(sender: OnButton) {
         sender.on = true
         sender.setNeedsDisplay()
@@ -331,7 +338,36 @@ class LeftViewController : UIViewController {
         onButtonThree.setNeedsDisplay()
         
         
+    }
+    
+    
+    //MARK Text- View/Field -Delegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == txtOldPassword {
+            txtNewPassword.becomeFirstResponder()
+        } else if textField == txtNewPassword {
+            txtConfirmPassword.becomeFirstResponder()
+        } else if textField == txtConfirmPassword {
+            pressedSubmitPassword(btnSubmitPassword)
         }
+        btnResignFirstResponder.hidden = true
+        return false
+    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        btnResignFirstResponder.hidden = false
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        btnResignFirstResponder.hidden = true
+    }
+    func textViewDidBeginEditing(textView: UITextView) {
+        btnResignFirstResponder.hidden = false
+    }
+    func textViewDidEndEditing(textView: UITextView) {
+        btnResignFirstResponder.hidden = true
+    }
+    
 }
 
 

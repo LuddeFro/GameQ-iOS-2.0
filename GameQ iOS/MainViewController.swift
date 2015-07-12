@@ -17,17 +17,21 @@ class MainViewController: UIViewController {
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblCountdown: PulsatingLabel!
     var bolGotLastAnswer:Bool = true
-    var lastStatus:Int = 0
+    var lastStatus:Status = Status.Offline
     
     var tmrStatus = NSTimer()
+    var bolTimerRunning = false
     
     var tmrCountdown = NSTimer()
-    var currentIncrementation:Double = 0
-    var maxIncrementation:Int = 0
-    var secondsRemaining:Int = 0
+    var totalCountdown:Int = 0
+    var endTime:Int = 0
+    var startTime:Int = 0
+    var tenthCounter:Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        (UIApplication.sharedApplication().delegate as! AppDelegate).mainViewController = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -69,9 +73,10 @@ class MainViewController: UIViewController {
         if bolGotLastAnswer {
             bolGotLastAnswer = false
             ConnectionHandler.getStatus({
-                (success:Bool, error:String?, aStatus:Int, aGame:Int?) in
+                (success:Bool, error:String?, aStatus:Int, aGame:Int?, acceptBefore:Int) in
                 self.bolGotLastAnswer = true
                 var status:Int = 0
+                
                 var game:Int = 0
                 if success {
                     if aGame != nil {
@@ -86,11 +91,53 @@ class MainViewController: UIViewController {
                     } else {
                         self.lblGame.text = ""
                     }
-                    // TODO animation control
+                    switch Encoding.getStatusFromInt(status) {
+                    case Status.Offline:
+                        //båda av
+                        self.spinner.isGame = false
+                        self.spinner.reset()
+                        self.stopReadyCountdownAt(0)
+                        break
+                    case Status.Online:
+                        self.spinner.isGame = false
+                        self.spinner.reset()
+                        self.stopReadyCountdownAt(0)
+                        //båda av
+                        break
+                    case Status.InLobby:
+                        self.spinner.isGame = false
+                        self.spinner.reset()
+                        self.stopReadyCountdownAt(0)
+                        //båda av
+                        break
+                    case Status.InQueue:
+                        self.spinner.isGame = false
+                        self.spinner.start()
+                        self.stopReadyCountdownAt(0)
+                        //blå snurra
+                        //röd av
+                        break
+                    case Status.GameReady:
+                        self.spinner.isGame = true
+                        self.spinner.reset()
+                        self.startReadyCountdown(acceptBefore)
+
+                        
+                        //röd börja
+                        //helblå
+                        break
+                    case Status.InGame:
+                        self.spinner.isGame = true
+                        self.spinner.reset()
+                        self.stopReadyCountdownAt(1)
+                        //helorange
+                        //helblå
+                        break
+                    }
                     
                     
                     
-                    self.lastStatus = status
+                    self.lastStatus = Encoding.getStatusFromInt(status)
                 })
                 
             })
@@ -106,32 +153,41 @@ class MainViewController: UIViewController {
         readyTimer.progress = fraction
         lblCountdown.text = ""
         lblCountdown.stopPulsating()
+        bolTimerRunning = false
     }
     
-    private func startReadyCountdown(seconds:Int) {
-        maxIncrementation = seconds
-        currentIncrementation = 0
+    func startReadyCountdown(to:Int) {
+        if bolTimerRunning {
+            return
+        }
+        bolTimerRunning = true
+        endTime = to
+        startTime = Int(NSDate().timeIntervalSince1970)
+        totalCountdown = endTime - startTime
+        tmrCountdown.invalidate()
         tmrCountdown = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("decrement"), userInfo: nil, repeats: true)
         lblCountdown.startPulsating(Colors().LightBlue)
     }
     
     func decrement() {
-        if currentIncrementation % 1 != 0 {
+        if tenthCounter >= 10 {
             decrementCountdownLabel()
+            tenthCounter = 0
         }
-        currentIncrementation += 0.1
-        readyTimer.progress = CGFloat(currentIncrementation / Double(maxIncrementation))
-        if currentIncrementation >= Double(maxIncrementation) {
-            tmrCountdown.invalidate()
-        }
+        tenthCounter++
+        
+        readyTimer.progress = CGFloat(Double(Double(NSDate().timeIntervalSince1970)-Double(startTime)) / Double(totalCountdown))
+        
     }
     
     private func decrementCountdownLabel() {
-        if secondsRemaining == 0 {
+        if endTime - Int(NSDate().timeIntervalSince1970) < 0 {
             lblCountdown.text = ""
+            tmrCountdown.invalidate()
+            bolTimerRunning = false
+        } else {
+            lblCountdown.text = "\(endTime - Int(NSDate().timeIntervalSince1970))"
         }
-        lblCountdown.text = "\(secondsRemaining)"
-        secondsRemaining--
         lblCountdown.stopPulsating()
     }
     
