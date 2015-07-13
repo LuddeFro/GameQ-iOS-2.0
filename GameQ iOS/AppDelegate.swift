@@ -32,6 +32,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
             
         }
+
+        if let tmp = ConnectionHandler.loadEmail() {
+            if tmp.validEmail() {
+                
+                ////
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+                let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
+                let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+                leftViewController.mainViewController = nvc
+                let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
+                window!.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+                window!.rootViewController = slideMenuController
+                window!.makeKeyAndVisible()
+                ////
+                
+                
+                
+                ConnectionHandler.firstLogin = true
+                ConnectionHandler.loginWithRememberedDetails({
+                    (success:Bool, error:String?) in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        ConnectionHandler.firstLogin = false
+                        if success {
+                            //stay on main view
+                            // do nothing
+                        } else {
+                            //if credentials no longer viable
+                            //logout
+                            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+                            UIApplication.sharedApplication().delegate?.window?!.rootViewController = loginViewController
+                            UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
+                        }
+                    }
+                })
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
         
         
         

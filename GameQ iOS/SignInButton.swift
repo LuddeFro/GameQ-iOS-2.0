@@ -18,6 +18,10 @@ class SignInButton: UIButton {
         self.titleLabel!.textColor = UIColor.whiteColor()
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
+        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
+        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
+        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
+        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
         self.layer.borderColor = Colors().LightBlue.CGColor
     }
 

@@ -19,8 +19,10 @@ class ConnectionHandler : NSObject {
     static let passwordKey:String = "password_key"
     static let emailKey:String = "email_key"
     static let tokenKey:String = "token_key"
-    static var firstLogin:Bool = true
+    static var firstLogin:Bool = false
+    static var delayToServer:Int = 0
     private static var sessionId:String = ""
+    
     
     
     private static func getStringFrom(json:Dictionary<String, AnyObject>, key:String) -> String {
@@ -43,11 +45,14 @@ class ConnectionHandler : NSObject {
         request.HTTPMethod = "POST"
         
         request.HTTPBody = "key=68440fe0484ad2bb1656b56d234ca5f463f723c3d3d58c3398190877d1d963bb&\(arguments)".dataUsingEncoding(NSUTF8StringEncoding)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             if error != nil {
                 println("error=\(error)")
+                let Json:Dictionary<String, AnyObject> = [
+                "success": 0,
+                "error": 404
+                ]
+                responseHandler(responseJSON: Json)
                 return
             }
             
@@ -66,9 +71,10 @@ class ConnectionHandler : NSObject {
         var password:String = password1
         if !firstLogin {
             password = sha256(password1)
+            println()
             firstLogin = false
         }
-        //println("PASSWORD: \(password)")
+        println("PASSWORD: \(password)")
         
         let apiExtension = "login"
         var diString = ""
@@ -79,12 +85,28 @@ class ConnectionHandler : NSObject {
         if let token = loadToken() { //only mobile
             tokenString = "push_token=\(token)"
         }
+        if let smth = ConnectionHandler.loadOldToken() {
+            if smth == LeftViewController.emptyString {
+                tokenString = "push_token=\(LeftViewController.emptyString)"
+            }
+        }
+        
+        
+        
+        
+        
         let arguments = "email=\(email)&password=\(password)&\(tokenString)&\(diString)"
+        println("???")
+        println(password)
+        println(password1)
+        println(email)
         postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
             var success:Bool = false
             var err:String? = nil
-            
+            println("post request done")
             if let json = responseJSON as? Dictionary<String, AnyObject> {
+                let serverTime = self.getIntFrom(json, key: "time")
+                self.delayToServer = Int(NSDate().timeIntervalSince1970) - serverTime
                 success = self.getIntFrom(json, key: "success") != 0
                 if !success {
                     err = self.getStringFrom(json, key: "error")
@@ -103,7 +125,6 @@ class ConnectionHandler : NSObject {
             } else {
                 println("json parse fail")
             }
-            
             finalCallBack(success: success, err: err)
         })
     }
@@ -146,7 +167,12 @@ class ConnectionHandler : NSObject {
         }
         var tokenString = ""
         if let token = loadToken() { //only mobile
-            tokenString = "token=\(token)"
+            tokenString = "push_token=\(token)"
+        }
+        if let smth = ConnectionHandler.loadOldToken() {
+            if smth == LeftViewController.emptyString {
+                tokenString = "push_token=\(LeftViewController.emptyString)"
+            }
         }
         let arguments = "email=\(email)&password=\(password)&\(tokenString)&\(diString)"
         postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
@@ -182,7 +208,9 @@ class ConnectionHandler : NSObject {
         if let deviceId = loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
+        println()
         let arguments = "session_token=\(sessionId)&\(diString)"
+        println(arguments)
         postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
             var success:Bool = false
             var err:String? = nil
@@ -214,11 +242,14 @@ class ConnectionHandler : NSObject {
     static func updateToken(token:String, finalCallBack:(success:Bool, err:String?)->()) {
         let apiExtension = "updateToken"
         saveToken(token)
+        saveOldToken(token)
         var diString = ""
         if let deviceId = loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        let arguments = "session_token=\(sessionId)&\(diString)&token=\(token)"
+        println(diString)
+        let arguments = "session_token=\(sessionId)&\(diString)&push_token=\(token)"
+        println(arguments)
         postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
             var success:Bool = false
             var err:String? = nil
@@ -375,7 +406,13 @@ class ConnectionHandler : NSObject {
     
     
     
+    private static func saveOldToken(token:String) {
+        saveSingle("last_submitted_token", value: token)
+    }
     
+    static func loadOldToken() -> (String?){
+        return loadSingle("last_submitted_token") as? String
+    }
     
     
     static func saveToken(token:String) {
@@ -497,6 +534,18 @@ class ConnectionHandler : NSObject {
             return nil
         }
         
+    }
+    
+    
+    static func firstLaunch() -> Bool {
+        if let smth = loadSingle("unopened") as? String {
+            if smth != "something" {
+                return true
+            }
+            return false
+        }
+        saveSingle("unopened", value: "something")
+        return true
     }
     
     

@@ -41,9 +41,15 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var btnSubmitFeedback: UIButton!
     @IBOutlet weak var btnSubmitPassword: SubmitButton!
 
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var bolChangingPassword:Bool = false
     var bolGivingFeedback:Bool = false
     
+    var currentTextField:UIView = UIView()
+    
+    static let emptyString:String = "nonsense"
+    
+    @IBOutlet weak var viewLoginBackground: UIView!
     
     
     
@@ -77,6 +83,22 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     @IBAction func pressedTutorial(sender: AnyObject) {
         println("pressed Tutorial")
+        
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
+        tutViewController.delegate = tutViewController
+        tutViewController.dataSource = tutViewController
+        UIApplication.sharedApplication().delegate?.window?!.rootViewController = tutViewController
+        UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
+        
+        let tutViewController1 = storyboard.instantiateViewControllerWithIdentifier("Tutorial1") as! TutorialController1
+        
+        tutViewController.setViewControllers([tutViewController1], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
+            (success:Bool) in
+            println("setup pageController")
+        })
+        
+        
 
     }
     
@@ -156,20 +178,51 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         txtOldPassword.resignFirstResponder()
     }
     @IBAction func pressedOnButtonOne(sender: OnButton) {
+        println("on1")
         sender.on = true
         sender.setNeedsDisplay()
         offButtonOne.off = false
         offButtonOne.setNeedsDisplay()
+        let actualToken:String? = ConnectionHandler.loadToken()
+        println(actualToken!)
+        ConnectionHandler.updateToken(actualToken!, finalCallBack: {
+            (success:Bool, error:String?) in
+            if success {
+                // do nothing
+            } else {
+                self.offButtonOne.off = true
+                self.onButtonOne.on = false
+                self.offButtonOne.setNeedsDisplay()
+                self.onButtonOne.setNeedsDisplay()
+            }
+        })
+        
     }
     
     @IBAction func pressedOffButtonOne(sender: OffButton) {
+        println("off1")
         sender.off = true
         sender.setNeedsDisplay()
         onButtonOne.on = false
         onButtonOne.setNeedsDisplay()
+        let actualToken = ConnectionHandler.loadToken()
+        ConnectionHandler.updateToken(LeftViewController.emptyString, finalCallBack: {
+            (success:Bool, error:String?) in
+            ConnectionHandler.saveToken(actualToken!)
+            if success {
+                // do nothing
+            } else {
+                self.offButtonOne.off = false
+                self.onButtonOne.on = true
+                self.offButtonOne.setNeedsDisplay()
+                self.onButtonOne.setNeedsDisplay()
+            }
+        })
+        
     }
-    
+    /*
     @IBAction func pressedOnButtonTwo(sender: OnButton) {
+        println("on2")
         sender.on = true
         sender.setNeedsDisplay()
         offButtonTwo.off = false
@@ -177,11 +230,12 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func pressedOffButtonTwo(sender: OffButton) {
+        println("off2")
         sender.off = true
         sender.setNeedsDisplay()
         onButtonTwo.on = false
         onButtonTwo.setNeedsDisplay()
-    }
+    }*/
     
     @IBAction func pressedOnButtonThree(sender: OnButton) {
         sender.on = true
@@ -271,6 +325,9 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     
     func hideChangePasswordFields() {
+        txtOldPassword.resignFirstResponder()
+        txtNewPassword.resignFirstResponder()
+        txtConfirmPassword.resignFirstResponder()
         UIView.animateWithDuration(0.5, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
             self.changePasswordHeight.constant = 44
             self.view.layoutIfNeeded()
@@ -322,7 +379,23 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewLoginBackground.backgroundColor = Colors().LeftGray
         lblUserEmail.text = ConnectionHandler.loadEmail()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        txtConfirmPassword.delegate = self
+        txtNewPassword.delegate = self
+        txtOldPassword.delegate = self
+        txtFeedback.delegate = self
+        if let smth = ConnectionHandler.loadOldToken() {
+            if smth == LeftViewController.emptyString {
+                println("off1")
+                offButtonOne.off = true
+                offButtonOne.setNeedsDisplay()
+                onButtonOne.on = false
+                onButtonOne.setNeedsDisplay()
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -357,16 +430,67 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     func textFieldDidBeginEditing(textField: UITextField) {
         btnResignFirstResponder.hidden = false
+        currentTextField = textField
+        println("didbegin")
     }
     func textFieldDidEndEditing(textField: UITextField) {
         btnResignFirstResponder.hidden = true
+        
     }
     func textViewDidBeginEditing(textView: UITextView) {
         btnResignFirstResponder.hidden = false
+        println("didbegin")
+    }
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        println("shouldbegin")
+        currentTextField = textView
+        return true
     }
     func textViewDidEndEditing(textView: UITextView) {
         btnResignFirstResponder.hidden = true
+        currentTextField = textView
     }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        var info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        println("Will show")
+        self.view.layoutIfNeeded()
+        if currentTextField == txtFeedback {
+            
+            println(txtFeedback.frame.origin.y)
+            if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtFeedback.frame.origin.y + txtFeedback.frame.height {
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    self.topConstraint.constant = UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtFeedback.frame.origin.y - self.txtFeedback.frame.height
+                    self.view.layoutIfNeeded()
+                })
+            }
+        } else {
+            if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtConfirmPassword.frame.origin.y + txtConfirmPassword.frame.height {
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    self.topConstraint.constant = UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtConfirmPassword.frame.origin.y - self.txtConfirmPassword.frame.height
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+        
+        
+        
+        
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        var info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.topConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        })
+    }
+    
     
 }
 

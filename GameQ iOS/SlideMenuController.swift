@@ -200,6 +200,10 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         closeLeftWithVelocity(0.0)
         setCloseWindowLebel()
+        (leftViewController as! LeftViewController).txtConfirmPassword.resignFirstResponder()
+        (leftViewController as! LeftViewController).txtNewPassword.resignFirstResponder()
+        (leftViewController as! LeftViewController).txtOldPassword.resignFirstResponder()
+        (leftViewController as! LeftViewController).txtFeedback.resignFirstResponder()
     }
     
     override func closeRight() {

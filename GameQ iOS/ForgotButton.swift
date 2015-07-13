@@ -13,7 +13,7 @@ class ForgotButton: UIButton {
     override func drawRect(rect: CGRect) {
         
         
-        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        self.setTitleColor(Colors().MenuTextGray, forState: UIControlState.Normal)
         self.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
         
     }

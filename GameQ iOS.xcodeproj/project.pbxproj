@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		83357CC91B5168EF002CA1B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CC81B5168EF002CA1B7 /* GameStatus.swift */; };
 		83357CCB1B5173AF002CA1B7 /* PulsatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */; };
+		836DBD4A1B54113700434E64 /* TutorialController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD491B54113700434E64 /* TutorialController1.swift */; };
+		836DBD4C1B54114100434E64 /* TutorialController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD4B1B54114100434E64 /* TutorialController2.swift */; };
+		836DBD4E1B54114A00434E64 /* TutorialController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD4D1B54114A00434E64 /* TutorialController3.swift */; };
+		836DBD501B54115500434E64 /* TutorialController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD4F1B54115500434E64 /* TutorialController4.swift */; };
+		836DBD521B54127F00434E64 /* TutorialPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD511B54127F00434E64 /* TutorialPageController.swift */; };
 		83E2A1A01B507E9B00FD24EB /* NotifCustom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */; };
 		83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */; };
 		83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */; };
@@ -56,6 +61,11 @@
 		83357CBE1B5132A8002CA1B7 /* GameQ iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GameQ iOS-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		83357CC81B5168EF002CA1B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsatingLabel.swift; sourceTree = "<group>"; };
+		836DBD491B54113700434E64 /* TutorialController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController1.swift; sourceTree = "<group>"; };
+		836DBD4B1B54114100434E64 /* TutorialController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController2.swift; sourceTree = "<group>"; };
+		836DBD4D1B54114A00434E64 /* TutorialController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController3.swift; sourceTree = "<group>"; };
+		836DBD4F1B54115500434E64 /* TutorialController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController4.swift; sourceTree = "<group>"; };
+		836DBD511B54127F00434E64 /* TutorialPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageController.swift; sourceTree = "<group>"; };
 		83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotifCustom1.aif; sourceTree = "<group>"; };
 		83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GQTextField.swift; sourceTree = "<group>"; };
 		83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
@@ -207,6 +217,11 @@
 				AE7E5FA41B3C5E4D00DEB007 /* LeftViewController.swift */,
 				AEEB099F1B3EEDA700544356 /* LoginViewController.swift */,
 				AE7E5FA61B3C5EF200DEB007 /* SlideMenuController.swift */,
+				836DBD511B54127F00434E64 /* TutorialPageController.swift */,
+				836DBD491B54113700434E64 /* TutorialController1.swift */,
+				836DBD4B1B54114100434E64 /* TutorialController2.swift */,
+				836DBD4D1B54114A00434E64 /* TutorialController3.swift */,
+				836DBD4F1B54115500434E64 /* TutorialController4.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -313,12 +328,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836DBD501B54115500434E64 /* TutorialController4.swift in Sources */,
+				836DBD4A1B54113700434E64 /* TutorialController1.swift in Sources */,
 				AE7E5F871B3C5DCC00DEB007 /* MainViewController.swift in Sources */,
 				83EB5E861B4FDD9600B9FC96 /* FeedbackView.swift in Sources */,
 				AEEB099E1B3EED6300544356 /* LogInButton.swift in Sources */,
 				AEE826B11B3DA44500FF1A26 /* Colors.swift in Sources */,
 				AE7E5FB91B3C7B2200DEB007 /* ReadyTimer.swift in Sources */,
 				83EB5E8C1B500B2200B9FC96 /* ForgotButton.swift in Sources */,
+				836DBD521B54127F00434E64 /* TutorialPageController.swift in Sources */,
 				AE7E5FA71B3C5EF200DEB007 /* SlideMenuController.swift in Sources */,
 				83EB5E8A1B500B1200B9FC96 /* StatusLabel.swift in Sources */,
 				AE7E5FA51B3C5E4D00DEB007 /* LeftViewController.swift in Sources */,
@@ -334,8 +352,10 @@
 				83EB5E8E1B500B3200B9FC96 /* SignInButton.swift in Sources */,
 				AE7E5F851B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld in Sources */,
 				AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */,
+				836DBD4E1B54114A00434E64 /* TutorialController3.swift in Sources */,
 				AEEB09A01B3EEDA800544356 /* LoginViewController.swift in Sources */,
 				83EB5E901B502BC200B9FC96 /* ConnectionHandler.swift in Sources */,
+				836DBD4C1B54114100434E64 /* TutorialController2.swift in Sources */,
 				83357CC91B5168EF002CA1B7 /* GameStatus.swift in Sources */,
 				AEE282751B3EBF6700F74086 /* DividerLine.swift in Sources */,
 				AE7E5FB21B3C69DF00DEB007 /* QueueTimer.swift in Sources */,
@@ -478,7 +498,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = GameQ;
-				PROVISIONING_PROFILE = "b9a374dd-af98-467c-983a-73bb7e77f738";
+				PROVISIONING_PROFILE = "e95d4b97-c768-4cdd-82f7-27e374b68757";
 				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -497,7 +517,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = GameQ;
-				PROVISIONING_PROFILE = "b9a374dd-af98-467c-983a-73bb7e77f738";
+				PROVISIONING_PROFILE = "7634ca20-e4bb-48f9-8887-354e21370859";
 				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
 			};
 			name = Release;

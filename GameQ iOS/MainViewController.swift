@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
     
     private func startStatusUpdates() {
         bolGotLastAnswer = true
-        tmrStatus = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("updateStatus"), userInfo: nil, repeats: true)
+        tmrStatus = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("updateStatus"), userInfo: nil, repeats: true)
         updateStatus()
     }
     
@@ -161,7 +161,7 @@ class MainViewController: UIViewController {
             return
         }
         bolTimerRunning = true
-        endTime = to
+        endTime = to + ConnectionHandler.delayToServer
         startTime = Int(NSDate().timeIntervalSince1970)
         totalCountdown = endTime - startTime
         tmrCountdown.invalidate()

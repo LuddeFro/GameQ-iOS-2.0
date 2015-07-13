@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtConfirmPassword: GQTextField!
     @IBOutlet weak var btnForgot: UIButton!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var btnResignKeyboard: UIButton!
     var bolReportingForgottenPassword:Bool = false
     var bolSigningUp:Bool = false
@@ -30,29 +31,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors().MainGray
-        println("SHA::::")
-        println(ConnectionHandler.sha256("hejsan"))
         txtEmail.delegate = self
         txtPassword.delegate = self
+        txtConfirmPassword.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        disableAll()
-        ConnectionHandler.loginWithRememberedDetails({
-            (success:Bool, error:String?) in
-            dispatch_async(dispatch_get_main_queue()) {
-                self.enableAll()
-                if success {
-                    //go to main view
-                    self.createMainView()
-                } else {
-                    //do nothing
-                }
-            }
-        })
-
     }
     
     
@@ -116,8 +105,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.enableAll()
                         if success {
-                            //go to main menu
-                            self.createMainView()
+                            if ConnectionHandler.firstLaunch() {
+                                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
+                                tutViewController.delegate = tutViewController
+                                tutViewController.dataSource = tutViewController
+                                UIApplication.sharedApplication().delegate?.window?!.rootViewController = tutViewController
+                                UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
+                                
+                                let tutViewController1 = storyboard.instantiateViewControllerWithIdentifier("Tutorial1") as! TutorialController1
+                                
+                                tutViewController.setViewControllers([tutViewController1], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
+                                    (success:Bool) in
+                                    println("setup pageController")
+                                })
+                            } else {
+                                self.createMainView()
+                            }
                         } else {
                             self.lblStatus.text = error!
                         }
@@ -134,13 +138,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 txtPassword.text = ""
             } else {
                 disableAll()
+                println("trying login")
                 ConnectionHandler.login(txtEmail.text, password: txtPassword.text, finalCallBack: {
                     (success:Bool, error:String?) in
+                    println("returned from login")
+                    self.enableAll()
                     dispatch_async(dispatch_get_main_queue()) {
                         self.enableAll()
                         if success {
                             //go to main menu
-                            self.createMainView()
+                            if ConnectionHandler.firstLaunch() {
+                                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
+                                tutViewController.delegate = tutViewController
+                                tutViewController.dataSource = tutViewController
+                                UIApplication.sharedApplication().delegate?.window?!.rootViewController = tutViewController
+                                UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
+                                
+                                let tutViewController1 = storyboard.instantiateViewControllerWithIdentifier("Tutorial1") as! TutorialController1
+                                
+                                tutViewController.setViewControllers([tutViewController1], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
+                                    (success:Bool) in
+                                    println("setup pageController")
+                                })
+                            } else {
+                                self.createMainView()
+                            }
                         } else {
                             self.lblStatus.text = error!
                         }
@@ -250,6 +273,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtConfirmPassword.enabled = false
         activityIndicator.startAnimating()
         activityIndicator.hidden = false
+        activityIndicator.alpha = 1.0
     }
     
     private func enableAll() {
@@ -261,6 +285,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtConfirmPassword.enabled = true
         activityIndicator.stopAnimating()
         activityIndicator.hidden = true
+        activityIndicator.alpha = 0.0
     }
     
     
@@ -287,12 +312,72 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         btnResignKeyboard.hidden = false
+
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         btnResignKeyboard.hidden = true
+        textField.resignFirstResponder()
+
+    }
+    
+    
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        var info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        println("Will show")
+        println(UIScreen.mainScreen().bounds.height - 200)
+        
+        
+        if bolReportingForgottenPassword {
+            println("movingforgotten")
+            if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtEmail.frame.origin.y + txtEmail.frame.height {
+                println("will move")
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    self.bottomConstraint.constant = -(UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtEmail.frame.origin.y - self.txtEmail.frame.height)
+                    self.view.layoutIfNeeded()
+                })
+            }
+        } else if bolSigningUp {
+            println("movingsignup")
+            if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtConfirmPassword.frame.origin.y + txtConfirmPassword.frame.height {
+                println("will move")
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    self.bottomConstraint.constant = -(UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtConfirmPassword.frame.origin.y - self.txtConfirmPassword.frame.height)
+                    self.view.layoutIfNeeded()
+                })
+            }
+        } else {
+            println("movingsignin")
+            if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtPassword.frame.origin.y + txtPassword.frame.height {
+                println("will move")
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    self.bottomConstraint.constant = -(UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtPassword.frame.origin.y - self.txtPassword.frame.height)
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        var info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bottomConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        })
     }
     
                                              

@@ -54,8 +54,20 @@
                                     <constraint firstAttribute="width" constant="300" id="xfi-Z0-Lo3"/>
                                 </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smW-ru-YLW" userLabel="btnResignFirstResponder">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="aby-vB-bzq"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedResignFirstResponder:" destination="4cz-lt-BXL" eventType="touchUpInside" id="dbI-Gc-x6r"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f4-TK-ErN" userLabel="OnButtonOne" customClass="OnButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="215" y="73" width="30" height="30"/>
+                                <rect key="frame" x="210" y="73" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="d2K-bM-QuK"/>
                                     <constraint firstAttribute="height" constant="30" id="pf3-VV-d09"/>
@@ -67,19 +79,6 @@
                                     <action selector="pressedOnButtonOne:" destination="4cz-lt-BXL" eventType="touchUpInside" id="UzF-WM-5n0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="OffButtonOne" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWM-Hn-4gN" userLabel="OffButtonOne" customClass="OffButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="265" y="73" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Kom-sq-Jva"/>
-                                    <constraint firstAttribute="width" constant="30" id="Uuq-dv-fJY"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedOffButtonOne:" destination="4cz-lt-BXL" eventType="touchUpInside" id="SgN-58-Xrz"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Ly-f0i" userLabel="DivLineTwo" customClass="DividerLine" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="110" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,21 +87,8 @@
                                     <constraint firstAttribute="height" constant="1" id="tLv-OZ-QbL"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMO-Xh-vbO" userLabel="OffButtonTwo" customClass="OffButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="265" y="118" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="rnv-Zn-Azo"/>
-                                    <constraint firstAttribute="height" constant="30" id="tVE-g3-Zjq"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedOffButtonTwo:" destination="4cz-lt-BXL" eventType="touchUpInside" id="563-pK-Uhd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" alpha="0.29999999999999966" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00R-R4-guW" userLabel="OffButtonThree" customClass="OffButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="265" y="163" width="30" height="30"/>
+                                <rect key="frame" x="255" y="118" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="2fW-F5-EQp"/>
                                     <constraint firstAttribute="height" constant="30" id="8Bv-Kv-1tj"/>
@@ -114,29 +100,8 @@
                                     <action selector="pressedOffButtonThree:" destination="4cz-lt-BXL" eventType="touchUpInside" id="Zih-ee-Vn3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjR-Qb-3GJ" userLabel="OnButtonTwo" customClass="OnButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="215" y="118" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="CLK-UZ-0Wn"/>
-                                    <constraint firstAttribute="width" constant="30" id="Vgf-Dp-uw9"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedOnButtonTwo:" destination="4cz-lt-BXL" eventType="touchUpInside" id="Svp-3W-tnd"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g65-Kn-DeW" userLabel="DivLineThree" customClass="DividerLine" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="155" width="300" height="1"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="nRI-f0-mnT"/>
-                                    <constraint firstAttribute="width" constant="300" id="qwE-bh-4VK"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" alpha="0.29999999999999966" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mw-EJ-Ry8" userLabel="OnButtonThree" customClass="OnButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="215" y="163" width="30" height="30"/>
+                                <rect key="frame" x="210" y="118" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="5EV-Uy-9Gf"/>
                                     <constraint firstAttribute="height" constant="30" id="iEG-ov-zJ5"/>
@@ -149,7 +114,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwt-Pk-v6j" userLabel="DivLineFour" customClass="DividerLine" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="200" width="300" height="1"/>
+                                <rect key="frame" x="0.0" y="155" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="816-6h-FWb"/>
@@ -166,18 +131,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-0e-eHh" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="122" width="153" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="153" id="Exh-sN-vzy"/>
-                                    <constraint firstAttribute="height" constant="21" id="aYe-jK-yvC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Accept - (Coming Soon)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o76-Zp-Dnp" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="167" width="200" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Accept (Coming Soon)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o76-Zp-Dnp" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="123" width="200" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="csr-BN-Fea"/>
                                 </constraints>
@@ -186,7 +141,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ti6-p3-cJ2" userLabel="DivLineFive" customClass="DividerLine" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="245" width="300" height="1"/>
+                                <rect key="frame" x="0.0" y="200" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="D4r-jt-lhC"/>
@@ -194,7 +149,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDt-Cv-lFg" userLabel="DivLineSix" customClass="DividerLine" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="290" width="300" height="1"/>
+                                <rect key="frame" x="0.0" y="245" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="VVW-fH-Ogc"/>
@@ -202,25 +157,149 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XD8-ba-OtY" userLabel="DivLineSeven" customClass="DividerLine" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="335" width="300" height="1"/>
+                                <rect key="frame" x="0.0" y="290" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="1Mg-1N-10g"/>
                                     <constraint firstAttribute="height" constant="1" id="x6Q-PU-Tk8"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smW-ru-YLW" userLabel="btnResignFirstResponder">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="599"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiM-a4-Mei" userLabel="FeedbackButton">
+                                <rect key="frame" x="0.0" y="156" width="300" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="aby-vB-bzq"/>
+                                    <constraint firstAttribute="width" constant="300" id="vdD-FP-bba"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressedResignFirstResponder:" destination="4cz-lt-BXL" eventType="touchUpInside" id="dbI-Gc-x6r"/>
+                                    <action selector="pressedFeedback:" destination="4cz-lt-BXL" eventType="touchUpInside" id="RoK-Yz-Nfs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGG-Ld-cek" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="167" width="93" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="MJb-fV-BYR"/>
+                                    <constraint firstAttribute="height" constant="21" id="lkS-dJ-6Oh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hmd-Gb-Hvl" customClass="FeedbackView" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="15" y="202" width="270" height="75"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="KAO-fZ-Q5M"/>
+                                    <constraint firstAttribute="height" constant="75" id="PV5-sf-rh5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJ4-CR-LpH" userLabel="ChangePasswordButton">
+                                <rect key="frame" x="0.0" y="201" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="NE0-15-0RR"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedChangePassword:" destination="4cz-lt-BXL" eventType="touchUpInside" id="Bcc-Av-pfM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-zN-mrd" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="213" width="150" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="GDW-SL-g6z"/>
+                                    <constraint firstAttribute="width" constant="150" id="sdM-hp-G1Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-ws-JZF" customClass="GQTextField" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="15" y="252" width="270" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="PxI-DD-rvg"/>
+                                    <constraint firstAttribute="height" constant="30" id="isG-LF-xFH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEI-66-3Cu" customClass="GQTextField" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="15" y="289" width="270" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JiY-RP-e5p"/>
+                                    <constraint firstAttribute="width" constant="270" id="v0T-Oh-ZQg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="frM-YZ-8MT" customClass="GQTextField" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="15" y="326" width="270" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="2oS-RW-8B1"/>
+                                    <constraint firstAttribute="height" constant="30" id="e7O-Ct-ewC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4o-HE-Yb6" customClass="SubmitButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="221" y="163" width="69" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="To9-iP-DY7"/>
+                                    <constraint firstAttribute="width" constant="69" id="nVa-QS-7w3"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedSubmitFeedback:" destination="4cz-lt-BXL" eventType="touchUpInside" id="tF9-Q1-eyq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAh-jR-agw" customClass="SubmitButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="221" y="208" width="69" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8wE-S6-Gik"/>
+                                    <constraint firstAttribute="width" constant="69" id="qLV-h3-tdt"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedSubmitPassword:" destination="4cz-lt-BXL" eventType="touchUpInside" id="lgr-Ug-TdW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5d-ET-URk" userLabel="TutorialButton">
+                                <rect key="frame" x="0.0" y="246" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="OF9-w6-VRs"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedTutorial:" destination="4cz-lt-BXL" eventType="touchUpInside" id="AHu-k3-3sJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use GameQ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLt-fi-bIE" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="257" width="127" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-q1-McR">
+                                <rect key="frame" x="140" y="527" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="jLN-JO-7GA"/>
+                                    <constraint firstAttribute="height" constant="20" id="rfK-o0-v4x"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9d-gT-Gb8">
+                                <rect key="frame" x="0.0" y="540" width="300" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBF-cT-dMo" customClass="LogOutButton" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="70" y="555" width="160" height="30"/>
                                 <constraints>
@@ -235,143 +314,23 @@
                                     <action selector="pressedLogout:" destination="4cz-lt-BXL" eventType="touchUpInside" id="9Kl-lt-DXt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiM-a4-Mei" userLabel="FeedbackButton">
-                                <rect key="frame" x="0.0" y="201" width="300" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="OffButtonOne" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWM-Hn-4gN" userLabel="OffButtonOne" customClass="OffButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="255" y="73" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="vdD-FP-bba"/>
+                                    <constraint firstAttribute="height" constant="30" id="Kom-sq-Jva"/>
+                                    <constraint firstAttribute="width" constant="30" id="Uuq-dv-fJY"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressedFeedback:" destination="4cz-lt-BXL" eventType="touchUpInside" id="RoK-Yz-Nfs"/>
+                                    <action selector="pressedOffButtonOne:" destination="4cz-lt-BXL" eventType="touchUpInside" id="SgN-58-Xrz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGG-Ld-cek" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="212" width="93" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="MJb-fV-BYR"/>
-                                    <constraint firstAttribute="height" constant="21" id="lkS-dJ-6Oh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hmd-Gb-Hvl" customClass="FeedbackView" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="15" y="247" width="270" height="75"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="KAO-fZ-Q5M"/>
-                                    <constraint firstAttribute="height" constant="75" id="PV5-sf-rh5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJ4-CR-LpH" userLabel="ChangePasswordButton">
-                                <rect key="frame" x="0.0" y="246" width="300" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="NE0-15-0RR"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedChangePassword:" destination="4cz-lt-BXL" eventType="touchUpInside" id="Bcc-Av-pfM"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-zN-mrd" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="258" width="150" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="GDW-SL-g6z"/>
-                                    <constraint firstAttribute="width" constant="150" id="sdM-hp-G1Z"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-ws-JZF" customClass="GQTextField" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="15" y="297" width="270" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="PxI-DD-rvg"/>
-                                    <constraint firstAttribute="height" constant="30" id="isG-LF-xFH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEI-66-3Cu" customClass="GQTextField" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="15" y="334" width="270" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="JiY-RP-e5p"/>
-                                    <constraint firstAttribute="width" constant="270" id="v0T-Oh-ZQg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="frM-YZ-8MT" customClass="GQTextField" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="15" y="371" width="270" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="2oS-RW-8B1"/>
-                                    <constraint firstAttribute="height" constant="30" id="e7O-Ct-ewC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4o-HE-Yb6" customClass="SubmitButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="221" y="208" width="69" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="To9-iP-DY7"/>
-                                    <constraint firstAttribute="width" constant="69" id="nVa-QS-7w3"/>
-                                </constraints>
-                                <state key="normal" title="Submit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedSubmitFeedback:" destination="4cz-lt-BXL" eventType="touchUpInside" id="tF9-Q1-eyq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAh-jR-agw" customClass="SubmitButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="221" y="253" width="69" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="8wE-S6-Gik"/>
-                                    <constraint firstAttribute="width" constant="69" id="qLV-h3-tdt"/>
-                                </constraints>
-                                <state key="normal" title="Submit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedSubmitPassword:" destination="4cz-lt-BXL" eventType="touchUpInside" id="lgr-Ug-TdW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5d-ET-URk" userLabel="TutorialButton">
-                                <rect key="frame" x="0.0" y="291" width="300" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="OF9-w6-VRs"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedTutorial:" destination="4cz-lt-BXL" eventType="touchUpInside" id="AHu-k3-3sJ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use GameQ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLt-fi-bIE" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="302" width="127" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-q1-McR">
-                                <rect key="frame" x="140" y="527" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="jLN-JO-7GA"/>
-                                    <constraint firstAttribute="height" constant="20" id="rfK-o0-v4x"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8fn-0e-eHh" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="16" id="0gV-ik-WG5"/>
-                            <constraint firstItem="8fn-0e-eHh" firstAttribute="top" secondItem="MKz-Ly-f0i" secondAttribute="bottom" constant="11" id="1QG-NM-DgQ"/>
+                            <constraint firstItem="6mw-EJ-Ry8" firstAttribute="top" secondItem="MKz-Ly-f0i" secondAttribute="bottom" constant="7" id="0no-cU-9kF"/>
                             <constraint firstItem="F4o-HE-Yb6" firstAttribute="top" secondItem="Zwt-Pk-v6j" secondAttribute="bottom" constant="7" id="2Fq-ld-5lk"/>
                             <constraint firstItem="smW-ru-YLW" firstAttribute="top" secondItem="CoU-43-ofq" secondAttribute="top" id="3Q5-W6-UaJ"/>
                             <constraint firstItem="lBF-cT-dMo" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="70" id="4CL-BS-37L"/>
@@ -381,35 +340,34 @@
                             <constraint firstItem="frM-YZ-8MT" firstAttribute="top" secondItem="jEI-66-3Cu" secondAttribute="bottom" constant="7" id="7Nx-Ni-btc"/>
                             <constraint firstItem="LiM-a4-Mei" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="7im-HU-fA8"/>
                             <constraint firstItem="A5d-ET-URk" firstAttribute="top" secondItem="JDt-Cv-lFg" secondAttribute="bottom" id="7kx-ho-3IZ"/>
-                            <constraint firstItem="WMO-Xh-vbO" firstAttribute="leading" secondItem="AjR-Qb-3GJ" secondAttribute="trailing" constant="20" id="9Ad-fx-raU"/>
-                            <constraint firstItem="nWM-Hn-4gN" firstAttribute="top" secondItem="Hy9-7B-lBS" secondAttribute="bottom" constant="7" id="9GO-Y0-frD"/>
                             <constraint firstItem="smW-ru-YLW" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="9Z3-pE-tdV"/>
                             <constraint firstItem="DAh-jR-agw" firstAttribute="top" secondItem="ti6-p3-cJ2" secondAttribute="bottom" constant="7" id="B8f-Mt-mbF"/>
                             <constraint firstItem="Zwt-Pk-v6j" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="CxR-0A-l02"/>
-                            <constraint firstItem="00R-R4-guW" firstAttribute="leading" secondItem="6mw-EJ-Ry8" secondAttribute="trailing" constant="20" id="D1u-70-ijy"/>
                             <constraint firstItem="LGG-Ld-cek" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="16" id="DOC-SF-BFP"/>
                             <constraint firstItem="MKz-Ly-f0i" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="ErJ-Y4-SSo"/>
                             <constraint firstItem="s8K-ws-JZF" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="15" id="Esu-T6-3HE"/>
                             <constraint firstItem="F4o-HE-Yb6" firstAttribute="leading" secondItem="LGG-Ld-cek" secondAttribute="trailing" constant="112" id="FI1-XZ-4cm"/>
+                            <constraint firstItem="lBF-cT-dMo" firstAttribute="centerY" secondItem="x9d-gT-Gb8" secondAttribute="centerY" id="FwP-7O-pQp"/>
                             <constraint firstItem="JDt-Cv-lFg" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leadingMargin" id="HKa-IO-Gae"/>
+                            <constraint firstItem="lBF-cT-dMo" firstAttribute="centerX" secondItem="x9d-gT-Gb8" secondAttribute="centerX" id="HVL-KE-A1J"/>
+                            <constraint firstItem="o76-Zp-Dnp" firstAttribute="top" secondItem="MKz-Ly-f0i" secondAttribute="bottom" constant="12" id="Hig-yD-Qd5"/>
                             <constraint firstItem="ti6-p3-cJ2" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="IHX-hp-sG1"/>
-                            <constraint firstItem="6mw-EJ-Ry8" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="215" id="K9M-uY-W6x"/>
+                            <constraint firstItem="nWM-Hn-4gN" firstAttribute="leading" secondItem="00R-R4-guW" secondAttribute="leading" id="KCG-S1-zMc"/>
                             <constraint firstItem="A5d-ET-URk" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="MvG-10-FZx"/>
                             <constraint firstItem="JDt-Cv-lFg" firstAttribute="top" secondItem="iJ4-CR-LpH" secondAttribute="bottom" id="NbC-Ew-MkB"/>
                             <constraint firstItem="LiM-a4-Mei" firstAttribute="top" secondItem="Zwt-Pk-v6j" secondAttribute="bottom" id="NpJ-uc-cuj"/>
-                            <constraint firstItem="WMO-Xh-vbO" firstAttribute="top" secondItem="MKz-Ly-f0i" secondAttribute="bottom" constant="7" id="ODO-on-Yv9"/>
                             <constraint firstItem="Hmd-Gb-Hvl" firstAttribute="top" secondItem="LGG-Ld-cek" secondAttribute="bottom" constant="14" id="OmL-dU-67M"/>
                             <constraint firstItem="JDt-Cv-lFg" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="QG0-C7-IfW"/>
                             <constraint firstItem="ti6-p3-cJ2" firstAttribute="top" secondItem="Zwt-Pk-v6j" secondAttribute="bottom" constant="44" id="QO9-rj-r0o"/>
                             <constraint firstItem="XD8-ba-OtY" firstAttribute="top" secondItem="JDt-Cv-lFg" secondAttribute="bottom" constant="44" id="RNy-PO-Ods"/>
+                            <constraint firstItem="x9d-gT-Gb8" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="ReP-Xj-SNT"/>
                             <constraint firstItem="JDt-Cv-lFg" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="ScX-oh-o2N"/>
-                            <constraint firstItem="g65-Kn-DeW" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="Si1-DF-dOA"/>
                             <constraint firstItem="lBF-cT-dMo" firstAttribute="top" secondItem="JHU-q1-McR" secondAttribute="bottom" constant="8" id="Tml-J4-hTU"/>
                             <constraint firstItem="XD8-ba-OtY" firstAttribute="top" secondItem="A5d-ET-URk" secondAttribute="bottom" id="Ukc-3u-doa"/>
-                            <constraint firstItem="AjR-Qb-3GJ" firstAttribute="top" secondItem="MKz-Ly-f0i" secondAttribute="bottom" constant="7" id="W2N-IK-cLw"/>
-                            <constraint firstItem="nWM-Hn-4gN" firstAttribute="leading" secondItem="7f4-TK-ErN" secondAttribute="trailing" constant="20" id="XYM-SY-2Ih"/>
-                            <constraint firstItem="6mw-EJ-Ry8" firstAttribute="top" secondItem="g65-Kn-DeW" secondAttribute="bottom" constant="7" id="ZE4-2j-WuO"/>
+                            <constraint firstItem="nWM-Hn-4gN" firstAttribute="leading" secondItem="7f4-TK-ErN" secondAttribute="trailing" constant="15" id="XYM-SY-2Ih"/>
+                            <constraint firstItem="6mw-EJ-Ry8" firstAttribute="top" secondItem="00R-R4-guW" secondAttribute="top" id="bOm-TM-eim"/>
                             <constraint firstItem="pLt-fi-bIE" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="16" id="bUr-y6-T6N"/>
+                            <constraint firstItem="WIQ-D1-cDp" firstAttribute="top" secondItem="x9d-gT-Gb8" secondAttribute="bottom" id="bV6-yk-yNF"/>
                             <constraint firstItem="MKz-Ly-f0i" firstAttribute="top" secondItem="nWM-Hn-4gN" secondAttribute="bottom" constant="7" id="bvZ-uR-5CK"/>
                             <constraint firstItem="Hy9-7B-lBS" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="cL6-os-SQP"/>
                             <constraint firstItem="WIQ-D1-cDp" firstAttribute="top" secondItem="lBF-cT-dMo" secondAttribute="bottom" constant="15" id="dnC-Yi-PZs"/>
@@ -418,17 +376,14 @@
                             <constraint firstItem="o76-Zp-Dnp" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="16" id="gHx-Hc-DUL"/>
                             <constraint firstItem="kjI-aX-k01" firstAttribute="top" secondItem="Hy9-7B-lBS" secondAttribute="bottom" constant="11.5" id="hh4-iy-3gL"/>
                             <constraint firstItem="Hmd-Gb-Hvl" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="15" id="j9h-zp-frV"/>
-                            <constraint firstItem="00R-R4-guW" firstAttribute="top" secondItem="g65-Kn-DeW" secondAttribute="bottom" constant="7" id="kli-JA-zSd"/>
                             <constraint firstItem="lBF-cT-dMo" firstAttribute="centerX" secondItem="JHU-q1-McR" secondAttribute="centerX" id="lCZ-1z-9ze"/>
                             <constraint firstItem="jEI-66-3Cu" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="15" id="mBe-tF-PK3"/>
-                            <constraint firstItem="AjR-Qb-3GJ" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="215" id="mkr-ev-gVI"/>
                             <constraint firstItem="pLt-fi-bIE" firstAttribute="top" secondItem="JDt-Cv-lFg" secondAttribute="bottom" constant="11.6" id="msQ-En-coi"/>
-                            <constraint firstItem="g65-Kn-DeW" firstAttribute="top" secondItem="AjR-Qb-3GJ" secondAttribute="bottom" constant="7" id="nb4-Yn-Uht"/>
                             <constraint firstItem="Zwt-Pk-v6j" firstAttribute="top" secondItem="6mw-EJ-Ry8" secondAttribute="bottom" constant="7" id="nx5-B6-X7v"/>
                             <constraint firstItem="jEI-66-3Cu" firstAttribute="top" secondItem="s8K-ws-JZF" secondAttribute="bottom" constant="7" id="o0g-DH-gy8"/>
                             <constraint firstItem="frM-YZ-8MT" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="15" id="oRQ-2x-15j"/>
                             <constraint firstItem="iJ4-CR-LpH" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="q60-Kn-fQA"/>
-                            <constraint firstItem="7f4-TK-ErN" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="215" id="qbA-ox-zrm"/>
+                            <constraint firstItem="7f4-TK-ErN" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="210" id="qbA-ox-zrm"/>
                             <constraint firstItem="DAh-jR-agw" firstAttribute="leading" secondItem="rLY-zN-mrd" secondAttribute="trailing" constant="55" id="qmw-5P-C48"/>
                             <constraint firstItem="rLY-zN-mrd" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="16" id="rHL-he-XT5"/>
                             <constraint firstItem="JDt-Cv-lFg" firstAttribute="top" secondItem="ti6-p3-cJ2" secondAttribute="bottom" constant="44" id="rf5-KC-5Zg"/>
@@ -438,9 +393,9 @@
                             <constraint firstItem="f8u-8b-2fQ" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" id="uL9-Mf-urb"/>
                             <constraint firstItem="f8u-8b-2fQ" firstAttribute="top" secondItem="CoU-43-ofq" secondAttribute="top" id="uOd-Px-0Rz"/>
                             <constraint firstItem="rLY-zN-mrd" firstAttribute="top" secondItem="ti6-p3-cJ2" secondAttribute="bottom" constant="11.5" id="uoS-Pr-EIx"/>
-                            <constraint firstItem="AjR-Qb-3GJ" firstAttribute="top" secondItem="MKz-Ly-f0i" secondAttribute="bottom" constant="7" id="uok-Br-ayU"/>
                             <constraint firstItem="kjI-aX-k01" firstAttribute="leading" secondItem="CoU-43-ofq" secondAttribute="leading" constant="16" id="v3B-Cc-h7y"/>
-                            <constraint firstItem="o76-Zp-Dnp" firstAttribute="top" secondItem="g65-Kn-DeW" secondAttribute="bottom" constant="11" id="xuT-0L-wBI"/>
+                            <constraint firstItem="nWM-Hn-4gN" firstAttribute="top" secondItem="7f4-TK-ErN" secondAttribute="top" id="ws0-8I-cAq"/>
+                            <constraint firstItem="6mw-EJ-Ry8" firstAttribute="leading" secondItem="7f4-TK-ErN" secondAttribute="leading" id="yLs-8c-aFW"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -453,16 +408,11 @@
                                 <include reference="f8u-8b-2fQ"/>
                                 <include reference="Hy9-7B-lBS"/>
                                 <include reference="7f4-TK-ErN"/>
-                                <include reference="nWM-Hn-4gN"/>
                                 <include reference="MKz-Ly-f0i"/>
-                                <include reference="WMO-Xh-vbO"/>
                                 <include reference="00R-R4-guW"/>
-                                <include reference="AjR-Qb-3GJ"/>
-                                <include reference="g65-Kn-DeW"/>
                                 <include reference="6mw-EJ-Ry8"/>
                                 <include reference="Zwt-Pk-v6j"/>
                                 <include reference="kjI-aX-k01"/>
-                                <include reference="8fn-0e-eHh"/>
                                 <include reference="o76-Zp-Dnp"/>
                                 <include reference="ti6-p3-cJ2"/>
                                 <include reference="JDt-Cv-lFg"/>
@@ -470,6 +420,7 @@
                                 <include reference="LGG-Ld-cek"/>
                                 <include reference="rLY-zN-mrd"/>
                                 <include reference="pLt-fi-bIE"/>
+                                <include reference="nWM-Hn-4gN"/>
                             </mask>
                         </variation>
                     </view>
@@ -488,19 +439,18 @@
                         <outlet property="labelOne" destination="kjI-aX-k01" id="5G0-JJ-9m8"/>
                         <outlet property="labelSix" destination="pLt-fi-bIE" id="6E7-l4-Llr"/>
                         <outlet property="labelThree" destination="o76-Zp-Dnp" id="nyY-x0-2Ym"/>
-                        <outlet property="labelTwo" destination="8fn-0e-eHh" id="NAK-ce-3P6"/>
                         <outlet property="lblUserEmail" destination="4Uq-LN-Cka" id="612-cd-Urx"/>
                         <outlet property="leftNavBar" destination="f8u-8b-2fQ" id="udA-wu-bws"/>
                         <outlet property="offButtonOne" destination="nWM-Hn-4gN" id="vj3-C8-VDQ"/>
                         <outlet property="offButtonThree" destination="00R-R4-guW" id="nPA-d5-ocP"/>
-                        <outlet property="offButtonTwo" destination="WMO-Xh-vbO" id="d2A-Vv-GQJ"/>
                         <outlet property="onButtonOne" destination="7f4-TK-ErN" id="Wxk-WA-gyV"/>
                         <outlet property="onButtonThree" destination="6mw-EJ-Ry8" id="ukM-rx-GvC"/>
-                        <outlet property="onButtonTwo" destination="AjR-Qb-3GJ" id="a6b-xe-Zwc"/>
+                        <outlet property="topConstraint" destination="uOd-Px-0Rz" id="4Jn-eJ-6BU"/>
                         <outlet property="txtConfirmPassword" destination="frM-YZ-8MT" id="bYn-kh-qJb"/>
                         <outlet property="txtFeedback" destination="Hmd-Gb-Hvl" id="nIh-Yw-hSK"/>
                         <outlet property="txtNewPassword" destination="jEI-66-3Cu" id="AYP-r2-JdD"/>
                         <outlet property="txtOldPassword" destination="s8K-ws-JZF" id="Phh-ZN-MVi"/>
+                        <outlet property="viewLoginBackground" destination="x9d-gT-Gb8" id="iQx-g6-iuS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGs-Pt-EJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -609,6 +559,168 @@
             </objects>
             <point key="canvasLocation" x="2130" y="-360"/>
         </scene>
+        <!--Tutorial Controller1-->
+        <scene sceneID="0gi-Uh-lAL">
+            <objects>
+                <viewController storyboardIdentifier="Tutorial1" id="PZ0-QO-c7n" customClass="TutorialController1" customModule="GameQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L3T-yF-IDb"/>
+                        <viewControllerLayoutGuide type="bottom" id="trr-Qr-ICG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YY5-ud-WWW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to GameQ.       And welcome to never again worrying about missing a game." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8R-Lc-WVh">
+                                <rect key="frame" x="200" y="200.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3Qg-cU-2ef"/>
+                                    <constraint firstAttribute="height" constant="200" id="r9P-Ft-kOt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dO3-Wu-g3G">
+                                <rect key="frame" x="251" y="140.5" width="98.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ROM-l8-ZYI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g8R-Lc-WVh" firstAttribute="top" secondItem="dO3-Wu-g3G" secondAttribute="bottom" constant="10" id="IGD-Wm-Vvl"/>
+                            <constraint firstItem="dO3-Wu-g3G" firstAttribute="centerX" secondItem="g8R-Lc-WVh" secondAttribute="centerX" id="YMX-3U-oGi"/>
+                            <constraint firstAttribute="centerY" secondItem="g8R-Lc-WVh" secondAttribute="centerY" id="agf-FB-uxP"/>
+                            <constraint firstAttribute="centerX" secondItem="g8R-Lc-WVh" secondAttribute="centerX" id="pvf-z2-3I7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cVt-0B-FUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1687" y="1270"/>
+        </scene>
+        <!--Tutorial Page Controller-->
+        <scene sceneID="XQY-9h-tLX">
+            <objects>
+                <pageViewController storyboardIdentifier="TutorialPageControl" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Spo-Ly-VYA" customClass="TutorialPageController" customModule="GameQ" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bl7-CZ-Hem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2597" y="618"/>
+        </scene>
+        <!--Tutorial Controller2-->
+        <scene sceneID="aQZ-V4-B8C">
+            <objects>
+                <viewController storyboardIdentifier="Tutorial2" id="Ksr-h9-abV" customClass="TutorialController2" customModule="GameQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K2D-nb-1Hm"/>
+                        <viewControllerLayoutGuide type="bottom" id="ExG-3l-Hkp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IYw-bZ-Kl1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desktop Installation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pL-0C-vWQ">
+                                <rect key="frame" x="176" y="140" width="249.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="H9j-fD-MPf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get started make sure you install and sign in to the desktop client as well. It can be downloaded from 'www.GameQ.io'." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlD-6z-AiC">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="mMY-1g-hch"/>
+                                    <constraint firstAttribute="width" constant="200" id="uIX-7x-C8N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="hlD-6z-AiC" secondAttribute="centerY" id="OhG-2y-OK9"/>
+                            <constraint firstItem="hlD-6z-AiC" firstAttribute="centerX" secondItem="0pL-0C-vWQ" secondAttribute="centerX" id="Q9Y-RF-sDm"/>
+                            <constraint firstAttribute="centerX" secondItem="hlD-6z-AiC" secondAttribute="centerX" id="olf-0d-DgJ"/>
+                            <constraint firstItem="hlD-6z-AiC" firstAttribute="top" secondItem="0pL-0C-vWQ" secondAttribute="bottom" constant="10" id="xIY-aM-LYh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nQg-Ik-Etd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2291" y="1270"/>
+        </scene>
+        <!--Tutorial Controller4-->
+        <scene sceneID="90E-mn-PgO">
+            <objects>
+                <viewController storyboardIdentifier="Tutorial4" id="5dn-Ro-N3G" customClass="TutorialController4" customModule="GameQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U6W-bP-duL"/>
+                        <viewControllerLayoutGuide type="bottom" id="xpG-zP-Ukk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CMX-su-SrH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go Poop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKY-r0-qoe">
+                                <rect key="frame" x="200" y="140" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oeT-rF-oAp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye0-aK-Ndw">
+                                <rect key="frame" x="0.0" y="562" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9rO-A3-jiz"/>
+                                </constraints>
+                                <state key="normal" title="Go to the App!">
+                                    <color key="titleColor" red="0.12549019610000001" green="0.13725490200000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedBackToMain:" destination="5dn-Ro-N3G" eventType="touchUpInside" id="A12-7w-Jos"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Le0-vF-hu5">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="P8s-La-UPW"/>
+                                    <constraint firstAttribute="width" constant="200" id="chi-ya-bYO"/>
+                                </constraints>
+                                <string key="text">You can rest assured that you will be notified when the action starts. Take a sandwich, go poop or do whatever... GameQ will bring you back when duty calls.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Le0-vF-hu5" secondAttribute="centerX" id="4Je-NW-Oxy"/>
+                            <constraint firstItem="AKY-r0-qoe" firstAttribute="leading" secondItem="Le0-vF-hu5" secondAttribute="leading" id="Ch3-Mp-KSg"/>
+                            <constraint firstAttribute="centerY" secondItem="Le0-vF-hu5" secondAttribute="centerY" id="LaG-eS-gwa"/>
+                            <constraint firstItem="xpG-zP-Ukk" firstAttribute="top" secondItem="ye0-aK-Ndw" secondAttribute="bottom" constant="8" id="NKv-8F-xut"/>
+                            <constraint firstItem="ye0-aK-Ndw" firstAttribute="leading" secondItem="CMX-su-SrH" secondAttribute="leading" id="PR4-Fv-oCI"/>
+                            <constraint firstAttribute="trailing" secondItem="ye0-aK-Ndw" secondAttribute="trailing" id="a9x-Pa-hYx"/>
+                            <constraint firstItem="AKY-r0-qoe" firstAttribute="trailing" secondItem="Le0-vF-hu5" secondAttribute="trailing" id="dca-lO-OnF"/>
+                            <constraint firstItem="Le0-vF-hu5" firstAttribute="top" secondItem="AKY-r0-qoe" secondAttribute="bottom" constant="10" id="iTC-xS-SfF"/>
+                            <constraint firstItem="AKY-r0-qoe" firstAttribute="centerX" secondItem="Le0-vF-hu5" secondAttribute="centerX" id="ojY-4j-tbg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZK5-Nn-juD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3495" y="1270"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="x7B-5a-uqZ">
             <objects>
@@ -631,7 +743,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1o-qn-xDf" customClass="SignInButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="15" y="540" width="570" height="45"/>
+                                <rect key="frame" x="15" y="523" width="570" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="rEH-Vq-0E3"/>
                                 </constraints>
@@ -642,7 +754,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ap-8d-T0Y" customClass="LogInButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="15" y="488" width="570" height="45"/>
+                                <rect key="frame" x="15" y="471" width="570" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="UHn-Jt-Zna"/>
                                 </constraints>
@@ -657,15 +769,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atw-uJ-Irr" customClass="ForgotButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="175" y="359" width="250" height="30"/>
-                                <state key="normal" title="Forgot Password?">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedForgotPassword:" destination="X5F-L9-JHb" eventType="touchUpInside" id="2ry-qg-KXN"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syv-r1-sHf" customClass="StatusLabel" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="175" y="354" width="250" height="13"/>
                                 <constraints>
@@ -684,7 +787,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="y5S-88-faB">
+                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="y5S-88-faB">
                                 <rect key="frame" x="435" y="290" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="9eW-8B-Ucz"/>
@@ -696,12 +799,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atw-uJ-Irr" customClass="ForgotButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="175" y="578" width="250" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="zDC-1t-7QQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Forgot Password?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedForgotPassword:" destination="X5F-L9-JHb" eventType="touchUpInside" id="2ry-qg-KXN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="K3e-ES-Wni" firstAttribute="top" secondItem="Z0o-2i-IG6" secondAttribute="bottom" id="2Kh-u5-OJ0"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="top" secondItem="Ykj-Rj-Y9s" secondAttribute="bottom" constant="7" id="2ew-lR-Rxr"/>
                             <constraint firstItem="Ykj-Rj-Y9s" firstAttribute="trailing" secondItem="wNS-PE-Zbt" secondAttribute="trailing" id="3DG-xv-KER"/>
+                            <constraint firstItem="K3e-ES-Wni" firstAttribute="top" secondItem="atw-uJ-Irr" secondAttribute="bottom" constant="10" id="3PD-j1-pMY"/>
                             <constraint firstItem="Ykj-Rj-Y9s" firstAttribute="leading" secondItem="wNS-PE-Zbt" secondAttribute="leading" id="67E-iu-kdl"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="width" secondItem="atw-uJ-Irr" secondAttribute="width" id="6Eu-MI-jIr"/>
                             <constraint firstItem="wNS-PE-Zbt" firstAttribute="centerY" secondItem="y5S-88-faB" secondAttribute="centerY" id="7J2-5x-zgh"/>
@@ -710,15 +827,13 @@
                             <constraint firstItem="y5S-88-faB" firstAttribute="leading" secondItem="wNS-PE-Zbt" secondAttribute="trailing" constant="10" id="9jm-V1-esX"/>
                             <constraint firstItem="d1o-qn-xDf" firstAttribute="leading" secondItem="yTK-Gn-Ho1" secondAttribute="leading" constant="15" id="GpB-DY-gGx"/>
                             <constraint firstAttribute="centerX" secondItem="wNS-PE-Zbt" secondAttribute="centerX" id="Gr2-De-Rza"/>
+                            <constraint firstItem="atw-uJ-Irr" firstAttribute="top" secondItem="d1o-qn-xDf" secondAttribute="bottom" constant="10" id="MVI-lF-W5A"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="trailing" secondItem="Ykj-Rj-Y9s" secondAttribute="trailing" id="NZn-jU-VNC"/>
-                            <constraint firstItem="8PM-Jd-h7g" firstAttribute="height" secondItem="atw-uJ-Irr" secondAttribute="height" id="P6i-MV-wVk"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="width" secondItem="syv-r1-sHf" secondAttribute="width" id="RcT-Hl-xFz"/>
                             <constraint firstItem="3Ap-8d-T0Y" firstAttribute="leading" secondItem="yTK-Gn-Ho1" secondAttribute="leading" constant="15" id="TWy-ky-dc0"/>
                             <constraint firstAttribute="trailing" secondItem="d1o-qn-xDf" secondAttribute="trailing" constant="15" id="WLd-CS-l6L"/>
                             <constraint firstItem="8PM-Jd-h7g" firstAttribute="height" secondItem="Ykj-Rj-Y9s" secondAttribute="height" id="WmQ-6x-Ef8"/>
                             <constraint firstAttribute="trailing" secondItem="3Ap-8d-T0Y" secondAttribute="trailing" constant="15" id="Xhp-Ez-qod"/>
-                            <constraint firstItem="8PM-Jd-h7g" firstAttribute="top" secondItem="atw-uJ-Irr" secondAttribute="top" id="XmN-Di-FTW"/>
-                            <constraint firstItem="K3e-ES-Wni" firstAttribute="top" secondItem="d1o-qn-xDf" secondAttribute="bottom" constant="15" id="Yvb-uc-KWF"/>
                             <constraint firstAttribute="trailing" secondItem="Z0o-2i-IG6" secondAttribute="trailing" id="a2P-DM-ujZ"/>
                             <constraint firstItem="Z0o-2i-IG6" firstAttribute="top" secondItem="yTK-Gn-Ho1" secondAttribute="top" id="f2h-Ar-sUc"/>
                             <constraint firstItem="Z0o-2i-IG6" firstAttribute="leading" secondItem="yTK-Gn-Ho1" secondAttribute="leading" id="jY3-i6-0DN"/>
@@ -732,6 +847,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="y5S-88-faB" id="Vjs-d6-TP7"/>
+                        <outlet property="bottomConstraint" destination="wZF-1O-k8w" id="AgN-si-f3O"/>
                         <outlet property="btnBottom" destination="d1o-qn-xDf" id="jgF-m2-eq4"/>
                         <outlet property="btnForgot" destination="atw-uJ-Irr" id="V8z-pv-4uy"/>
                         <outlet property="btnResignKeyboard" destination="Z0o-2i-IG6" id="cVF-rn-reN"/>
@@ -746,6 +862,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wT0-nC-fi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1121" y="518"/>
+        </scene>
+        <!--Tutorial Controller3-->
+        <scene sceneID="gc2-mD-HWs">
+            <objects>
+                <viewController storyboardIdentifier="Tutorial3" id="Jbq-gd-AWr" customClass="TutorialController3" customModule="GameQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="avY-T1-hU2"/>
+                        <viewControllerLayoutGuide type="bottom" id="fMK-LB-Gf1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xAD-72-8sx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameQ currently supports queue tracking for 5 games. You can expect new additions every month. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMe-U9-USN">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="C7b-J9-GUn"/>
+                                    <constraint firstAttribute="width" constant="200" id="fuZ-Oq-I7c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Features" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-oM-Rnk">
+                                <rect key="frame" x="200" y="140" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SwR-4q-MSm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="bMe-U9-USN" secondAttribute="centerX" id="AVT-ze-DLH"/>
+                            <constraint firstItem="bMe-U9-USN" firstAttribute="trailing" secondItem="b7Z-oM-Rnk" secondAttribute="trailing" id="B5z-L0-h4W"/>
+                            <constraint firstItem="bMe-U9-USN" firstAttribute="leading" secondItem="b7Z-oM-Rnk" secondAttribute="leading" id="Hhf-Ql-bzX"/>
+                            <constraint firstAttribute="centerY" secondItem="bMe-U9-USN" secondAttribute="centerY" id="JWW-4y-6Tm"/>
+                            <constraint firstAttribute="centerX" secondItem="b7Z-oM-Rnk" secondAttribute="centerX" id="gUs-yd-x0B"/>
+                            <constraint firstItem="bMe-U9-USN" firstAttribute="top" secondItem="b7Z-oM-Rnk" secondAttribute="bottom" constant="10" id="hbH-9F-krg"/>
+                            <constraint firstAttribute="centerX" secondItem="bMe-U9-USN" secondAttribute="centerX" id="vxn-D5-nMQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lnT-Lg-roi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2893" y="1270"/>
         </scene>
     </scenes>
 </document>
