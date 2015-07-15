@@ -13,8 +13,6 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     @IBOutlet weak var onButtonOne: OnButton!
     @IBOutlet weak var offButtonOne: OffButton!
-    @IBOutlet weak var onButtonTwo: OnButton!
-    @IBOutlet weak var offButtonTwo: OffButton!
     @IBOutlet weak var onButtonThree: OnButton!
     @IBOutlet weak var offButtonThree: OffButton!
     @IBOutlet weak var lblUserEmail: MenuLabel!
@@ -25,7 +23,6 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var btnFeedback: UIButton!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var labelOne: UILabel!
-    @IBOutlet weak var labelTwo: UILabel!
     @IBOutlet weak var labelThree: UILabel!
     @IBOutlet weak var labelFour: UILabel!
     @IBOutlet weak var labelFive: UILabel!
@@ -276,9 +273,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         btnSubmitFeedback.enabled = false
         btnSubmitPassword.enabled = false
         onButtonOne.enabled = false
-        onButtonTwo.enabled = false
         offButtonOne.enabled = false
-        offButtonTwo.enabled = false
         btnFeedback.enabled = false
         btnChangePassword.enabled = false
         btnTutorial.enabled = false
@@ -291,9 +286,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         btnSubmitFeedback.enabled = true
         btnSubmitPassword.enabled = true
         onButtonOne.enabled = true
-        onButtonTwo.enabled = true
         offButtonOne.enabled = true
-        offButtonTwo.enabled = true
         btnFeedback.enabled = true
         btnChangePassword.enabled = true
         btnTutorial.enabled = true
