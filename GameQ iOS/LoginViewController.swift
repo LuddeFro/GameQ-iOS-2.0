@@ -267,6 +267,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIApplication.sharedApplication().delegate?.window?!.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
         UIApplication.sharedApplication().delegate?.window?!.rootViewController = slideMenuController
         UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
+        UIApplication.sharedApplication().statusBarHidden = false
     }
     
     private func disableAll() {

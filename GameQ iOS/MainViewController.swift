@@ -84,11 +84,7 @@ class MainViewController: UIViewController {
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     self.lblStatus.text = Encoding.getStringFromGameStatus(game, status: status)
-                    if game != 0 {
-                        self.lblGame.text = Encoding.getStringFromGame(game)
-                    } else {
-                        self.lblGame.text = ""
-                    }
+                    self.lblGame.text = Encoding.getStringFromGame(game, status: status)
                     switch Encoding.getStatusFromInt(status) {
                     case Status.Offline:
                         //båda av
