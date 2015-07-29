@@ -20,5 +20,7 @@ struct Colors {
     let NameGray = UIColor(netHex: 0xe0e4ea)
     let MenuTextGray = UIColor(netHex: 0xb6bfc6)
     let ButtonOffGray = UIColor(netHex: 0x546575)
-    let GameQRed = UIColor(red: 238/255, green: 114/255, blue: 94/255, alpha: 1)
+    
+    let navTopGray = UIColor(netHex:0x121b28)
+    let navBackgroundGray = UIColor(netHex:0x1a232f)
 }

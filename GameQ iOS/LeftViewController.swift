@@ -11,6 +11,9 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     @IBOutlet weak var leftNavBar: UIView!
     
+    @IBOutlet weak var pwIcon1: UIImageView!
+    @IBOutlet weak var pwIcon2: UIImageView!
+    @IBOutlet weak var pwIcon3: UIImageView!
     @IBOutlet weak var onButtonOne: OnButton!
     @IBOutlet weak var offButtonOne: OffButton!
     @IBOutlet weak var onButtonThree: OnButton!
@@ -300,7 +303,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         hideErrors()
         btnSubmitPassword.setTitle("Submit", forState: UIControlState.Normal)
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
-            self.changePasswordHeight.constant = 44*4
+            self.changePasswordHeight.constant = 44*4 + 22
             self.view.layoutIfNeeded()
             }, completion: nil)
         
@@ -308,6 +311,9 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
             self.txtOldPassword.alpha = 1.0
             self.txtNewPassword.alpha = 1.0
             self.txtConfirmPassword.alpha = 1.0
+            self.pwIcon1.alpha = 1.0
+            self.pwIcon2.alpha = 1.0
+            self.pwIcon3.alpha = 1.0
             self.txtOldPassword.text = ""
             self.txtNewPassword.text = ""
             self.txtConfirmPassword.text = ""
@@ -331,6 +337,9 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
             self.txtNewPassword.alpha = 0.0
             self.txtConfirmPassword.alpha = 0.0
             self.btnSubmitPassword.alpha = 0.0
+            self.pwIcon1.alpha = 0.0
+            self.pwIcon2.alpha = 0.0
+            self.pwIcon3.alpha = 0.0
             }, completion: nil)
 
 
@@ -339,7 +348,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     func showFeedbackField() {
         btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Normal)
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
-            self.feedbackHeight.constant = 44*3
+            self.feedbackHeight.constant = 44*4
             self.view.layoutIfNeeded()
             }, completion: nil)
         
@@ -372,7 +381,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewLoginBackground.backgroundColor = Colors().LeftGray
+        viewLoginBackground.backgroundColor = Colors().navBackgroundGray
         lblUserEmail.text = ConnectionHandler.loadEmail()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
@@ -402,8 +411,8 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         
         self.view.layer.mask = maskLayer;
         
-        self.view.backgroundColor = Colors().LeftGray
-        leftNavBar.backgroundColor = Colors().NavGray
+        self.view.backgroundColor = Colors().navBackgroundGray
+        leftNavBar.backgroundColor = Colors().navTopGray
         onButtonThree.on = false
         onButtonThree.setNeedsDisplay()
         

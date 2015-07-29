@@ -760,25 +760,25 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func setOpenWindowLevel() {
-        /* uncomment this function and setclosewindowlevel if you want statusbar to hide on side menu opened
+        // uncomment this function and setclosewindowlevel if you want statusbar to hide on side menu opened
         if (SlideMenuOptions.hideStatusBar) {
             dispatch_async(dispatch_get_main_queue(), {
                 if let window = UIApplication.sharedApplication().keyWindow {
                     window.windowLevel = UIWindowLevelStatusBar + 1
                 }
             })
-        }*/
+        }
     }
     
     private func setCloseWindowLevel() {
-        /*
+        
         if (SlideMenuOptions.hideStatusBar) {
             dispatch_async(dispatch_get_main_queue(), {
                 if let window = UIApplication.sharedApplication().keyWindow {
                     window.windowLevel = UIWindowLevelNormal
                 }
             })
-        }*/
+        }
     }
     
     private func setUpViewController(targetView: UIView, targetViewController: UIViewController?) {

@@ -52,16 +52,16 @@ class MainViewController: UIViewController {
         startRotateCrosshair()
         setCrosshairColor(Colors().Orange)
         
-        leftInnerCircleInset.constant = self.view.frame.width/20
-        rightInnerCircleInset.constant = self.view.frame.width/20
-        topInnerCircleInset.constant = self.view.frame.width/20
-        bottomInnerCircleInset.constant = self.view.frame.width/20
+        leftInnerCircleInset.constant = 10
+        rightInnerCircleInset.constant = 10
+        topInnerCircleInset.constant = 10
+        bottomInnerCircleInset.constant = 10
         
         
-        crosshairLength1.constant = self.view.frame.width/10
-        crosshairWidth1.constant = crosshairLength1.constant/10
-        crosshairLength2.constant = crosshairLength1.constant
-        crosshairWidth2.constant = crosshairWidth1.constant
+//        crosshairLength1.constant = self.view.frame.width/10
+//        crosshairWidth1.constant = crosshairLength1.constant/10
+//        crosshairLength2.constant = crosshairLength1.constant
+//        crosshairWidth2.constant = crosshairWidth1.constant
     }
     
     override func viewWillAppear(animated: Bool) {
