@@ -107,7 +107,6 @@ class Encoding {
             case .GameReady: return "Your Match is Ready"
             case .InGame:return "In Match"
             }
-            
         case .NoGame:
             switch status{
             case .Offline: return "Offline"

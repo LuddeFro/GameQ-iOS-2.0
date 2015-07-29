@@ -180,6 +180,8 @@ class ConnectionHandler : NSObject {
             var err:String? = nil
             
             if let json = responseJSON as? Dictionary<String, AnyObject> {
+                let serverTime = self.getIntFrom(json, key: "time")
+                self.delayToServer = Int(NSDate().timeIntervalSince1970) - serverTime
                 success = self.getIntFrom(json, key: "success") != 0
                 if !success {
                     err = self.getStringFrom(json, key: "error")
@@ -203,6 +205,9 @@ class ConnectionHandler : NSObject {
     
     
     static func getStatus(finalCallBack:(success:Bool, err:String?, status:Int, game:Int?, acceptBefore:Int)->()) {
+        
+    
+        
         let apiExtension = "getStatus"
         var diString = ""
         if let deviceId = loadDeviceId() {
