@@ -391,6 +391,10 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let maskLayer = CAShapeLayer()

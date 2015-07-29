@@ -10,13 +10,30 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var topInnerCircleInset: NSLayoutConstraint!
+    @IBOutlet weak var bottomInnerCircleInset: NSLayoutConstraint!
+    @IBOutlet weak var rightInnerCircleInset: NSLayoutConstraint!
+    @IBOutlet weak var leftInnerCircleInset: NSLayoutConstraint!
+    
+    @IBOutlet weak var crosshairWidth2: NSLayoutConstraint!
+    @IBOutlet weak var crosshairLength2: NSLayoutConstraint!
+    @IBOutlet weak var crosshairWidth1: NSLayoutConstraint!
+    @IBOutlet weak var crosshairLength1: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var crossHair: UIView!
     @IBOutlet weak var spinner: QueueTimer!
+    @IBOutlet weak var leftCrosshairArm: UIView!
+    @IBOutlet weak var rightCrosshairArm: UIView!
+    @IBOutlet weak var bottomCrosshairArm: UIView!
+    @IBOutlet weak var topCrosshairArm: UIView!
     @IBOutlet weak var readyTimer: ReadyTimer!
     @IBOutlet weak var lblGame: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblCountdown: PulsatingLabel!
     var bolGotLastAnswer:Bool = true
     var lastStatus:Status = Status.Offline
+    var bolCrosshairRotationShouldStop = false
     
     var tmrStatus = NSTimer()
     var bolTimerRunning = false
@@ -26,11 +43,25 @@ class MainViewController: UIViewController {
     var endTime:Int = 0
     var startTime:Int = 0
     var tenthCounter:Int = 0
+    var degrees:CGFloat = 0.0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         (UIApplication.sharedApplication().delegate as! AppDelegate).mainViewController = self
+        startRotateCrosshair()
+        setCrosshairColor(Colors().Orange)
+        
+        leftInnerCircleInset.constant = self.view.frame.width/20
+        rightInnerCircleInset.constant = self.view.frame.width/20
+        topInnerCircleInset.constant = self.view.frame.width/20
+        bottomInnerCircleInset.constant = self.view.frame.width/20
+        
+        
+        crosshairLength1.constant = self.view.frame.width/10
+        crosshairWidth1.constant = crosshairLength1.constant/10
+        crosshairLength2.constant = crosshairLength1.constant
+        crosshairWidth2.constant = crosshairWidth1.constant
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -138,6 +169,10 @@ class MainViewController: UIViewController {
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     private func stopStatusUpdates() {
         tmrStatus.invalidate()
     }
@@ -183,6 +218,40 @@ class MainViewController: UIViewController {
             lblCountdown.text = "\(endTime - Int(NSDate().timeIntervalSince1970))"
         }
         lblCountdown.stopPulsating()
+    }
+    
+    private func setCrosshairColor(color:UIColor)->() {
+        bottomCrosshairArm.backgroundColor = color
+        topCrosshairArm.backgroundColor = color
+        leftCrosshairArm.backgroundColor = color
+        rightCrosshairArm.backgroundColor = color
+    }
+    
+    private func startRotateCrosshair() {
+        crossHair.setTranslatesAutoresizingMaskIntoConstraints(false)
+        bolCrosshairRotationShouldStop = false
+        rotateOnce(true)
+    }
+    private func rotateOnce(success:Bool) -> Void {
+        if degrees == CGFloat(2*M_PI) {
+            degrees = 0
+        }
+        degrees += CGFloat(M_PI*0.5)
+        if bolCrosshairRotationShouldStop {
+            UIView.animateWithDuration(3, delay: 0, options: .CurveEaseOut, animations: {
+                let transform:CGAffineTransform = CGAffineTransformRotate(CGAffineTransformIdentity, self.degrees)
+                self.crossHair.transform = transform
+                }, completion: nil)
+        } else {
+            UIView.animateWithDuration(3, delay: 0, options: .CurveLinear, animations: {
+                let transform:CGAffineTransform = CGAffineTransformRotate(CGAffineTransformIdentity, self.degrees)
+                self.crossHair.transform = transform
+                }, completion: rotateOnce)
+        }
+    }
+    
+    private func stopRotateCrosshair() {
+        bolCrosshairRotationShouldStop = true
     }
     
     

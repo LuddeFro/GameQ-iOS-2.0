@@ -14,7 +14,9 @@ class ForgotButton: UIButton {
         
         
         self.setTitleColor(Colors().MenuTextGray, forState: UIControlState.Normal)
-        self.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
+        self.setTitleColor(Colors().MenuTextGray, forState: UIControlState.Highlighted)
+        self.setTitleColor(Colors().MenuTextGray, forState: UIControlState.Selected)
+        self.setTitleColor(Colors().MenuTextGray, forState: UIControlState.Disabled)
         
     }
 

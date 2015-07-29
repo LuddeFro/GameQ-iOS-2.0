@@ -38,9 +38,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtConfirmPassword.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        self.setNeedsStatusBarAppearanceUpdate()
         
         
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -191,14 +199,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func showSignUp() {
         println("showS")
-        
+        UIView.setAnimationsEnabled(false)
+
         self.btnBottom.setTitle("Back", forState: UIControlState.Normal)
         self.btnTop.setTitle("Join", forState: UIControlState.Normal)
+        UIView.setAnimationsEnabled(true)
+        self.btnBottom.layoutIfNeeded()
+        self.btnTop.layoutIfNeeded()
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
             self.txtConfirmPassword.alpha = 1.0
             self.lblStatus.text = ""
             self.btnForgot.alpha = 0.0
-            self.statusYMargin.constant += 37
+            self.statusYMargin.constant += 47
             self.txtConfirmPassword.text = ""
             self.confirmIcon.alpha = 1.0
             self.view.layoutIfNeeded()
@@ -208,12 +220,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func hideSignUp() {
         println("hideS")
         self.txtConfirmPassword.text = ""
+        UIView.setAnimationsEnabled(false)
         self.btnBottom.setTitle("Join", forState: UIControlState.Normal)
         self.btnTop.setTitle("Sign In", forState: UIControlState.Normal)
+        UIView.setAnimationsEnabled(true)
+        self.btnBottom.layoutIfNeeded()
+        self.btnTop.layoutIfNeeded()
+
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
             self.txtConfirmPassword.alpha = 0.0
             self.btnForgot.alpha = 1.0
-            self.statusYMargin.constant -= 37
+            self.statusYMargin.constant -= 47
             self.lblStatus.text = ""
             self.confirmIcon.alpha = 0.0
             self.view.layoutIfNeeded()
@@ -222,10 +239,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func showForgotPassword() {
         println("showF")
+        UIView.setAnimationsEnabled(false)
         self.btnBottom.setTitle("Back", forState: UIControlState.Normal)
         self.btnTop.setTitle("Submit Email", forState: UIControlState.Normal)
+        UIView.setAnimationsEnabled(true)
+        self.btnBottom.layoutIfNeeded()
+        self.btnTop.layoutIfNeeded()
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
-            self.statusYMargin.constant -= 37
+            self.statusYMargin.constant -= 47
             self.btnForgot.alpha = 0.0
             self.lblStatus.text = ""
             self.txtPassword.text = ""
@@ -237,10 +258,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func hideForgotPassword() {
         println("hideF")
+        
+        
+        
+        /*UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseIn, animations: {
+            self.btnBottom.titleLabel?.alpha = 0
+            self.btnTop.titleLabel?.alpha = 0
+            }, completion: { (success:Bool) in
+                UIView.setAnimationsEnabled(false)
+                self.btnBottom.setTitle("Join", forState: UIControlState.Normal)
+                self.btnTop.setTitle("Sign In", forState: UIControlState.Normal)
+                UIView.setAnimationsEnabled(true)
+                self.btnBottom.layoutIfNeeded()
+                self.btnTop.layoutIfNeeded()
+                UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+                    self.btnBottom.titleLabel?.alpha = 1
+                    self.btnTop.titleLabel?.alpha = 1
+                }, completion:nil)
+                
+        })*/
+        UIView.setAnimationsEnabled(false)
         self.btnBottom.setTitle("Join", forState: UIControlState.Normal)
         self.btnTop.setTitle("Sign In", forState: UIControlState.Normal)
+        UIView.setAnimationsEnabled(true)
+        self.btnBottom.layoutIfNeeded()
+        self.btnTop.layoutIfNeeded()
+        
+        
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
-            self.statusYMargin.constant += 37
+            self.statusYMargin.constant += 47
             self.btnForgot.alpha = 1.0
             self.lblStatus.text = ""
             self.lblStatus.textColor = Colors().Orange
@@ -248,6 +294,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.pwIcon.alpha = 1.0
             self.view.layoutIfNeeded()
             }, completion: nil)
+        
+        
+        
+        
     }
     
     private func createMainView() {
@@ -381,7 +431,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         
         UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.bottomConstraint.constant = 0
+            self.bottomConstraint.constant = 5
             self.view.layoutIfNeeded()
         })
     }
