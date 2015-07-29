@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 struct Colors {
-    let LightBlue = UIColor(netHex: 0x8fd8f7)
+    let LightBlue = UIColor(netHex: 0x7dbae3)
     let LineGray = UIColor(netHex:0x323f4f)
-    let Orange = UIColor(netHex:0xFF6861)
-    let MainGray = UIColor(netHex:0x4C5A6D)
+    let Orange = UIColor(netHex:0xe65b4c)
+    let MainGray = UIColor(netHex:0x17212b)
     let NavGray = UIColor(netHex:0x212b36)
     let ThinLineGray = UIColor(netHex: 0x34404d)
     let LeftGray = UIColor(netHex:0x293643)

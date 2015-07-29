@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var spinner: QueueTimer!
     @IBOutlet weak var readyTimer: ReadyTimer!
-    @IBOutlet weak var gameqLabel: UILabel!
     @IBOutlet weak var lblGame: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblCountdown: PulsatingLabel!
@@ -42,7 +41,6 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.view.backgroundColor = Colors().MainGray
-        gameqLabel.textColor = Colors().NameGray
         lblStatus.text = ""
         lblGame.text = ""
         startStatusUpdates()
@@ -86,11 +84,7 @@ class MainViewController: UIViewController {
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     self.lblStatus.text = Encoding.getStringFromGameStatus(game, status: status)
-                    if game != 0 {
-                        self.lblGame.text = Encoding.getStringFromGame(game)
-                    } else {
-                        self.lblGame.text = ""
-                    }
+                    self.lblGame.text = Encoding.getStringFromGame(game, status: status)
                     switch Encoding.getStatusFromInt(status) {
                     case Status.Offline:
                         //båda av
