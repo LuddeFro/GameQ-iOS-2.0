@@ -38,6 +38,7 @@
 		AE7E5FB21B3C69DF00DEB007 /* QueueTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FB01B3C69DF00DEB007 /* QueueTimer.swift */; };
 		AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FB41B3C6BDF00DEB007 /* ColorExtension.swift */; };
 		AE7E5FB91B3C7B2200DEB007 /* ReadyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7E5FB81B3C7B2200DEB007 /* ReadyTimer.swift */; };
+		AE8ED4731B690194004209C7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE8ED4721B690131004209C7 /* Roboto-Regular.ttf */; };
 		AEE282751B3EBF6700F74086 /* DividerLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE282741B3EBF6700F74086 /* DividerLine.swift */; };
 		AEE826AF1B3DA13700FF1A26 /* OffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE826AE1B3DA13700FF1A26 /* OffButton.swift */; };
 		AEE826B11B3DA44500FF1A26 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE826B01B3DA44500FF1A26 /* Colors.swift */; };
@@ -94,6 +95,7 @@
 		AE7E5FB01B3C69DF00DEB007 /* QueueTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTimer.swift; sourceTree = "<group>"; };
 		AE7E5FB41B3C6BDF00DEB007 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AE7E5FB81B3C7B2200DEB007 /* ReadyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyTimer.swift; sourceTree = "<group>"; };
+		AE8ED4721B690131004209C7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AEE282741B3EBF6700F74086 /* DividerLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerLine.swift; sourceTree = "<group>"; };
 		AEE826AE1B3DA13700FF1A26 /* OffButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffButton.swift; sourceTree = "<group>"; };
 		AEE826B01B3DA44500FF1A26 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		AE7E5F7F1B3C5DCC00DEB007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AE8ED4721B690131004209C7 /* Roboto-Regular.ttf */,
 				AEE826AE1B3DA13700FF1A26 /* OffButton.swift */,
 				AEE826B21B3DAA2300FF1A26 /* OnButton.swift */,
 				AEEB099D1B3EED6300544356 /* LogInButton.swift */,
@@ -309,6 +312,7 @@
 			files = (
 				83E2A1A01B507E9B00FD24EB /* NotifCustom1.aif in Resources */,
 				AE7E5F8A1B3C5DCC00DEB007 /* Main.storyboard in Resources */,
+				AE8ED4731B690194004209C7 /* Roboto-Regular.ttf in Resources */,
 				AE7E5F8F1B3C5DCC00DEB007 /* LaunchScreen.xib in Resources */,
 				AE7E5F8C1B3C5DCC00DEB007 /* Images.xcassets in Resources */,
 			);

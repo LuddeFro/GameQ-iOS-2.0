@@ -13,7 +13,7 @@ import UIKit
     
     override func drawRect(rect: CGRect) {
         self.layer.backgroundColor = Colors().Orange.CGColor
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 3
         self.layer.borderWidth = 3
         self.titleLabel!.textColor = Colors().Orange
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)

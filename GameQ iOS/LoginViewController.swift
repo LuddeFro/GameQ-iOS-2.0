@@ -11,6 +11,8 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var pwIcon: UIImageView!
+    @IBOutlet weak var confirmIcon: UIImageView!
     @IBOutlet weak var btnBottom: LogInButton!
     @IBOutlet weak var btnTop: LogInButton!
     @IBOutlet weak var lblStatus: UILabel!
@@ -198,7 +200,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.btnForgot.alpha = 0.0
             self.statusYMargin.constant += 37
             self.txtConfirmPassword.text = ""
-            
+            self.confirmIcon.alpha = 1.0
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
@@ -213,6 +215,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.btnForgot.alpha = 1.0
             self.statusYMargin.constant -= 37
             self.lblStatus.text = ""
+            self.confirmIcon.alpha = 0.0
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
@@ -227,6 +230,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.lblStatus.text = ""
             self.txtPassword.text = ""
             self.txtPassword.alpha = 0.0
+            self.pwIcon.alpha = 0.0
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
@@ -241,6 +245,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.lblStatus.text = ""
             self.lblStatus.textColor = Colors().Orange
             self.txtPassword.alpha = 1.0
+            self.pwIcon.alpha = 1.0
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
