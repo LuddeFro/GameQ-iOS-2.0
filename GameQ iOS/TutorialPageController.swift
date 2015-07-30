@@ -10,9 +10,12 @@ import UIKit
 
 class TutorialPageController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
+    var pageCount:Int = 4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = Colors().MainGray
         
         // Do any additional setup after loading the view.
     }
@@ -22,9 +25,19 @@ class TutorialPageController: UIPageViewController, UIPageViewControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     // MARK: - Delegate
     
+    
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return pageCount
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
     
     
     
@@ -53,6 +66,9 @@ class TutorialPageController: UIPageViewController, UIPageViewControllerDelegate
         if viewController.isKindOfClass(TutorialController1) {
             return nil
         } else if viewController.isKindOfClass(TutorialController2) {
+            if pageCount == 3 {
+                return nil
+            }
             var storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tutViewController = storyboard.instantiateViewControllerWithIdentifier("Tutorial1") as! TutorialController1
             return tutViewController

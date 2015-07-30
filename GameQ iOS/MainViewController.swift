@@ -256,10 +256,10 @@ class MainViewController: UIViewController {
         rotateOnce(true)
     }
     private func rotateOnce(success:Bool) -> Void {
-        if degrees == CGFloat(2*M_PI) {
+        if degrees == -CGFloat(2*M_PI) {
             degrees = 0
         }
-        degrees += CGFloat(M_PI*0.5)
+        degrees -= CGFloat(M_PI*0.5)
         if bolCrosshairRotationShouldStop {
             UIView.animateWithDuration(3, delay: 0, options: .CurveEaseOut, animations: {
                 let transform:CGAffineTransform = CGAffineTransformRotate(CGAffineTransformIdentity, self.degrees)

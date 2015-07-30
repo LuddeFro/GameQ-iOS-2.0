@@ -86,14 +86,15 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         slideMenuController()?.closeLeftNonAnimation()
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
+        tutViewController.pageCount = 3
         tutViewController.delegate = tutViewController
         tutViewController.dataSource = tutViewController
         UIApplication.sharedApplication().delegate?.window?!.rootViewController = tutViewController
         UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
         
-        let tutViewController1 = storyboard.instantiateViewControllerWithIdentifier("Tutorial1") as! TutorialController1
+        let tutViewController2 = storyboard.instantiateViewControllerWithIdentifier("Tutorial2") as! TutorialController2
         
-        tutViewController.setViewControllers([tutViewController1], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
+        tutViewController.setViewControllers([tutViewController2], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
             (success:Bool) in
             println("setup pageController")
         })

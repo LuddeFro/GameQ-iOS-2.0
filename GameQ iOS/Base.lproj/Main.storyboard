@@ -9,6 +9,7 @@
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -500,20 +501,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cG-Su-1dH" customClass="ReadyTimer" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="184.5" y="205" width="230" height="230"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1cG-Su-1dH" customClass="ReadyTimer" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="184" y="205" width="230" height="230"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1w0-3n-Xjp" customClass="QueueTimer" customModule="GameQ" customModuleProvider="target">
                                         <rect key="frame" x="30" y="30" width="170" height="170"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpj-HY-4Rj" userLabel="CountdownLabel" customClass="PulsatingLabel" customModule="GameQ" customModuleProvider="target">
-                                                <rect key="frame" x="12.5" y="25" width="145" height="120"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpj-HY-4Rj" userLabel="CountdownLabel" customClass="PulsatingLabel" customModule="GameQ" customModuleProvider="target">
+                                                <rect key="frame" x="12" y="25" width="145" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="145" id="JyP-JZ-ViM"/>
                                                     <constraint firstAttribute="height" constant="120" id="aQi-Rn-tnt"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="70"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -533,11 +534,11 @@
                                     <constraint firstItem="1w0-3n-Xjp" firstAttribute="top" secondItem="1cG-Su-1dH" secondAttribute="top" constant="30" id="s8e-zd-Np6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vva-BU-mlM">
-                                <rect key="frame" x="149.5" y="170" width="300" height="300"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vva-BU-mlM">
+                                <rect key="frame" x="149" y="170" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzr-pJ-XIb">
-                                        <rect key="frame" x="0.0" y="148.5" width="30" height="3"/>
+                                        <rect key="frame" x="0.0" y="148" width="30" height="3"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="3" id="76z-BA-905"/>
@@ -545,7 +546,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbD-6z-NmM">
-                                        <rect key="frame" x="270" y="148.5" width="30" height="3"/>
+                                        <rect key="frame" x="270" y="148" width="30" height="3"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38M-f2-Csr">
@@ -557,7 +558,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzk-1b-61s">
-                                        <rect key="frame" x="148.5" y="270" width="3" height="30"/>
+                                        <rect key="frame" x="148" y="270" width="3" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZP-Gz-4fD">

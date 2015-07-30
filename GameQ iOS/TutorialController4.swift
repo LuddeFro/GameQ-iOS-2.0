@@ -11,7 +11,7 @@ import UIKit
 class TutorialController4: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Colors().MainGray
+        self.view.backgroundColor = UIColor.clearColor()
     }
     
     @IBAction func pressedBackToMain(sender: AnyObject) {
