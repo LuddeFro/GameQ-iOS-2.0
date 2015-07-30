@@ -12,10 +12,10 @@ import UIKit
 @IBDesignable class LogOutButton: UIButton {
     
     override func drawRect(rect: CGRect) {
+        
         self.layer.backgroundColor = Colors().Orange.CGColor
         self.layer.cornerRadius = 3
         self.layer.borderWidth = 3
-        self.titleLabel!.textColor = Colors().Orange
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
