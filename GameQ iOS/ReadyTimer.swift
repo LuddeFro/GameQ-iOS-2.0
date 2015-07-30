@@ -38,7 +38,7 @@ class ReadyTimer: UIView {
         var path = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
         
         path.lineWidth = lineWidth
-        UIColor(netHex: 0x323f4f).setStroke()
+        Colors().fadedTimerGray.setStroke()
         path.stroke()
     }
     
@@ -56,7 +56,7 @@ class ReadyTimer: UIView {
         progress = 0
         circlePathLayer.frame = bounds
         circlePathLayer.fillColor = UIColor.clearColor().CGColor
-        circlePathLayer.strokeColor = UIColor(netHex: 0xFF6861).CGColor
+        circlePathLayer.strokeColor = Colors().readyGreen.CGColor
         layer.addSublayer(circlePathLayer)
         backgroundColor = UIColor.clearColor()
     }

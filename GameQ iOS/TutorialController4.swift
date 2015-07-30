@@ -9,7 +9,10 @@
 import UIKit
 
 class TutorialController4: UIViewController {
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = Colors().MainGray
+    }
     
     @IBAction func pressedBackToMain(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "Main", bundle: nil)

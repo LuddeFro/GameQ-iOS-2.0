@@ -20,6 +20,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var crosshairWidth1: NSLayoutConstraint!
     @IBOutlet weak var crosshairLength1: NSLayoutConstraint!
     
+    @IBOutlet weak var topYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var thirdYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var SecondYConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var crossHair: UIView!
     @IBOutlet weak var spinner: QueueTimer!
@@ -49,8 +53,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         (UIApplication.sharedApplication().delegate as! AppDelegate).mainViewController = self
-        startRotateCrosshair()
-        setCrosshairColor(Colors().Orange)
+        setCrosshairColor(Colors().LightBlue)
         
         leftInnerCircleInset.constant = 10
         rightInnerCircleInset.constant = 10
@@ -58,10 +61,30 @@ class MainViewController: UIViewController {
         bottomInnerCircleInset.constant = 10
         
         
-//        crosshairLength1.constant = self.view.frame.width/10
-//        crosshairWidth1.constant = crosshairLength1.constant/10
-//        crosshairLength2.constant = crosshairLength1.constant
-//        crosshairWidth2.constant = crosshairWidth1.constant
+        crosshairLength1.constant = self.view.frame.width/20
+        crosshairWidth1.constant = self.view.frame.width/80
+        crosshairLength2.constant = crosshairLength1.constant
+        crosshairWidth2.constant = crosshairWidth1.constant
+        
+        let constant:CGFloat = (topYConstraint.constant - (lblStatus.frame.origin.y + lblStatus.frame.height - UIScreen.mainScreen().bounds.height) + SecondYConstraint.constant + thirdYConstraint.constant)/4
+        
+        if constant < 20.0 {
+            /*topYConstraint.constant = 20
+            SecondYConstraint.constant = constant-20/3
+            thirdYConstraint.constant = constant-20/3*/
+        } else {
+            topYConstraint.constant = constant
+            SecondYConstraint.constant = constant
+            thirdYConstraint.constant = constant
+        }
+        
+        
+        self.view.setNeedsUpdateConstraints()
+        self.view.updateConstraintsIfNeeded()
+        
+        startRotateCrosshair()
+
+        
     }
     
     override func viewWillAppear(animated: Bool) {

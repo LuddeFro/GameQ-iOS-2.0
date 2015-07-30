@@ -9,5 +9,8 @@
 import UIKit
 
 class TutorialController1: UIViewController {
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = Colors().MainGray
+    }
 }

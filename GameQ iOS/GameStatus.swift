@@ -42,7 +42,7 @@ class Encoding {
             case .CSGO: return "Counter Strike Global Offensive"
             case .HOTS: return "Heroes of The Storm"
             case .LoL: return "League of Legends"
-            case .NoGame: return "No Connection"
+            case .NoGame: return "Not Connected"
             }
         }
         else{

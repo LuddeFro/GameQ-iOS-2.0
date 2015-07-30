@@ -27,17 +27,17 @@ class QueueTimer: UIView {
         var path = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
         
         path.lineWidth = lineWidth
-        UIColor(netHex: 0x323f4f).setStroke()
+        Colors().fadedTimerGray.setStroke()
         path.stroke()
         
-        if(isGame){UIColor(netHex: 0x8fd8f7).setStroke()}
-        else{UIColor(netHex: 0x323f4f).setStroke()}
+        if(isGame){Colors().Orange.setStroke()}
+        else{Colors().fadedTimerGray.setStroke()}
         path.stroke()
         
         if(isRotating){
             var path2 = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: -π/4, clockwise: true)
             path2.lineWidth = lineWidth
-            UIColor(netHex: 0x8fd8f7).setStroke()
+            Colors().Orange.setStroke()
             path2.stroke()
         }
     }

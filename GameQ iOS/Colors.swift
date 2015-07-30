@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 struct Colors {
-    let LightBlue = UIColor(netHex: 0x7dbae3)
     let LineGray = UIColor(netHex:0x323f4f)
-    let Orange = UIColor(netHex:0xe65b4c)
     let MainGray = UIColor(netHex:0x17212b)
     let NavGray = UIColor(netHex:0x212b36)
     let ThinLineGray = UIColor(netHex: 0x34404d)
@@ -21,6 +19,11 @@ struct Colors {
     let MenuTextGray = UIColor(netHex: 0xb6bfc6)
     let ButtonOffGray = UIColor(netHex: 0x546575)
     
-    let navTopGray = UIColor(netHex:0x121b28)
-    let navBackgroundGray = UIColor(netHex:0x1a232f)
+    
+    let navTopGray = UIColor(netHex:0x0d1623)
+    let navBackgroundGray = UIColor(netHex:0x121b28)
+    let fadedTimerGray = UIColor(netHex: 0x34404d)
+    let readyGreen = UIColor(netHex: 0x2ecc71)
+    let Orange = UIColor(netHex:0xe65b4c)
+    let LightBlue = UIColor(netHex: 0x7dbae3)
 }

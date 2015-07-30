@@ -83,7 +83,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     @IBAction func pressedTutorial(sender: AnyObject) {
         println("pressed Tutorial")
-        
+        slideMenuController()?.closeLeftNonAnimation()
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
         tutViewController.delegate = tutViewController
@@ -398,6 +398,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
                 onButtonOne.setNeedsDisplay()
             }
         }
+        lblUserEmail.textColor = UIColor.whiteColor()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
