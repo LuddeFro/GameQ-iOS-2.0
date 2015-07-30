@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var leftNavBar: UIView!
     
@@ -19,7 +20,8 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var onButtonThree: OnButton!
     @IBOutlet weak var offButtonThree: OffButton!
     @IBOutlet weak var lblUserEmail: MenuLabel!
-    
+    @IBOutlet weak var btnLogout: LogOutButton!
+
     @IBOutlet weak var btnResignFirstResponder: UIButton!
     @IBOutlet weak var btnTutorial: UIButton!
     @IBOutlet weak var btnChangePassword: UIButton!
@@ -53,6 +55,35 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     
     
+    @IBAction func pressedMail(sender: AnyObject) {
+        let emailTitle = "Contact from iOS"
+        let body = ""
+        let recipients:[AnyObject] = ["contact@gameq.io"]
+        var mc:MFMailComposeViewController = MFMailComposeViewController()
+        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setMessageBody(body, isHTML: false)
+        mc.setToRecipients(recipients)
+        self.presentViewController(mc, animated: true, completion: nil)
+        
+    }
+    @IBAction func pressedFacebook(sender: AnyObject) {
+        let facebookURL = NSURL(string: "fb://profile/304122193079686")!
+        if UIApplication.sharedApplication().canOpenURL(facebookURL) {
+            UIApplication.sharedApplication().openURL(facebookURL)
+        } else {
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/GameQApp")!)
+        }
+    }
+    
+    @IBAction func pressedTwitter(sender: AnyObject) {
+        let twitterURL = NSURL(string: "twitter:///user?screen_name=GameQApp")!
+        if UIApplication.sharedApplication().canOpenURL(twitterURL) {
+            UIApplication.sharedApplication().openURL(twitterURL)
+        } else {
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/GameQApp")!)
+        }
+    }
     @IBAction func pressedFeedback(sender: AnyObject) {
         println("pressed Feedback")
         if bolGivingFeedback {
@@ -87,6 +118,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
         tutViewController.pageCount = 3
+        tutViewController.automaticallyAdjustsScrollViewInsets = false
         tutViewController.delegate = tutViewController
         tutViewController.dataSource = tutViewController
         UIApplication.sharedApplication().delegate?.window?!.rootViewController = tutViewController
@@ -400,6 +432,15 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
             }
         }
         lblUserEmail.textColor = UIColor.whiteColor()
+        
+        btnLogout.setTitle("Logout", forState: UIControlState.Normal)
+        btnLogout.setTitle("Logout", forState: UIControlState.Highlighted)
+        btnLogout.setTitle("Logout", forState: UIControlState.Disabled)
+        btnLogout.setTitle("Logout", forState: UIControlState.Selected)
+        btnLogout.setTitle("Logout", forState: UIControlState.allZeros)
+        btnLogout.setTitle("Logout", forState: UIControlState.Application)
+        btnLogout.setTitle("Logout", forState: UIControlState.Reserved)
+        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -499,6 +540,30 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         })
     }
     
+    
+    //MARK Maildelegate
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        switch (result.value)
+        {
+        case MFMailComposeResultCancelled.value :
+            println("mail cancelled")
+            break;
+        case MFMailComposeResultSaved.value:
+            println("mail saved")
+            break;
+        case MFMailComposeResultSent.value:
+            println("mail sent")
+            break;
+        case MFMailComposeResultFailed.value:
+            println("mail send failure")
+            break;
+        default:
+            break;
+        }
+        // Close the Mail Interface
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }
 

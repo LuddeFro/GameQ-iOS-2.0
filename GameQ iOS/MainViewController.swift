@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var lblCountdown: PulsatingLabel!
     var bolGotLastAnswer:Bool = true
     var lastStatus:Status = Status.Offline
-    var bolCrosshairRotationShouldStop = false
+    var bolCrosshairRotationShouldStop = true
     
     var tmrStatus = NSTimer()
     var bolTimerRunning = false
@@ -82,7 +82,7 @@ class MainViewController: UIViewController {
         self.view.setNeedsUpdateConstraints()
         self.view.updateConstraintsIfNeeded()
         
-        startRotateCrosshair()
+        
 
         
     }
@@ -145,23 +145,27 @@ class MainViewController: UIViewController {
                         self.spinner.isGame = false
                         self.spinner.reset()
                         self.stopReadyCountdownAt(0)
+                        self.stopRotateCrosshair()
                         break
                     case Status.Online:
                         self.spinner.isGame = false
                         self.spinner.reset()
                         self.stopReadyCountdownAt(0)
+                        self.startRotateCrosshair()
                         //båda av
                         break
                     case Status.InLobby:
                         self.spinner.isGame = false
                         self.spinner.reset()
                         self.stopReadyCountdownAt(0)
+                        self.startRotateCrosshair()
                         //båda av
                         break
                     case Status.InQueue:
                         self.spinner.isGame = false
                         self.spinner.start()
                         self.stopReadyCountdownAt(0)
+                        self.startRotateCrosshair()
                         //blå snurra
                         //röd av
                         break
@@ -169,6 +173,7 @@ class MainViewController: UIViewController {
                         self.spinner.isGame = true
                         self.spinner.reset()
                         self.startReadyCountdown(acceptBefore)
+                        self.startRotateCrosshair()
 
                         
                         //röd börja
@@ -178,6 +183,7 @@ class MainViewController: UIViewController {
                         self.spinner.isGame = true
                         self.spinner.reset()
                         self.stopReadyCountdownAt(1)
+                        self.startRotateCrosshair()
                         //helorange
                         //helblå
                         break
@@ -233,6 +239,10 @@ class MainViewController: UIViewController {
     }
     
     private func decrementCountdownLabel() {
+        lblCountdown.alpha = 1.0
+        UIView.animateWithDuration(1, delay: 0, options:nil, animations: {
+            self.lblCountdown.alpha = 0
+            }, completion: nil)
         if endTime - Int(NSDate().timeIntervalSince1970) < 0 {
             lblCountdown.text = ""
             tmrCountdown.invalidate()
@@ -251,20 +261,27 @@ class MainViewController: UIViewController {
     }
     
     private func startRotateCrosshair() {
-        crossHair.setTranslatesAutoresizingMaskIntoConstraints(false)
-        bolCrosshairRotationShouldStop = false
-        rotateOnce(true)
+        if bolCrosshairRotationShouldStop {
+            crossHair.setTranslatesAutoresizingMaskIntoConstraints(false)
+            bolCrosshairRotationShouldStop = false
+            rotateOnce(false)
+        }
     }
-    private func rotateOnce(success:Bool) -> Void {
+    private func rotateOnce(firstTimeOrSuccess:Bool) -> Void {
         if degrees == -CGFloat(2*M_PI) {
             degrees = 0
         }
         degrees -= CGFloat(M_PI*0.5)
         if bolCrosshairRotationShouldStop {
-            UIView.animateWithDuration(3, delay: 0, options: .CurveEaseOut, animations: {
+            UIView.animateWithDuration(4, delay: 0, options: .CurveEaseOut, animations: {
                 let transform:CGAffineTransform = CGAffineTransformRotate(CGAffineTransformIdentity, self.degrees)
                 self.crossHair.transform = transform
                 }, completion: nil)
+        } else if !firstTimeOrSuccess {
+            UIView.animateWithDuration(4, delay: 0, options: .CurveEaseIn, animations: {
+                let transform:CGAffineTransform = CGAffineTransformRotate(CGAffineTransformIdentity, self.degrees)
+                self.crossHair.transform = transform
+                }, completion: rotateOnce)
         } else {
             UIView.animateWithDuration(3, delay: 0, options: .CurveLinear, animations: {
                 let transform:CGAffineTransform = CGAffineTransformRotate(CGAffineTransformIdentity, self.degrees)

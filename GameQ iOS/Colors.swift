@@ -26,4 +26,7 @@ struct Colors {
     let readyGreen = UIColor(netHex: 0x2ecc71)
     let Orange = UIColor(netHex:0xe65b4c)
     let LightBlue = UIColor(netHex: 0x7dbae3)
+    let facebookBlue = UIColor(netHex:0x3b5998)
+    let twitterBlue = UIColor(netHex:0x4099FF)
+    let mailRed = UIColor(netHex:0xe65b4c)
 }

@@ -14,6 +14,10 @@
 		836DBD4E1B54114A00434E64 /* TutorialController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD4D1B54114A00434E64 /* TutorialController3.swift */; };
 		836DBD501B54115500434E64 /* TutorialController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD4F1B54115500434E64 /* TutorialController4.swift */; };
 		836DBD521B54127F00434E64 /* TutorialPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD511B54127F00434E64 /* TutorialPageController.swift */; };
+		838610D41B6A86DA00D0BE02 /* FacebookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838610D31B6A86DA00D0BE02 /* FacebookButton.swift */; };
+		838610D71B6A86EC00D0BE02 /* TwitterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838610D61B6A86EC00D0BE02 /* TwitterButton.swift */; };
+		838610DA1B6A86FC00D0BE02 /* MailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838610D91B6A86FC00D0BE02 /* MailButton.swift */; };
+		838610E11B6AB8DC00D0BE02 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838610E01B6AB8DC00D0BE02 /* MessageUI.framework */; };
 		83E2A1A01B507E9B00FD24EB /* NotifCustom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */; };
 		83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */; };
 		83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */; };
@@ -67,6 +71,10 @@
 		836DBD4D1B54114A00434E64 /* TutorialController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController3.swift; sourceTree = "<group>"; };
 		836DBD4F1B54115500434E64 /* TutorialController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController4.swift; sourceTree = "<group>"; };
 		836DBD511B54127F00434E64 /* TutorialPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageController.swift; sourceTree = "<group>"; };
+		838610D31B6A86DA00D0BE02 /* FacebookButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookButton.swift; sourceTree = "<group>"; };
+		838610D61B6A86EC00D0BE02 /* TwitterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterButton.swift; sourceTree = "<group>"; };
+		838610D91B6A86FC00D0BE02 /* MailButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailButton.swift; sourceTree = "<group>"; };
+		838610E01B6AB8DC00D0BE02 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotifCustom1.aif; sourceTree = "<group>"; };
 		83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GQTextField.swift; sourceTree = "<group>"; };
 		83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
@@ -110,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838610E11B6AB8DC00D0BE02 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +135,7 @@
 		AE7E5F731B3C5DCC00DEB007 = {
 			isa = PBXGroup;
 			children = (
+				838610E01B6AB8DC00D0BE02 /* MessageUI.framework */,
 				AE7E5F7E1B3C5DCC00DEB007 /* GameQ iOS */,
 				AE7E5F971B3C5DCD00DEB007 /* GameQ iOSTests */,
 				AE7E5F7D1B3C5DCC00DEB007 /* Products */,
@@ -159,6 +169,9 @@
 				AEE826B21B3DAA2300FF1A26 /* OnButton.swift */,
 				AEEB099D1B3EED6300544356 /* LogInButton.swift */,
 				AEEB099A1B3EE97200544356 /* LogOutButton.swift */,
+				838610D31B6A86DA00D0BE02 /* FacebookButton.swift */,
+				838610D61B6A86EC00D0BE02 /* TwitterButton.swift */,
+				838610D91B6A86FC00D0BE02 /* MailButton.swift */,
 				83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */,
 				83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */,
 				83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */,
@@ -340,6 +353,7 @@
 				AEE826B11B3DA44500FF1A26 /* Colors.swift in Sources */,
 				AE7E5FB91B3C7B2200DEB007 /* ReadyTimer.swift in Sources */,
 				83EB5E8C1B500B2200B9FC96 /* ForgotButton.swift in Sources */,
+				838610D71B6A86EC00D0BE02 /* TwitterButton.swift in Sources */,
 				836DBD521B54127F00434E64 /* TutorialPageController.swift in Sources */,
 				AE7E5FA71B3C5EF200DEB007 /* SlideMenuController.swift in Sources */,
 				83EB5E8A1B500B1200B9FC96 /* StatusLabel.swift in Sources */,
@@ -357,10 +371,12 @@
 				AE7E5F851B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld in Sources */,
 				AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */,
 				836DBD4E1B54114A00434E64 /* TutorialController3.swift in Sources */,
+				838610DA1B6A86FC00D0BE02 /* MailButton.swift in Sources */,
 				AEEB09A01B3EEDA800544356 /* LoginViewController.swift in Sources */,
 				83EB5E901B502BC200B9FC96 /* ConnectionHandler.swift in Sources */,
 				836DBD4C1B54114100434E64 /* TutorialController2.swift in Sources */,
 				83357CC91B5168EF002CA1B7 /* GameStatus.swift in Sources */,
+				838610D41B6A86DA00D0BE02 /* FacebookButton.swift in Sources */,
 				AEE282751B3EBF6700F74086 /* DividerLine.swift in Sources */,
 				AE7E5FB21B3C69DF00DEB007 /* QueueTimer.swift in Sources */,
 				AEE826AF1B3DA13700FF1A26 /* OffButton.swift in Sources */,

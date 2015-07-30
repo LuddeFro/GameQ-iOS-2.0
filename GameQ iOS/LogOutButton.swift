@@ -17,7 +17,7 @@ import UIKit
         self.layer.borderWidth = 3
         self.titleLabel!.textColor = Colors().Orange
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        self.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
+        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)

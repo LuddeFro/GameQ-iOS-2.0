@@ -15,7 +15,7 @@ class TutorialPageController: UIPageViewController, UIPageViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = Colors().MainGray
+        self.view.backgroundColor = Colors().navTopGray
         
         // Do any additional setup after loading the view.
     }
@@ -38,6 +38,7 @@ class TutorialPageController: UIPageViewController, UIPageViewControllerDelegate
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
+    
     
     
     

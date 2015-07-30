@@ -12,8 +12,18 @@ class TutorialController4: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.clearColor()
+        
+        let constant:CGFloat = (adjustY.constant + (lblBreadText.frame.origin.y - imageTut.frame.origin.y - imageTut.frame.height))/2
+        adjustY.constant = constant
+        
+        self.view.setNeedsUpdateConstraints()
+        self.view.updateConstraintsIfNeeded()
     }
     
+    @IBOutlet weak var adjustY: NSLayoutConstraint!
+    
+    @IBOutlet weak var lblBreadText: UILabel!
+    @IBOutlet weak var imageTut: UIImageView!
     @IBAction func pressedBackToMain(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         
