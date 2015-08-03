@@ -22,6 +22,7 @@ class SubmitButton: UIButton {
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
         self.layer.borderColor = Colors().Orange.CGColor
+        self.clipsToBounds = true
     }
 
 }

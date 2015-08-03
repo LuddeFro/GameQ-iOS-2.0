@@ -16,6 +16,7 @@ class MailButton: UIButton {
     override func drawRect(rect: CGRect) {
         // Drawing code
         self.layer.cornerRadius = self.frame.width/2
+        self.clipsToBounds = true
         self.backgroundColor = Colors().Orange
         self.layer.backgroundColor = Colors().Orange.CGColor
     }

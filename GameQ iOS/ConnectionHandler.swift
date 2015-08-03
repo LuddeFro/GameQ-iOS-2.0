@@ -74,7 +74,6 @@ class ConnectionHandler : NSObject {
             println()
             firstLogin = false
         }
-        println("PASSWORD: \(password)")
         
         let apiExtension = "login"
         var diString = ""

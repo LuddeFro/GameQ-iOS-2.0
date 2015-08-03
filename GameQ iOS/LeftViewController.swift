@@ -57,7 +57,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     @IBAction func pressedMail(sender: AnyObject) {
         let emailTitle = "Contact from iOS"
-        let body = ""
+        let body = "Dear GameQ Team, "
         let recipients:[AnyObject] = ["contact@gameq.io"]
         var mc:MFMailComposeViewController = MFMailComposeViewController()
         mc.mailComposeDelegate = self
@@ -217,7 +217,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         offButtonOne.off = false
         offButtonOne.setNeedsDisplay()
         let actualToken:String? = ConnectionHandler.loadToken()
-        println(actualToken!)
+        println("actual token: \(actualToken!)")
         ConnectionHandler.updateToken(actualToken!, finalCallBack: {
             (success:Bool, error:String?) in
             if success {

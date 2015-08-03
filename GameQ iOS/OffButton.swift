@@ -16,6 +16,7 @@ import UIKit
         self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 3
+        self.clipsToBounds = true
 
         //set up the width and height variables
         //for the horizontal stroke

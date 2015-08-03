@@ -16,6 +16,7 @@ import UIKit
         self.layer.backgroundColor = Colors().Orange.CGColor
         self.layer.cornerRadius = 3
         self.layer.borderWidth = 3
+        self.clipsToBounds = true
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)

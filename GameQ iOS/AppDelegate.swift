@@ -139,20 +139,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             ConnectionHandler.saveToken(newToken)
-            if let dummy:String = ConnectionHandler.loadEmail() { // if logged in
-                ConnectionHandler.updateToken(newToken, finalCallBack: {
-                    (success:Bool, error:String?) in
-                    if success {
-                        println("successfully updated token")
-                    } else {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            println("Unsuccessful token update")
-                            var alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-                        })
-                    }
-                })
+            if let dummy:String = ConnectionHandler.loadEmail() {// if logged in 1
+                if dummy.validEmail() {// if logged in 2
+                    ConnectionHandler.updateToken(newToken, finalCallBack: {
+                        (success:Bool, error:String?) in
+                        if success {
+                            println("successfully updated token")
+                        } else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                println("Unsuccessful token update")
+                                var alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                            })
+                        }
+                    })
+                }
             }
             
             println("replacing old token \(oldToken) with new token \(newToken)")

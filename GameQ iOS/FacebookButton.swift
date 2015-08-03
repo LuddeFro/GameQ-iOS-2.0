@@ -16,6 +16,7 @@ class FacebookButton: UIButton {
     override func drawRect(rect: CGRect) {
         // Drawing code
         self.layer.cornerRadius = self.frame.width/2
+        self.clipsToBounds = true
         self.backgroundColor = Colors().facebookBlue
         self.layer.backgroundColor = Colors().facebookBlue.CGColor
         

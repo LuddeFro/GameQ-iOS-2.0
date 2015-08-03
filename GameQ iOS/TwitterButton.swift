@@ -16,6 +16,7 @@ class TwitterButton: UIButton {
     override func drawRect(rect: CGRect) {
         // Drawing code
         self.layer.cornerRadius = self.frame.width/2
+        self.clipsToBounds = true
         self.backgroundColor = Colors().twitterBlue
         self.layer.backgroundColor = Colors().twitterBlue.CGColor
     }

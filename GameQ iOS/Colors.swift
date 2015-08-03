@@ -11,7 +11,6 @@ import UIKit
 
 struct Colors {
     let LineGray = UIColor(netHex:0x323f4f)
-    let MainGray = UIColor(netHex:0x17212b)
     let NavGray = UIColor(netHex:0x212b36)
     let ThinLineGray = UIColor(netHex: 0x34404d)
     let LeftGray = UIColor(netHex:0x293643)
@@ -20,6 +19,7 @@ struct Colors {
     let ButtonOffGray = UIColor(netHex: 0x546575)
     
     
+    let MainGray = UIColor(netHex:0x17212b)
     let navTopGray = UIColor(netHex:0x0d1623)
     let navBackgroundGray = UIColor(netHex:0x121b28)
     let fadedTimerGray = UIColor(netHex: 0x34404d)

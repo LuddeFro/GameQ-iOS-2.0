@@ -90,7 +90,7 @@ class Encoding {
                 case .Online: return  "Online"
                 case .InLobby: return "In Game Lobby"
                 case .InQueue: return "Finding Match"
-                case .GameReady: return "Your Match is Ready"
+                case .GameReady: return "Your Match is Starting"
                 case .InGame:return "In Match"
                 }
             case .CSGO:
@@ -108,7 +108,7 @@ class Encoding {
                 case .Online: return  "Online"
                 case .InLobby: return "In Game Lobby"
                 case .InQueue: return "Finding Match"
-                case .GameReady: return "Your Match is Ready"
+                case .GameReady: return "Your Match is Starting"
                 case .InGame:return "In Match"
                 }
             case .LoL:

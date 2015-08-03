@@ -21,6 +21,7 @@ class FeedbackView: UITextView {
         
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 1
+        self.clipsToBounds = true
         self.layer.borderColor = Colors().MenuTextGray.CGColor
         
     }
