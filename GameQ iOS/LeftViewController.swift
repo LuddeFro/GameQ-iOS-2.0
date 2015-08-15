@@ -253,36 +253,46 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         })
         
     }
-    /*
-    @IBAction func pressedOnButtonTwo(sender: OnButton) {
-        println("on2")
-        sender.on = true
-        sender.setNeedsDisplay()
-        offButtonTwo.off = false
-        offButtonTwo.setNeedsDisplay()
-    }
-    
-    @IBAction func pressedOffButtonTwo(sender: OffButton) {
-        println("off2")
-        sender.off = true
-        sender.setNeedsDisplay()
-        onButtonTwo.on = false
-        onButtonTwo.setNeedsDisplay()
-    }*/
     
     @IBAction func pressedOnButtonThree(sender: OnButton) {
+        println("on2")
         sender.on = true
         sender.setNeedsDisplay()
         offButtonThree.off = false
         offButtonThree.setNeedsDisplay()
+        ConnectionHandler.updateAutoAccept(true, finalCallBack: {
+            (success:Bool, error:String?) in
+            if success {
+                // do nothing
+            } else {
+                self.offButtonThree.off = true
+                self.onButtonThree.on = false
+                self.offButtonThree.setNeedsDisplay()
+                self.onButtonThree.setNeedsDisplay()
+            }
+        })
     }
     
     @IBAction func pressedOffButtonThree(sender: OffButton) {
+        println("off2")
         sender.off = true
         sender.setNeedsDisplay()
         onButtonThree.on = false
         onButtonThree.setNeedsDisplay()
+        ConnectionHandler.updateAutoAccept(false, finalCallBack: {
+            (success:Bool, error:String?) in
+            if success {
+                // do nothing
+            } else {
+                self.onButtonThree.on = true
+                self.offButtonThree.off = false
+                self.onButtonThree.setNeedsDisplay()
+                self.offButtonThree.setNeedsDisplay()
+            }
+        })
     }
+    
+    
     
     @IBAction func pressedLogout(sender: AnyObject) {
             // create viewController code...
@@ -456,8 +466,22 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         
         self.view.backgroundColor = Colors().navBackgroundGray
         leftNavBar.backgroundColor = Colors().navTopGray
-        onButtonThree.on = false
-        onButtonThree.setNeedsDisplay()
+        
+        
+        ConnectionHandler.getAutoAccept({ (autoAcceptEnabled:Bool) in
+            if autoAcceptEnabled {
+                self.offButtonOne.off = false
+                self.offButtonOne.setNeedsDisplay()
+                self.onButtonOne.on = true
+                self.onButtonOne.setNeedsDisplay()
+                
+            } else {
+                self.offButtonOne.off = true
+                self.offButtonOne.setNeedsDisplay()
+                self.onButtonOne.on = false
+                self.onButtonOne.setNeedsDisplay()
+            }
+        })
         
         
     }

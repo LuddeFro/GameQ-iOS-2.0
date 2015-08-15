@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		83357CC91B5168EF002CA1B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CC81B5168EF002CA1B7 /* GameStatus.swift */; };
 		83357CCB1B5173AF002CA1B7 /* PulsatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */; };
+		834CB97E1B7E091900196081 /* AcceptQueueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CB97D1B7E091900196081 /* AcceptQueueButton.swift */; };
+		834CB9801B7E092300196081 /* DeclineQueueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CB97F1B7E092300196081 /* DeclineQueueButton.swift */; };
 		836DBD4A1B54113700434E64 /* TutorialController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD491B54113700434E64 /* TutorialController1.swift */; };
 		836DBD4C1B54114100434E64 /* TutorialController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD4B1B54114100434E64 /* TutorialController2.swift */; };
 		836DBD4E1B54114A00434E64 /* TutorialController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DBD4D1B54114A00434E64 /* TutorialController3.swift */; };
@@ -66,6 +68,8 @@
 		83357CBE1B5132A8002CA1B7 /* GameQ iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GameQ iOS-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		83357CC81B5168EF002CA1B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		83357CCA1B5173AF002CA1B7 /* PulsatingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsatingLabel.swift; sourceTree = "<group>"; };
+		834CB97D1B7E091900196081 /* AcceptQueueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptQueueButton.swift; sourceTree = "<group>"; };
+		834CB97F1B7E092300196081 /* DeclineQueueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeclineQueueButton.swift; sourceTree = "<group>"; };
 		836DBD491B54113700434E64 /* TutorialController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController1.swift; sourceTree = "<group>"; };
 		836DBD4B1B54114100434E64 /* TutorialController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController2.swift; sourceTree = "<group>"; };
 		836DBD4D1B54114A00434E64 /* TutorialController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController3.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				AEE826AE1B3DA13700FF1A26 /* OffButton.swift */,
 				AEE826B21B3DAA2300FF1A26 /* OnButton.swift */,
 				AEEB099D1B3EED6300544356 /* LogInButton.swift */,
+				834CB97D1B7E091900196081 /* AcceptQueueButton.swift */,
+				834CB97F1B7E092300196081 /* DeclineQueueButton.swift */,
 				AEEB099A1B3EE97200544356 /* LogOutButton.swift */,
 				838610D31B6A86DA00D0BE02 /* FacebookButton.swift */,
 				838610D61B6A86EC00D0BE02 /* TwitterButton.swift */,
@@ -367,10 +373,12 @@
 				AEE826B31B3DAA2300FF1A26 /* OnButton.swift in Sources */,
 				AE7E5FAB1B3C5F1900DEB007 /* UIViewControllerExtension.swift in Sources */,
 				83EB5E881B4FF4BC00B9FC96 /* MenuLabel.swift in Sources */,
+				834CB9801B7E092300196081 /* DeclineQueueButton.swift in Sources */,
 				83EB5E8E1B500B3200B9FC96 /* SignInButton.swift in Sources */,
 				AE7E5F851B3C5DCC00DEB007 /* GameQ_iOS.xcdatamodeld in Sources */,
 				AE7E5FB51B3C6BDF00DEB007 /* ColorExtension.swift in Sources */,
 				836DBD4E1B54114A00434E64 /* TutorialController3.swift in Sources */,
+				834CB97E1B7E091900196081 /* AcceptQueueButton.swift in Sources */,
 				838610DA1B6A86FC00D0BE02 /* MailButton.swift in Sources */,
 				AEEB09A01B3EEDA800544356 /* LoginViewController.swift in Sources */,
 				83EB5E901B502BC200B9FC96 /* ConnectionHandler.swift in Sources */,

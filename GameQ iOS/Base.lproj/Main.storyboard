@@ -104,7 +104,7 @@
                                     <constraint firstAttribute="height" constant="1" id="tLv-OZ-QbL"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.29999999999999966" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00R-R4-guW" userLabel="OffButtonThree" customClass="OffButton" customModule="GameQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00R-R4-guW" userLabel="OffButtonThree" customClass="OffButton" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="255" y="118" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="2fW-F5-EQp"/>
@@ -117,7 +117,7 @@
                                     <action selector="pressedOffButtonThree:" destination="4cz-lt-BXL" eventType="touchUpInside" id="Zih-ee-Vn3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.29999999999999966" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mw-EJ-Ry8" userLabel="OnButtonThree" customClass="OnButton" customModule="GameQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mw-EJ-Ry8" userLabel="OnButtonThree" customClass="OnButton" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="210" y="118" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="5EV-Uy-9Gf"/>
@@ -138,7 +138,7 @@
                                     <constraint firstAttribute="height" constant="1" id="pEd-9Y-Kk8"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjI-aX-k01" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjI-aX-k01" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="77" width="157" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="C2H-D5-JwK"/>
@@ -148,7 +148,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Accept (Coming Soon)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o76-Zp-Dnp" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Accept" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o76-Zp-Dnp" customClass="MenuLabel" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="123" width="200" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="csr-BN-Fea"/>
@@ -656,12 +656,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BQ-jk-UVm">
-                                <rect key="frame" x="15" y="500" width="570" height="30"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GameQLogo" translatesAutoresizingMaskIntoConstraints="NO" id="P5Z-zM-bQs">
                                 <rect key="frame" x="236" y="30" width="120" height="120"/>
                                 <constraints>
@@ -670,38 +664,76 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="umP-xs-McP"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niE-dl-fAT" customClass="DeclineQueueButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="388" y="588" width="46" height="4"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="DHS-9D-eMt"/>
+                                </constraints>
+                                <state key="normal" title="Decline">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedDecline:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hxk-gI-HgO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHG-pJ-TbN" customClass="AcceptQueueButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="87" y="587" width="46" height="5"/>
+                                <state key="normal" title="Accept">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedAccept:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P1m-YR-egc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="In Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BQ-jk-UVm">
+                                <rect key="frame" x="15" y="502" width="570" height="30"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tJe-wp-gZZ" secondAttribute="trailing" constant="15" id="1n3-AZ-kra"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tJe-wp-gZZ" secondAttribute="bottom" constant="15" id="1y4-CK-YIZ"/>
                             <constraint firstItem="P5Z-zM-bQs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="2XY-Qc-O1F"/>
+                            <constraint firstItem="7BQ-jk-UVm" firstAttribute="top" secondItem="Vva-BU-mlM" secondAttribute="bottom" constant="30" id="5bC-Kj-0n3"/>
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="height" secondItem="hZP-Gz-4fD" secondAttribute="height" id="6Fb-BM-Qcf"/>
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="centerY" secondItem="hZP-Gz-4fD" secondAttribute="centerY" id="6o8-VZ-4B4"/>
                             <constraint firstAttribute="centerY" secondItem="Vva-BU-mlM" secondAttribute="centerY" priority="999" constant="-50" id="9ex-id-cVM"/>
+                            <constraint firstItem="HHG-pJ-TbN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="EHr-t5-YSe"/>
                             <constraint firstItem="Vva-BU-mlM" firstAttribute="top" secondItem="P5Z-zM-bQs" secondAttribute="bottom" constant="20" id="GAN-9i-Nrd"/>
+                            <constraint firstItem="HHG-pJ-TbN" firstAttribute="centerY" secondItem="niE-dl-fAT" secondAttribute="centerY" id="Hl5-wb-KPP"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="niE-dl-fAT" secondAttribute="bottom" constant="15" id="JQ2-Sk-7sM"/>
                             <constraint firstItem="tJe-wp-gZZ" firstAttribute="top" secondItem="7BQ-jk-UVm" secondAttribute="bottom" constant="10" id="MdG-fH-LjH"/>
-                            <constraint firstItem="7BQ-jk-UVm" firstAttribute="top" secondItem="Vva-BU-mlM" secondAttribute="bottom" constant="30" id="QAU-Fv-BHk"/>
+                            <constraint firstItem="niE-dl-fAT" firstAttribute="top" secondItem="tJe-wp-gZZ" secondAttribute="bottom" constant="15" id="Pmb-tD-Cv2"/>
                             <constraint firstItem="tJe-wp-gZZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="R9r-da-2k3"/>
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="centerX" secondItem="hZP-Gz-4fD" secondAttribute="centerX" id="Ub8-D6-XST"/>
+                            <constraint firstItem="niE-dl-fAT" firstAttribute="leading" secondItem="HHG-pJ-TbN" secondAttribute="trailing" constant="15" id="W0I-t4-dHa"/>
+                            <constraint firstItem="HHG-pJ-TbN" firstAttribute="height" secondItem="niE-dl-fAT" secondAttribute="height" id="XGo-zf-BcJ"/>
                             <constraint firstAttribute="centerX" secondItem="P5Z-zM-bQs" secondAttribute="centerX" constant="4" id="f0Y-nd-QJ2"/>
                             <constraint firstItem="7BQ-jk-UVm" firstAttribute="height" secondItem="tJe-wp-gZZ" secondAttribute="height" id="ka3-vj-6yk"/>
                             <constraint firstAttribute="centerX" secondItem="Vva-BU-mlM" secondAttribute="centerX" id="kwt-WX-evU"/>
+                            <constraint firstItem="HHG-pJ-TbN" firstAttribute="width" secondItem="niE-dl-fAT" secondAttribute="width" id="rAN-bD-PdV"/>
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="width" secondItem="hZP-Gz-4fD" secondAttribute="width" id="rwK-Te-yBS"/>
                             <constraint firstAttribute="trailing" secondItem="7BQ-jk-UVm" secondAttribute="trailing" constant="15" id="unE-UR-oje"/>
                             <constraint firstItem="7BQ-jk-UVm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="yrI-Hy-rTa"/>
+                            <constraint firstAttribute="trailing" secondItem="niE-dl-fAT" secondAttribute="trailing" constant="30" id="zCd-sd-T0f"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="SecondYConstraint" destination="GAN-9i-Nrd" id="Sfn-1m-hVF"/>
+                        <outlet property="acceptButtonHeight" destination="DHS-9D-eMt" id="vDr-ky-ZMu"/>
                         <outlet property="bottomCrosshairArm" destination="hzk-1b-61s" id="WJd-JE-FGA"/>
                         <outlet property="bottomInnerCircleInset" destination="mRG-Dm-Y0o" id="2pn-iA-xx6"/>
-                        <outlet property="bottomYConstraint" destination="1y4-CK-YIZ" id="54T-aw-8On"/>
+                        <outlet property="bottomYConstraint" destination="JQ2-Sk-7sM" id="3BA-FS-Gmh"/>
+                        <outlet property="btnAccept" destination="HHG-pJ-TbN" id="SpS-jt-jvc"/>
+                        <outlet property="btnDecline" destination="niE-dl-fAT" id="9gG-Qx-T3l"/>
                         <outlet property="crossHair" destination="Vva-BU-mlM" id="92W-hW-C5r"/>
                         <outlet property="crosshairLength1" destination="5SW-VJ-qLQ" id="oJF-Av-ieH"/>
                         <outlet property="crosshairLength2" destination="dOf-km-d7r" id="udO-Sm-kdJ"/>
                         <outlet property="crosshairWidth1" destination="j6i-yo-sZ8" id="rV3-1i-G24"/>
                         <outlet property="crosshairWidth2" destination="76z-BA-905" id="Cdp-3f-RHY"/>
+                        <outlet property="fourthYConstraint" destination="Pmb-tD-Cv2" id="rj4-MI-5h3"/>
                         <outlet property="lblCountdown" destination="rpj-HY-4Rj" id="hGY-Zf-mvs"/>
                         <outlet property="lblGame" destination="7BQ-jk-UVm" id="DIa-dj-QRW"/>
                         <outlet property="lblStatus" destination="tJe-wp-gZZ" id="ZfG-ae-yXf"/>
@@ -711,7 +743,7 @@
                         <outlet property="rightCrosshairArm" destination="TbD-6z-NmM" id="QiH-lS-OF5"/>
                         <outlet property="rightInnerCircleInset" destination="p0D-6L-hsE" id="6fA-eE-SjI"/>
                         <outlet property="spinner" destination="1w0-3n-Xjp" id="3Qn-qn-KBw"/>
-                        <outlet property="thirdYConstraint" destination="QAU-Fv-BHk" id="NhX-HZ-oj3"/>
+                        <outlet property="thirdYConstraint" destination="5bC-Kj-0n3" id="hFE-JI-AlO"/>
                         <outlet property="topCrosshairArm" destination="38M-f2-Csr" id="vma-lu-YGf"/>
                         <outlet property="topInnerCircleInset" destination="s8e-zd-Np6" id="rj4-pM-Rcs"/>
                         <outlet property="topYConstraint" destination="2XY-Qc-O1F" id="bsS-eH-aJG"/>

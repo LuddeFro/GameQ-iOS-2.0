@@ -21,6 +21,7 @@ class ConnectionHandler : NSObject {
     static let tokenKey:String = "token_key"
     static var firstLogin:Bool = false
     static var delayToServer:Int = 0
+    private static var acceptServerIp = "127.0.0.1"
     private static var sessionId:String = ""
     
     
@@ -33,7 +34,7 @@ class ConnectionHandler : NSObject {
     
     private static func getIntFrom(json:Dictionary<String, AnyObject>, key:String) -> Int {
         if let value = json[key] as? Int {
-            println("value: \(value)")
+//            println("value: \(value)")
             return value
         } else { return 0 }
     }
@@ -51,6 +52,35 @@ class ConnectionHandler : NSObject {
                 let Json:Dictionary<String, AnyObject> = [
                 "success": 0,
                 "error": 404
+                ]
+                responseHandler(responseJSON: Json)
+                return
+            }
+            
+            //println("response = \(response)")
+            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println("responseString = \(responseString!)")
+            
+            var jsonErrorOptional:NSError?
+            let responseJSON:AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &jsonErrorOptional)
+            responseHandler(responseJSON: responseJSON)
+        }
+        task.resume()
+    }
+    
+    private static func postBack(arguments:String, apiExtension:String, responseHandler:(responseJSON:AnyObject!) -> ()) {
+        let urlString = "http://\(acceptServerIp):8080/ios/\(apiExtension)?"
+        println(urlString)
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        request.HTTPMethod = "POST"
+        
+        request.HTTPBody = "key=68440fe0484ad2bb1656b56d234ca5f463f723c3d3d58c3398190877d1d963bb&\(arguments)".dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            if error != nil {
+                println("error=\(error)")
+                let Json:Dictionary<String, AnyObject> = [
+                    "success": 0,
+                    "error": 404
                 ]
                 responseHandler(responseJSON: Json)
                 return
@@ -221,6 +251,7 @@ class ConnectionHandler : NSObject {
             var game:Int? = nil
             var status:Int = 0
             var acceptBefore:Int = 0
+            var ip:String = "127.0.0.1"
             
             if let json = responseJSON as? Dictionary<String, AnyObject> {
                 success = self.getIntFrom(json, key: "success") != 0
@@ -231,6 +262,9 @@ class ConnectionHandler : NSObject {
                     //success
                     game = self.getIntFrom(json, key: "game")
                     status = self.getIntFrom(json, key: "status")
+                    if status == 4 {
+                        self.acceptServerIp = self.getStringFrom(json, key: "ip")
+                    }
                     if game == 0 {
                         game = nil
                     }
@@ -243,6 +277,37 @@ class ConnectionHandler : NSObject {
         })
     }
     
+    static func acceptQueue(accept:Bool, finalCallBack:(success:Bool, err:String?)->()) {
+        let apiExtension = "accept"
+        var diString = ""
+        if let deviceId = loadDeviceId() {
+            diString = "device_id=\(deviceId)"
+        }
+        var aa:Int = 0
+        if accept {
+            aa = 1
+        }
+        let arguments = "session_token=\(sessionId)&\(diString)&accept=\(aa)"
+        println(arguments)
+        postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
+            var success:Bool = false
+            var err:String? = nil
+            
+            if let json = responseJSON as? Dictionary<String, AnyObject> {
+                success = self.getIntFrom(json, key: "success") != 0
+                if !success {
+                    err = self.getStringFrom(json, key: "error")
+                } else {
+                    //success
+                }
+            } else {
+                println("json parse fail")
+            }
+            
+            finalCallBack(success: success, err: err)
+        })
+    }
+    
     static func updateToken(token:String, finalCallBack:(success:Bool, err:String?)->()) {
         let apiExtension = "updateToken"
         saveToken(token)
@@ -251,7 +316,6 @@ class ConnectionHandler : NSObject {
         if let deviceId = loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        println(diString)
         let arguments = "session_token=\(sessionId)&\(diString)&push_token=\(token)"
         println(arguments)
         postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
@@ -403,6 +467,58 @@ class ConnectionHandler : NSObject {
         }
     }
     
+    static func getAutoAccept(finalCallBack:(autoAcceptEnabled:Bool)->()) {
+        let apiExtension = "getAutoAccept"
+        var diString = ""
+        if let deviceId = loadDeviceId() {
+            diString = "device_id=\(deviceId)"
+        }
+        let arguments = "session_token=\(sessionId)&\(diString)"
+        postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
+            var success:Bool = false
+            var err:String? = nil
+            var enabled = false
+            if let json = responseJSON as? Dictionary<String, AnyObject> {
+                success = self.getIntFrom(json, key: "success") != 0
+                if success && self.getStringFrom(json, key: "error") == "accept" {
+                    enabled = true
+                } else {
+                    enabled = false
+                }
+            } else {
+                println("json parse fail")
+            }
+            finalCallBack(autoAcceptEnabled: enabled)
+        })
+    }
+    
+    static func updateAutoAccept(enableAccept:Bool, finalCallBack:(success:Bool, err:String?)->()) {
+        let apiExtension = "updateAutoAccept"
+        var diString = ""
+        if let deviceId = loadDeviceId() {
+            diString = "device_id=\(deviceId)"
+        }
+        let arguments = "session_token=\(sessionId)&\(diString)&auto_accept=\(enableAccept)"
+        postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
+            var success:Bool = false
+            var err:String? = nil
+            
+            if let json = responseJSON as? Dictionary<String, AnyObject> {
+                success = self.getIntFrom(json, key: "success") != 0
+                if !success {
+                    err = self.getStringFrom(json, key: "error")
+                } else {
+                    //logout success
+                    
+                    self.sessionId = ""
+                }
+            } else {
+                println("json parse fail")
+            }
+            finalCallBack(success: success, err: err)
+        })
+    }
+    
     
     
     
@@ -476,7 +592,7 @@ class ConnectionHandler : NSObject {
                 }
                 var error2: NSError?
                 if !managedContext.save(&error2) {
-                    println("saveSingle1 Could not save \(error2), \(error2?.userInfo)")
+//                    println("saveSingle1 Could not save \(error2), \(error2?.userInfo)")
                 }
             } else {
                 //-----
@@ -490,7 +606,7 @@ class ConnectionHandler : NSObject {
                 managedObject.setValue(value, forKey: attribute)
             }
         } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+//            println("Could not fetch \(error), \(error!.userInfo)")
         }
         
         
@@ -498,7 +614,7 @@ class ConnectionHandler : NSObject {
         
         var error2: NSError?
         if !managedContext.save(&error2) {
-            println("saveSingle2 Could not save \(error2), \(error2?.userInfo)")
+//            println("saveSingle2 Could not save \(error2), \(error2?.userInfo)")
         }
         
     }
@@ -511,7 +627,7 @@ class ConnectionHandler : NSObject {
     description: Loads attribute from disk
     */
     private class func loadSingle(attribute:String) -> AnyObject? {
-        println("loading \(attribute) for Singles")
+//        println("loading \(attribute) for Singles")
         let entity = "Singles"
         let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
         //2
@@ -526,15 +642,15 @@ class ConnectionHandler : NSObject {
         
         if let results = fetchedResults {
             if results.count > 0 {
-                println("found entries")
-                println("\(results[0].valueForKey(attribute))")
+//                println("found entries")
+//                println("\(results[0].valueForKey(attribute))")
                 return results[0].valueForKey(attribute)
             } else {
-                println("no results")
+//                println("no results")
                 return nil
             }
         } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+//            println("Could not fetch \(error), \(error!.userInfo)")
             return nil
         }
         
