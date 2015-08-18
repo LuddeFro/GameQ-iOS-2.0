@@ -21,7 +21,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var offButtonThree: OffButton!
     @IBOutlet weak var lblUserEmail: MenuLabel!
     @IBOutlet weak var btnLogout: LogOutButton!
-
+    
     @IBOutlet weak var btnResignFirstResponder: UIButton!
     @IBOutlet weak var btnTutorial: UIButton!
     @IBOutlet weak var btnChangePassword: UIButton!
@@ -39,10 +39,10 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var txtNewPassword: GQTextField!
     @IBOutlet weak var txtConfirmPassword: GQTextField!
     @IBOutlet weak var txtFeedback: UITextView!
-
+    
     @IBOutlet weak var btnSubmitFeedback: UIButton!
     @IBOutlet weak var btnSubmitPassword: SubmitButton!
-
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var bolChangingPassword:Bool = false
     var bolGivingFeedback:Bool = false
@@ -132,7 +132,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         })
         
         
-
+        
     }
     
     @IBAction func pressedSubmitPassword(sender: AnyObject) {
@@ -142,7 +142,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         println(txtConfirmPassword.text != txtNewPassword.text)
         
         if !txtOldPassword.text.validPassword() {
-           println("password to short")
+            println("password to short")
             hideErrors()
             txtOldPassword.showError("Password too short")
         } else if !txtNewPassword.text.validPassword() {
@@ -212,10 +212,13 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     @IBAction func pressedOnButtonOne(sender: OnButton) {
         println("on1")
-        sender.on = true
-        sender.setNeedsDisplay()
-        offButtonOne.off = false
-        offButtonOne.setNeedsDisplay()
+        dispatch_async(dispatch_get_main_queue(), {
+            sender.on = true
+            sender.setNeedsDisplay()
+            self.offButtonOne.off = false
+            self.offButtonOne.setNeedsDisplay()
+        })
+        
         let actualToken:String? = ConnectionHandler.loadToken()
         println("actual token: \(actualToken!)")
         ConnectionHandler.updateToken(actualToken!, finalCallBack: {
@@ -223,10 +226,13 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
             if success {
                 // do nothing
             } else {
-                self.offButtonOne.off = true
-                self.onButtonOne.on = false
-                self.offButtonOne.setNeedsDisplay()
-                self.onButtonOne.setNeedsDisplay()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.offButtonOne.off = true
+                    self.onButtonOne.on = false
+                    self.offButtonOne.setNeedsDisplay()
+                    self.onButtonOne.setNeedsDisplay()
+                })
+                
             }
         })
         
@@ -234,10 +240,10 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     @IBAction func pressedOffButtonOne(sender: OffButton) {
         println("off1")
-        sender.off = true
-        sender.setNeedsDisplay()
-        onButtonOne.on = false
-        onButtonOne.setNeedsDisplay()
+        self.offButtonOne.off = true
+        self.onButtonOne.on = false
+        self.offButtonOne.setNeedsDisplay()
+        self.onButtonOne.setNeedsDisplay()
         let actualToken = ConnectionHandler.loadToken()
         ConnectionHandler.updateToken(LeftViewController.emptyString, finalCallBack: {
             (success:Bool, error:String?) in
@@ -245,10 +251,13 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
             if success {
                 // do nothing
             } else {
-                self.offButtonOne.off = false
-                self.onButtonOne.on = true
-                self.offButtonOne.setNeedsDisplay()
-                self.onButtonOne.setNeedsDisplay()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.offButtonOne.off = false
+                    self.onButtonOne.on = true
+                    self.offButtonOne.setNeedsDisplay()
+                    self.onButtonOne.setNeedsDisplay()
+                })
+                
             }
         })
         
@@ -256,46 +265,59 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     @IBAction func pressedOnButtonThree(sender: OnButton) {
         println("on2")
-        sender.on = true
-        sender.setNeedsDisplay()
-        offButtonThree.off = false
-        offButtonThree.setNeedsDisplay()
+        dispatch_async(dispatch_get_main_queue(), {
+            sender.on = true
+            sender.setNeedsDisplay()
+            self.offButtonThree.off = false
+            self.offButtonThree.setNeedsDisplay()
+        })
+        
         ConnectionHandler.updateAutoAccept(true, finalCallBack: {
             (success:Bool, error:String?) in
             if success {
                 // do nothing
             } else {
-                self.offButtonThree.off = true
-                self.onButtonThree.on = false
-                self.offButtonThree.setNeedsDisplay()
-                self.onButtonThree.setNeedsDisplay()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.offButtonThree.off = true
+                    self.onButtonThree.on = false
+                    self.offButtonThree.setNeedsDisplay()
+                    self.onButtonThree.setNeedsDisplay()
+                })
+                
             }
         })
     }
     
     @IBAction func pressedOffButtonThree(sender: OffButton) {
         println("off2")
-        sender.off = true
-        sender.setNeedsDisplay()
-        onButtonThree.on = false
-        onButtonThree.setNeedsDisplay()
+        dispatch_async(dispatch_get_main_queue(), {
+            sender.off = true
+            sender.setNeedsDisplay()
+            self.onButtonThree.on = false
+            self.onButtonThree.setNeedsDisplay()
+        })
+        
         ConnectionHandler.updateAutoAccept(false, finalCallBack: {
             (success:Bool, error:String?) in
             if success {
                 // do nothing
             } else {
-                self.onButtonThree.on = true
-                self.offButtonThree.off = false
-                self.onButtonThree.setNeedsDisplay()
-                self.offButtonThree.setNeedsDisplay()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.onButtonThree.on = true
+                    self.offButtonThree.off = false
+                    self.onButtonThree.setNeedsDisplay()
+                    self.offButtonThree.setNeedsDisplay()
+                })
+                
             }
         })
+        
     }
     
     
     
     @IBAction func pressedLogout(sender: AnyObject) {
-            // create viewController code...
+        // create viewController code...
         disableAll()
         ConnectionHandler.logout({
             (success:Bool, error:String?) in
@@ -384,8 +406,8 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
             self.pwIcon2.alpha = 0.0
             self.pwIcon3.alpha = 0.0
             }, completion: nil)
-
-
+        
+        
     }
     
     func showFeedbackField() {
@@ -421,7 +443,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewLoginBackground.backgroundColor = Colors().navBackgroundGray
@@ -451,6 +473,43 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         btnLogout.setTitle("Logout", forState: UIControlState.Application)
         btnLogout.setTitle("Logout", forState: UIControlState.Reserved)
         
+        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Normal)
+        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Highlighted)
+        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Disabled)
+        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Selected)
+        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.allZeros)
+        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Application)
+        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Reserved)
+        
+        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Normal)
+        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Highlighted)
+        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Disabled)
+        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Selected)
+        btnSubmitPassword.setTitle("Submit", forState: UIControlState.allZeros)
+        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Application)
+        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Reserved)
+        
+        self.view.backgroundColor = Colors().navBackgroundGray
+        leftNavBar.backgroundColor = Colors().navTopGray
+        
+        
+        ConnectionHandler.getAutoAccept({ (autoAcceptEnabled:Bool) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if autoAcceptEnabled {
+                    self.offButtonThree.off = false
+                    self.offButtonThree.setNeedsDisplay()
+                    self.onButtonThree.on = true
+                    self.onButtonThree.setNeedsDisplay()
+                    
+                } else {
+                    self.offButtonThree.off = true
+                    self.offButtonThree.setNeedsDisplay()
+                    self.onButtonThree.on = false
+                    self.onButtonThree.setNeedsDisplay()
+                }
+            })
+        })
+        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -464,24 +523,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         
         self.view.layer.mask = maskLayer;
         
-        self.view.backgroundColor = Colors().navBackgroundGray
-        leftNavBar.backgroundColor = Colors().navTopGray
         
-        
-        ConnectionHandler.getAutoAccept({ (autoAcceptEnabled:Bool) in
-            if autoAcceptEnabled {
-                self.offButtonOne.off = false
-                self.offButtonOne.setNeedsDisplay()
-                self.onButtonOne.on = true
-                self.onButtonOne.setNeedsDisplay()
-                
-            } else {
-                self.offButtonOne.off = true
-                self.offButtonOne.setNeedsDisplay()
-                self.onButtonOne.on = false
-                self.onButtonOne.setNeedsDisplay()
-            }
-        })
         
         
     }

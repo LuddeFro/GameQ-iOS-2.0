@@ -146,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if success {
                             println("successfully updated token")
                         } else {
+                            println("error: \(error)")
                             dispatch_async(dispatch_get_main_queue(), {
                                 println("Unsuccessful token update")
                                 var alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)

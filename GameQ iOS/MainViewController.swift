@@ -43,9 +43,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var lblGame: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblCountdown: PulsatingLabel!
+    
+    let animationSemaphore = dispatch_semaphore_create(1)
+    
     var bolGotLastAnswer:Bool = true
     var lastStatus:Status = Status.Offline
-    var bolCrosshairRotationShouldStop = true
+    var lastAcceptBefore:Int = 0
+    var bolCrosshairRotationShouldStop:Bool = true
     
     var tmrStatus = NSTimer()
     var bolTimerRunning = false
@@ -94,7 +98,7 @@ class MainViewController: UIViewController {
         self.view.updateConstraintsIfNeeded()
         
         
-
+        
         
     }
     
@@ -113,7 +117,7 @@ class MainViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         stopStatusUpdates()
-        stopReadyCountdownAt(0)
+        stopReadyCountdownAt(0, deflateLeft: nil)
         super.viewWillDisappear(animated)
         
     }
@@ -155,48 +159,81 @@ class MainViewController: UIViewController {
                     switch Encoding.getStatusFromInt(status) {
                     case Status.Offline:
                         //båda av
-                        self.spinner.isGame = false
-                        self.spinner.reset()
-                        self.stopReadyCountdownAt(0)
+                        
+                        self.stopReadyCountdownAt(0, deflateLeft: nil)
                         self.stopRotateCrosshair()
+                        self.animateThis({
+                            self.spinner.isGame = false
+                            self.spinner.reset()
+                        })
                         break
                     case Status.Online:
-                        self.spinner.isGame = false
-                        self.spinner.reset()
-                        self.stopReadyCountdownAt(0)
+                        
+                        self.stopReadyCountdownAt(0, deflateLeft: nil)
                         self.startRotateCrosshair()
+                        self.animateThis({
+                            self.spinner.isGame = false
+                            self.spinner.reset()
+                        })
                         //båda av
                         break
                     case Status.InLobby:
-                        self.spinner.isGame = false
-                        self.spinner.reset()
-                        self.stopReadyCountdownAt(0)
+                        
+                        self.stopReadyCountdownAt(0, deflateLeft: nil)
                         self.startRotateCrosshair()
+                        self.animateThis({
+                            self.spinner.isGame = false
+                            self.spinner.reset()
+                        })
                         //båda av
                         break
                     case Status.InQueue:
-                        self.spinner.isGame = false
-                        self.spinner.start()
-                        self.stopReadyCountdownAt(0)
+                        
+                        
+                        
+                        self.stopReadyCountdownAt(0, deflateLeft: nil)
                         self.startRotateCrosshair()
+                        self.animateThis({
+                            self.spinner.isGame = false
+                            self.spinner.start()
+                        })
                         //blå snurra
                         //röd av
                         break
                     case Status.GameReady:
-                        self.spinner.isGame = true
-                        self.spinner.reset()
+                        if self.lastStatus == Status.GameReady {
+                            if abs(self.lastAcceptBefore-acceptBefore) > 3 {
+                                self.lastAcceptBefore = acceptBefore
+                                self.lastAcceptBefore = acceptBefore
+                                self.restartReadyCountdown(acceptBefore)
+                                self.startRotateCrosshair()
+                                self.animateThis({
+                                    self.spinner.isGame = true
+                                    self.spinner.reset()
+                                })
+                                break
+                            } else {
+                                break
+                            }
+                        }
+                        self.lastAcceptBefore = acceptBefore
                         self.startReadyCountdown(acceptBefore)
                         self.startRotateCrosshair()
-
-                        
+                        self.animateThis({
+                            self.spinner.isGame = true
+                            self.spinner.reset()
+                        })
                         //röd börja
                         //helblå
                         break
                     case Status.InGame:
-                        self.spinner.isGame = true
-                        self.spinner.reset()
-                        self.stopReadyCountdownAt(1)
+                        
+                        self.stopReadyCountdownAt(1, deflateLeft: nil)
                         self.startRotateCrosshair()
+                        self.animateThis({
+                            self.spinner.isGame = true
+                            self.spinner.reset()
+                        })
                         //helorange
                         //helblå
                         break
@@ -219,13 +256,64 @@ class MainViewController: UIViewController {
         tmrStatus.invalidate()
     }
     
-    private func stopReadyCountdownAt(fraction:CGFloat) {
-        deflateAcceptButtons()
+    private func stopReadyCountdownAt(fraction:CGFloat, deflateLeft:Bool?) {
         tmrCountdown.invalidate()
-        readyTimer.progress = fraction
-        lblCountdown.text = ""
-        lblCountdown.stopPulsating()
         bolTimerRunning = false
+        
+        
+        
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                CATransaction.begin()
+                CATransaction.setDisableActions(true)
+                CATransaction.setCompletionBlock({
+                    dispatch_semaphore_signal(self.animationSemaphore)
+                })
+                var ba:CABasicAnimation = CABasicAnimation(keyPath: "")
+                
+                
+//                CABasicAnimation *animation =
+//                    [CABasicAnimation animationWithKeyPath:@"position"];
+//                [animation setFromValue:[NSValue valueWithPoint:startPoint]];
+//                [animation setToValue:[NSValue valueWithPoint:endPoint]];
+//                [animation setDuration:5.0];
+//                
+//                [layer addAnimation:animation forKey:@"position"];
+                
+                
+                self.readyTimer.progress = fraction
+                CATransaction.commit()
+            })
+        })
+        
+        animateThis({
+            
+            self.lblCountdown.text = ""
+            self.lblCountdown.stopPulsating()
+        })
+        
+        if let ll = deflateLeft {
+            if ll {
+                deflateAcceptButtonFirst()
+            } else {
+                deflateDeclineButtonFirst()
+            }
+        } else {
+            deflateAcceptButtons()
+        }
+    }
+    
+    private func animateThis(animBlock:() -> ()) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                animBlock()
+                dispatch_semaphore_signal(self.animationSemaphore)
+            })
+        })
     }
     
     func startReadyCountdown(to:Int) {
@@ -252,7 +340,35 @@ class MainViewController: UIViewController {
         totalCountdown = endTime - startTime
         tmrCountdown.invalidate()
         tmrCountdown = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("decrement"), userInfo: nil, repeats: true)
-        lblCountdown.startPulsating(Colors().LightBlue)
+        animateThis({
+            self.lblCountdown.startPulsating(Colors().LightBlue)
+        })
+    }
+    
+    func restartReadyCountdown(to:Int) {
+        bolTimerRunning = true
+        endTime = to + ConnectionHandler.delayToServer
+        
+        switch currentGame {
+        case Game.CSGO:
+            startTime = endTime - 20
+            inflateAcceptButtons()
+        case Game.Dota2:
+            startTime = endTime - 45
+            inflateAcceptButtons()
+        case Game.LoL:
+            startTime = endTime - 10
+            inflateAcceptButtons()
+        default:
+            startTime = endTime - 5
+            deflateAcceptButtons()
+        }
+        totalCountdown = endTime - startTime
+        tmrCountdown.invalidate()
+        tmrCountdown = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("decrement"), userInfo: nil, repeats: true)
+        animateThis({
+            self.lblCountdown.startPulsating(Colors().LightBlue)
+        })
     }
     
     func decrement() {
@@ -261,10 +377,9 @@ class MainViewController: UIViewController {
             tenthCounter = 0
         }
         tenthCounter++
-        println("ready ish:\(Double(NSDate().timeIntervalSince1970)) \(startTime) \(totalCountdown)")
-        println(CGFloat(Double(Double(NSDate().timeIntervalSince1970)-Double(startTime)) / Double(totalCountdown)))
-        readyTimer.progress = CGFloat(Double(Double(NSDate().timeIntervalSince1970)-Double(startTime)) / Double(totalCountdown))
-        
+        animateThis({
+            self.readyTimer.progress = CGFloat(Double(Double(NSDate().timeIntervalSince1970)-Double(self.startTime)) / Double(self.totalCountdown))
+        })
     }
     
     private func decrementCountdownLabel() {
@@ -273,13 +388,19 @@ class MainViewController: UIViewController {
             self.lblCountdown.alpha = 0
             }, completion: nil)
         if endTime - Int(NSDate().timeIntervalSince1970) < 0 {
-            lblCountdown.text = ""
+            animateThis({
+                self.lblCountdown.text = ""
+            })
             tmrCountdown.invalidate()
             bolTimerRunning = false
         } else {
-            lblCountdown.text = "\(endTime - Int(NSDate().timeIntervalSince1970))"
+            animateThis({
+                self.lblCountdown.text = "\(self.endTime - Int(NSDate().timeIntervalSince1970))"
+            })
         }
-        lblCountdown.stopPulsating()
+        animateThis({
+            self.lblCountdown.stopPulsating()
+        })
     }
     
     private func setCrosshairColor(color:UIColor)->() {
@@ -325,43 +446,78 @@ class MainViewController: UIViewController {
     
     
     private func inflateAcceptButtons() {
-//        println("infalting buttons")
-        UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: {
-            self.acceptButtonHeight.constant = self.acceptButtonHeightInflated
-            self.btnAccept.enabled = true
-            self.btnAccept.alpha = 1.0
-            self.btnDecline.alpha = 1.0
-            self.btnDecline.enabled = true
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+        //        println("infalting buttons")
+        println("waiting 3")
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.btnAccept.setNeedsDisplay()
+                self.btnDecline.setNeedsDisplay()
+                UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: {
+                    self.acceptButtonHeight.constant = self.acceptButtonHeightInflated
+                    self.btnAccept.enabled = true
+                    self.btnAccept.alpha = 1.0
+                    self.btnDecline.alpha = 1.0
+                    self.btnDecline.enabled = true
+                    self.view.layoutIfNeeded()
+                    }, completion: { (success:Bool) in
+                        println("signal 3")
+                        dispatch_semaphore_signal(self.animationSemaphore)
+                })
+            })
+        })
+        
+        
+        
     }
     
     private func deflateAcceptButtons() {
-//        println("deflating buttons")
-        deflateAccept(0)
-        deflateDecline(0)
-        deflateAcceptButtonHeights(0)
+        //        println("deflating buttons")
+        println("waiting 4")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.deflateAccept(0, duration: 1)
+                self.deflateDecline(0, duration: 1)
+                self.deflateAcceptButtonHeights(0.4)
+            })
+        })
+        
     }
     
     private func deflateAcceptButtonFirst() {
-        deflateAccept(0)
-        deflateDecline(1)
-        deflateAcceptButtonHeights(1)
+        println("waiting 5")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.deflateAccept(0, duration: 0.4)
+                self.deflateDecline(0, duration: 1)
+                self.deflateAcceptButtonHeights(1)
+            })
+        })
     }
     private func deflateDeclineButtonFirst() {
-        deflateAccept(1)
-        deflateDecline(0)
-        deflateAcceptButtonHeights(1)
+        println("waiting 6")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.deflateDecline(0, duration: 0.4)
+                self.deflateAccept(0, duration: 1)
+                self.deflateAcceptButtonHeights(1)
+            })
+        })
+        
     }
     
-    private func deflateAccept(delay:NSTimeInterval) {
-        UIView.animateWithDuration(1, delay: delay, options: .CurveEaseInOut, animations: {
+    private func deflateAccept(delay:NSTimeInterval, duration:NSTimeInterval) {
+        UIView.animateWithDuration(duration, delay: delay, options: .CurveEaseInOut, animations: {
             self.btnAccept.enabled = false
             self.btnAccept.alpha = 0.0
             }, completion: nil)
     }
-    private func deflateDecline(delay:NSTimeInterval) {
-        UIView.animateWithDuration(1, delay: delay, options: .CurveEaseInOut, animations: {
+    private func deflateDecline(delay:NSTimeInterval, duration:NSTimeInterval) {
+        UIView.animateWithDuration(duration, delay: delay, options: .CurveEaseInOut, animations: {
             self.btnDecline.alpha = 0.0
             self.btnDecline.enabled = false
             }, completion: nil)
@@ -370,20 +526,31 @@ class MainViewController: UIViewController {
         UIView.animateWithDuration(1, delay: delay, options: .CurveEaseInOut, animations: {
             self.acceptButtonHeight.constant = self.acceptButtonHeightDeflated
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: { (success:Bool) in
+                println("signal 456")
+                dispatch_semaphore_signal(self.animationSemaphore)
+                
+        })
     }
     
     @IBAction func pressedAccept(sender: AnyObject) {
-//        println("pressed accept")
-        deflateDeclineButtonFirst()
+        //        println("pressed accept")
+        btnAccept.enabled = false
+        btnDecline.enabled = false
+        stopReadyCountdownAt(1, deflateLeft:false)
+        
+        
         ConnectionHandler.acceptQueue(true, finalCallBack: {
             (success:Bool, error:String?) in
             
         })
     }
     @IBAction func pressedDecline(sender: AnyObject) {
-//        println("pressed decline")
-        deflateAcceptButtonFirst()
+        //        println("pressed decline")
+        btnDecline.enabled = false
+        btnAccept.enabled = false
+        stopReadyCountdownAt(0, deflateLeft:true)
+        
         ConnectionHandler.acceptQueue(false, finalCallBack: {
             (success:Bool, error:String?) in
             
