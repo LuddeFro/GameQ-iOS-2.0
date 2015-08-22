@@ -41,7 +41,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var txtFeedback: UITextView!
     
     @IBOutlet weak var btnSubmitFeedback: UIButton!
-    @IBOutlet weak var btnSubmitPassword: SubmitButton!
+    @IBOutlet weak var btnSubmitPassword: UIButton!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var bolChangingPassword:Bool = false
@@ -466,28 +466,45 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         lblUserEmail.textColor = UIColor.whiteColor()
         
         btnLogout.setTitle("Logout", forState: UIControlState.Normal)
-        btnLogout.setTitle("Logout", forState: UIControlState.Highlighted)
-        btnLogout.setTitle("Logout", forState: UIControlState.Disabled)
-        btnLogout.setTitle("Logout", forState: UIControlState.Selected)
-        btnLogout.setTitle("Logout", forState: UIControlState.allZeros)
-        btnLogout.setTitle("Logout", forState: UIControlState.Application)
-        btnLogout.setTitle("Logout", forState: UIControlState.Reserved)
+        btnLogout.layer.backgroundColor = Colors().Orange.CGColor
+        btnLogout.layer.cornerRadius = 3
+        btnLogout.layer.borderWidth = 3
+        btnLogout.clipsToBounds = true
+        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
+        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
+        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
+        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
+        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
+        btnLogout.layer.borderColor = Colors().Orange.CGColor
         
         btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Normal)
-        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Highlighted)
-        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Disabled)
-        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Selected)
-        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.allZeros)
-        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Application)
-        btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Reserved)
+        btnSubmitFeedback.layer.backgroundColor = Colors().Orange.CGColor
+        btnSubmitFeedback.layer.cornerRadius = 5
+        btnSubmitFeedback.layer.borderWidth = 3
+        btnSubmitFeedback.titleLabel!.textColor = Colors().Orange
+        btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnSubmitFeedback.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
+        btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
+        btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
+        btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
+        btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
+        btnSubmitFeedback.layer.borderColor = Colors().Orange.CGColor
+        btnSubmitFeedback.clipsToBounds = true
         
         btnSubmitPassword.setTitle("Submit", forState: UIControlState.Normal)
-        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Highlighted)
-        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Disabled)
-        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Selected)
-        btnSubmitPassword.setTitle("Submit", forState: UIControlState.allZeros)
-        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Application)
-        btnSubmitPassword.setTitle("Submit", forState: UIControlState.Reserved)
+        btnSubmitPassword.layer.backgroundColor = Colors().Orange.CGColor
+        btnSubmitPassword.layer.cornerRadius = 5
+        btnSubmitPassword.layer.borderWidth = 3
+        btnSubmitPassword.titleLabel!.textColor = Colors().Orange
+        btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnSubmitPassword.setTitleColor(Colors().NavGray, forState: UIControlState.Highlighted)
+        btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
+        btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
+        btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
+        btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
+        btnSubmitPassword.layer.borderColor = Colors().Orange.CGColor
+        btnSubmitPassword.clipsToBounds = true
         
         self.view.backgroundColor = Colors().navBackgroundGray
         leftNavBar.backgroundColor = Colors().navTopGray
@@ -523,7 +540,22 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         
         self.view.layer.mask = maskLayer;
         
-        
+        ConnectionHandler.getAutoAccept({ (autoAcceptEnabled:Bool) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if autoAcceptEnabled {
+                    self.offButtonThree.off = false
+                    self.offButtonThree.setNeedsDisplay()
+                    self.onButtonThree.on = true
+                    self.onButtonThree.setNeedsDisplay()
+                    
+                } else {
+                    self.offButtonThree.off = true
+                    self.offButtonThree.setNeedsDisplay()
+                    self.onButtonThree.on = false
+                    self.onButtonThree.setNeedsDisplay()
+                }
+            })
+        })
         
         
     }

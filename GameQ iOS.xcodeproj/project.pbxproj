@@ -22,7 +22,6 @@
 		838610E11B6AB8DC00D0BE02 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838610E01B6AB8DC00D0BE02 /* MessageUI.framework */; };
 		83E2A1A01B507E9B00FD24EB /* NotifCustom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */; };
 		83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */; };
-		83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */; };
 		83EB5E861B4FDD9600B9FC96 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */; };
 		83EB5E881B4FF4BC00B9FC96 /* MenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E871B4FF4BC00B9FC96 /* MenuLabel.swift */; };
 		83EB5E8A1B500B1200B9FC96 /* StatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB5E891B500B1200B9FC96 /* StatusLabel.swift */; };
@@ -81,7 +80,6 @@
 		838610E01B6AB8DC00D0BE02 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotifCustom1.aif; sourceTree = "<group>"; };
 		83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GQTextField.swift; sourceTree = "<group>"; };
-		83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		83EB5E851B4FDD9600B9FC96 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		83EB5E871B4FF4BC00B9FC96 /* MenuLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLabel.swift; sourceTree = "<group>"; };
 		83EB5E891B500B1200B9FC96 /* StatusLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusLabel.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				838610D31B6A86DA00D0BE02 /* FacebookButton.swift */,
 				838610D61B6A86EC00D0BE02 /* TwitterButton.swift */,
 				838610D91B6A86FC00D0BE02 /* MailButton.swift */,
-				83EB5E831B4FDB4C00B9FC96 /* SubmitButton.swift */,
 				83EB5E811B4FDA8A00B9FC96 /* GQTextField.swift */,
 				83E2A19F1B507E9B00FD24EB /* NotifCustom1.aif */,
 				83EB5E871B4FF4BC00B9FC96 /* MenuLabel.swift */,
@@ -368,7 +365,6 @@
 				83EB5E821B4FDA8A00B9FC96 /* GQTextField.swift in Sources */,
 				AE7E5FAD1B3C61D700DEB007 /* StringExtension.swift in Sources */,
 				AE7E5F821B3C5DCC00DEB007 /* AppDelegate.swift in Sources */,
-				83EB5E841B4FDB4C00B9FC96 /* SubmitButton.swift in Sources */,
 				83357CCB1B5173AF002CA1B7 /* PulsatingLabel.swift in Sources */,
 				AEE826B31B3DAA2300FF1A26 /* OnButton.swift in Sources */,
 				AE7E5FAB1B3C5F1900DEB007 /* UIViewControllerExtension.swift in Sources */,

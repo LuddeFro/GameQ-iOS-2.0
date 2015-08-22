@@ -26,6 +26,7 @@ class ConnectionHandler : NSObject {
     private static let lockQueue = dispatch_queue_create("io.gameq.waitforloginqueue", nil)
     private static let loginSemaphore:dispatch_semaphore_t = dispatch_semaphore_create(1);
     private static let backgroundQueue = dispatch_queue_create("io.gameq.asyncnetworking", nil)
+    private static var autoAccepts:Bool = false
     
     
     
@@ -100,22 +101,22 @@ class ConnectionHandler : NSObject {
     }
     
     static func login(email:String, password password1:String, finalCallBack:(success:Bool, err:String?)->()) {
-        
-        dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
         var password:String = password1
-        if !firstLogin {
-            password = sha256(password1)
+        if !self.firstLogin {
+            password = self.sha256(password1)
             println()
-            firstLogin = false
+            self.firstLogin = false
         }
         
         let apiExtension = "login"
         var diString = ""
-        if let deviceId = loadDeviceId() {
+        if let deviceId = self.loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
         var tokenString = ""
-        if let token = loadToken() { //only mobile
+        if let token = self.loadToken() { //only mobile
             tokenString = "push_token=\(token)"
         }
         if let smth = ConnectionHandler.loadOldToken() {
@@ -164,7 +165,9 @@ class ConnectionHandler : NSObject {
             })
             
         
-        
+
+        })
+                
         
     }
     
@@ -323,15 +326,16 @@ class ConnectionHandler : NSObject {
     }
     
     static func updateToken(token:String, finalCallBack:(success:Bool, err:String?)->()) {
-        dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
         let apiExtension = "updateToken"
-        saveToken(token)
-        saveOldToken(token)
+        self.saveToken(token)
+        self.saveOldToken(token)
         var diString = ""
-        if let deviceId = loadDeviceId() {
+        if let deviceId = self.loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        let arguments = "session_token=\(sessionId)&\(diString)&push_token=\(token)"
+        let arguments = "session_token=\(self.sessionId)&\(diString)&push_token=\(token)"
         println(arguments)
         
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
@@ -352,6 +356,8 @@ class ConnectionHandler : NSObject {
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
             })
+        })
+        
             
             
        
@@ -389,13 +395,14 @@ class ConnectionHandler : NSObject {
     
     
     static func submitFeedback(feedbackString:String, finalCallBack:(success:Bool, err:String?)->()) {
-        dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
         let apiExtension = "submitFeedback"
         var diString = ""
-        if let deviceId = loadDeviceId() {
+        if let deviceId = self.loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        let arguments = "session_token=\(sessionId)&\(diString)&feedback=\(feedbackString)"
+        let arguments = "session_token=\(self.sessionId)&\(diString)&feedback=\(feedbackString)"
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
                 var success:Bool = false
                 var err:String? = nil
@@ -413,6 +420,8 @@ class ConnectionHandler : NSObject {
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
             })
+        })
+        
             
             
         
@@ -421,15 +430,16 @@ class ConnectionHandler : NSObject {
     
     
     static func updatePassword(email:String, password password1:String, newPassword newPassword1:String, finalCallBack:(success:Bool, err:String?)->()) {
-        dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
-        let password = sha256(password1)
-        let newPassword = sha256(newPassword1)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
+        let password = self.sha256(password1)
+        let newPassword = self.sha256(newPassword1)
         let apiExtension = "updatePassword"
         var diString = ""
-        if let deviceId = loadDeviceId() {
+        if let deviceId = self.loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        let arguments = "email=\(email)&password=\(password)&new_password=\(newPassword)&\(diString)&session_token=\(sessionId)"
+        let arguments = "email=\(email)&password=\(password)&new_password=\(newPassword)&\(diString)&session_token=\(self.sessionId)"
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
                 var success:Bool = false
                 var err:String? = nil
@@ -452,6 +462,8 @@ class ConnectionHandler : NSObject {
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
             })
+        })
+        
             
             
         
@@ -500,16 +512,18 @@ class ConnectionHandler : NSObject {
     }
     
     static func getAutoAccept(finalCallBack:(autoAcceptEnabled:Bool)->()) {
-        dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
         let apiExtension = "getAutoAccept"
         var diString = ""
-        if let deviceId = loadDeviceId() {
+        if let deviceId = self.loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        let arguments = "session_token=\(sessionId)&\(diString)"
+        let arguments = "session_token=\(self.sessionId)&\(diString)"
         println("AA arguments: \(arguments)")
-        
+        finalCallBack(autoAcceptEnabled: self.autoAccepts)
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
+                
                 var success:Bool = false
                 var err:String? = nil
                 var enabled = false
@@ -524,22 +538,31 @@ class ConnectionHandler : NSObject {
                     println("json parse fail")
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
-                finalCallBack(autoAcceptEnabled: enabled)
+                if self.autoAccepts != enabled {
+                    self.autoAccepts = enabled
+                    finalCallBack(autoAcceptEnabled: self.autoAccepts)
+                }
+                
             })
             
+        })
+        
             
         
         
     }
     
     static func updateAutoAccept(enableAccept:Bool, finalCallBack:(success:Bool, err:String?)->()) {
-        dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
+        let previousSetting = self.autoAccepts
+        self.autoAccepts = enableAccept
         let apiExtension = "updateAutoAccept"
         var diString = ""
-        if let deviceId = loadDeviceId() {
+        if let deviceId = self.loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        let arguments = "session_token=\(sessionId)&\(diString)&auto_accept=\(enableAccept ? 1 : 0)"
+        let arguments = "session_token=\(self.sessionId)&\(diString)&auto_accept=\(enableAccept ? 1 : 0)"
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
                 var success:Bool = false
                 var err:String? = nil
@@ -547,16 +570,20 @@ class ConnectionHandler : NSObject {
                 if let json = responseJSON as? Dictionary<String, AnyObject> {
                     success = self.getIntFrom(json, key: "success") != 0
                     if !success {
+                        self.autoAccepts = previousSetting
                         err = self.getStringFrom(json, key: "error")
                     } else {
                         //update auto accept success
                     }
                 } else {
                     println("json parse fail")
+                    self.autoAccepts = previousSetting
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
             })
+            })
+        
             
            
         

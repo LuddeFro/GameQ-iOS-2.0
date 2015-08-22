@@ -21,6 +21,18 @@ class MainViewController: UIViewController {
     @IBOutlet weak var btnDecline: DeclineQueueButton!
     @IBOutlet weak var btnAccept: AcceptQueueButton!
     
+    //Auto Accept
+    @IBOutlet weak var suggestAutoAcceptHeight: NSLayoutConstraint!
+    var suggestAutoAcceptHeightConstantInflated:CGFloat = 16
+    var suggestAutoAcceptHeightConstantDeflated:CGFloat = 0
+    @IBOutlet weak var marginSuggestAutoAcceptTop: NSLayoutConstraint!
+    var marginSuggestAutoAcceptTopInflatedConstant:CGFloat = 15
+    var marginSuggestAutoAcceptTopDeflatedConstant:CGFloat = 0
+    @IBOutlet weak var lblSuggestAutoAccept: UILabel!
+    @IBOutlet weak var btnAutoAcceptOff: OffButton!
+    @IBOutlet weak var btnAutoAcceptOn: OnButton!
+    //End Auto Accept
+    
     
     @IBOutlet weak var crosshairWidth2: NSLayoutConstraint!
     @IBOutlet weak var crosshairLength2: NSLayoutConstraint!
@@ -62,7 +74,6 @@ class MainViewController: UIViewController {
     var degrees:CGFloat = 0.0
     
     var currentGame:Game = Encoding.getGameFromInt(0)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,6 +171,7 @@ class MainViewController: UIViewController {
                     case Status.Offline:
                         //båda av
                         
+                        self.deflateAutoAcceptButtons()
                         self.stopReadyCountdownAt(0, deflateLeft: nil)
                         self.stopRotateCrosshair()
                         self.animateThis({
@@ -169,6 +181,7 @@ class MainViewController: UIViewController {
                         break
                     case Status.Online:
                         
+                        self.deflateAutoAcceptButtons()
                         self.stopReadyCountdownAt(0, deflateLeft: nil)
                         self.startRotateCrosshair()
                         self.animateThis({
@@ -179,6 +192,7 @@ class MainViewController: UIViewController {
                         break
                     case Status.InLobby:
                         
+                        self.deflateAutoAcceptButtons()
                         self.stopReadyCountdownAt(0, deflateLeft: nil)
                         self.startRotateCrosshair()
                         self.animateThis({
@@ -199,8 +213,14 @@ class MainViewController: UIViewController {
                         })
                         //blå snurra
                         //röd av
+                        if self.currentGame == Game.LoL {
+                            self.inflateAutoAcceptButtons()
+                        } else {
+                            self.deflateAutoAcceptButtons()
+                        }
                         break
                     case Status.GameReady:
+                        self.deflateAutoAcceptButtons()
                         if self.lastStatus == Status.GameReady {
                             if abs(self.lastAcceptBefore-acceptBefore) > 3 {
                                 self.lastAcceptBefore = acceptBefore
@@ -227,6 +247,7 @@ class MainViewController: UIViewController {
                         //helblå
                         break
                     case Status.InGame:
+                        self.deflateAutoAcceptButtons()
                         
                         self.stopReadyCountdownAt(1, deflateLeft: nil)
                         self.startRotateCrosshair()
@@ -555,6 +576,125 @@ class MainViewController: UIViewController {
             (success:Bool, error:String?) in
             
         })
+    }
+    
+    
+    private func inflateAutoAcceptButtons() {
+        ConnectionHandler.getAutoAccept({ (autoAcceptEnabled:Bool) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if autoAcceptEnabled {
+                    self.btnAutoAcceptOff.off = false
+                    self.btnAutoAcceptOff.setNeedsDisplay()
+                    self.btnAutoAcceptOn.on = true
+                    self.btnAutoAcceptOn.setNeedsDisplay()
+                    
+                } else {
+                    self.btnAutoAcceptOff.off = true
+                    self.btnAutoAcceptOff.setNeedsDisplay()
+                    self.btnAutoAcceptOn.on = false
+                    self.btnAutoAcceptOn.setNeedsDisplay()
+                }
+            })
+        })
+        ///Inflate animation
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: {
+                    self.marginSuggestAutoAcceptTop.constant = self.marginSuggestAutoAcceptTopInflatedConstant
+                    self.suggestAutoAcceptHeight.constant = self.suggestAutoAcceptHeightConstantInflated
+                    self.btnAutoAcceptOff.setNeedsDisplay()
+                    self.btnAutoAcceptOn.setNeedsDisplay()
+                    self.btnAutoAcceptOff.enabled = true
+                    self.btnAutoAcceptOn.enabled = true
+                    self.btnAutoAcceptOff.alpha = 1.0
+                    self.btnAutoAcceptOn.alpha = 1.0
+                    self.lblSuggestAutoAccept.alpha = 1.0
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                    }, completion: { (success:Bool) in
+                        println("signal 3")
+                        dispatch_semaphore_signal(self.animationSemaphore)
+                })
+            })
+        })
+        
+    }
+    
+    private func deflateAutoAcceptButtons() {
+        ///deflate animation
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
+            dispatch_async(dispatch_get_main_queue(), {
+                UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: {
+                    self.marginSuggestAutoAcceptTop.constant = self.marginSuggestAutoAcceptTopDeflatedConstant
+                    self.suggestAutoAcceptHeight.constant = self.suggestAutoAcceptHeightConstantDeflated
+                    self.btnAutoAcceptOff.enabled = false
+                    self.btnAutoAcceptOff.alpha = 0.0
+                    self.btnAutoAcceptOn.alpha = 0.0
+                    self.btnAutoAcceptOn.enabled = false
+                    self.lblSuggestAutoAccept.alpha = 0.0
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                    }, completion: { (success:Bool) in
+                        println("signal 3")
+                        dispatch_semaphore_signal(self.animationSemaphore)
+                })
+            })
+        })
+        
+    }
+    
+    @IBAction func pressedAutoAcceptOff(sender: AnyObject) {
+        println("off2")
+        dispatch_async(dispatch_get_main_queue(), {
+            self.btnAutoAcceptOff.off = true
+            self.btnAutoAcceptOff.setNeedsDisplay()
+            self.btnAutoAcceptOn.on = false
+            self.btnAutoAcceptOn.setNeedsDisplay()
+        })
+        
+        ConnectionHandler.updateAutoAccept(false, finalCallBack: {
+            (success:Bool, error:String?) in
+            if success {
+                // do nothing
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.btnAutoAcceptOn.on = true
+                    self.btnAutoAcceptOff.off = false
+                    self.btnAutoAcceptOn.setNeedsDisplay()
+                    self.btnAutoAcceptOff.setNeedsDisplay()
+                })
+                
+            }
+        })
+    }
+    @IBAction func pressedAutoAcceptOn(sender: AnyObject) {
+        println("on2")
+        dispatch_async(dispatch_get_main_queue(), {
+            self.btnAutoAcceptOn.on = true
+            self.btnAutoAcceptOn.setNeedsDisplay()
+            self.btnAutoAcceptOff.off = false
+            self.btnAutoAcceptOff.setNeedsDisplay()
+        })
+        
+        ConnectionHandler.updateAutoAccept(true, finalCallBack: {
+            (success:Bool, error:String?) in
+            if success {
+                // do nothing
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.btnAutoAcceptOff.off = true
+                    self.btnAutoAcceptOn.on = false
+                    self.btnAutoAcceptOff.setNeedsDisplay()
+                    self.btnAutoAcceptOn.setNeedsDisplay()
+                })
+                
+            }
+        })
+
     }
     
     

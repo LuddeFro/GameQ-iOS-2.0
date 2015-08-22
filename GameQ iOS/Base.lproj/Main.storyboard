@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5F-L9-JHb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5F-L9-JHb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -275,7 +275,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4o-HE-Yb6" customClass="SubmitButton" customModule="GameQ" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4o-HE-Yb6">
                                 <rect key="frame" x="221" y="287" width="69" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="To9-iP-DY7"/>
@@ -326,15 +326,6 @@
                                     <action selector="pressedFacebook:" destination="4cz-lt-BXL" eventType="touchUpInside" id="x58-T1-1UA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwI-BA-jh0" customClass="TwitterButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="120" y="321" width="60" height="60"/>
-                                <state key="normal" image="twitterIcon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedTwitter:" destination="4cz-lt-BXL" eventType="touchUpInside" id="aTt-99-4Bi"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfM-so-Ltx" customClass="MailButton" customModule="GameQ" customModuleProvider="target">
                                 <rect key="frame" x="195" y="321" width="60" height="60"/>
                                 <state key="normal" image="emailIconWhite">
@@ -348,7 +339,7 @@
                                 <rect key="frame" x="0.0" y="540" width="300" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBF-cT-dMo" customClass="LogOutButton" customModule="GameQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBF-cT-dMo">
                                 <rect key="frame" x="70" y="555" width="160" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="bb0-AE-KoC"/>
@@ -376,7 +367,7 @@
                                     <action selector="pressedOffButtonOne:" destination="4cz-lt-BXL" eventType="touchUpInside" id="SgN-58-Xrz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAh-jR-agw" customClass="SubmitButton" customModule="GameQ" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAh-jR-agw">
                                 <rect key="frame" x="221" y="356" width="69" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8wE-S6-Gik"/>
@@ -387,6 +378,15 @@
                                 </state>
                                 <connections>
                                     <action selector="pressedSubmitPassword:" destination="4cz-lt-BXL" eventType="touchUpInside" id="lgr-Ug-TdW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwI-BA-jh0" customClass="TwitterButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="120" y="321" width="60" height="60"/>
+                                <state key="normal" image="twitterIcon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedTwitter:" destination="4cz-lt-BXL" eventType="touchUpInside" id="aTt-99-4Bi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -556,7 +556,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="1cG-Su-1dH" customClass="ReadyTimer" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="185" y="205" width="230" height="230"/>
+                                <rect key="frame" x="185" y="182" width="230" height="230"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1w0-3n-Xjp" customClass="QueueTimer" customModule="GameQ" customModuleProvider="target">
                                         <rect key="frame" x="30" y="30" width="170" height="170"/>
@@ -589,7 +589,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vva-BU-mlM">
-                                <rect key="frame" x="150" y="170" width="300" height="300"/>
+                                <rect key="frame" x="150" y="147" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzr-pJ-XIb">
                                         <rect key="frame" x="0.0" y="148" width="30" height="3"/>
@@ -648,7 +648,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heroes of the Storm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-wp-gZZ">
-                                <rect key="frame" x="15" y="540" width="570" height="30"/>
+                                <rect key="frame" x="15" y="517" width="570" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="A97-Lq-b8e"/>
                                 </constraints>
@@ -657,14 +657,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="GameQLogo" translatesAutoresizingMaskIntoConstraints="NO" id="P5Z-zM-bQs">
-                                <rect key="frame" x="236" y="30" width="120" height="120"/>
+                                <rect key="frame" x="247.5" y="30" width="97" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="P5Z-zM-bQs" secondAttribute="height" multiplier="1:1" id="3TY-EP-wfd"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="N3A-Lf-iiU"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niE-dl-fAT" customClass="DeclineQueueButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="307" y="585" width="262.5" height="0.0"/>
+                                <rect key="frame" x="307" y="562" width="262.5" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="DHS-9D-eMt"/>
                                 </constraints>
@@ -675,8 +675,8 @@
                                     <action selector="pressedDecline:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hxk-gI-HgO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHG-pJ-TbN" customClass="AcceptQueueButton" customModule="GameQ" customModuleProvider="target">
-                                <rect key="frame" x="30" y="584" width="262.5" height="0.0"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHG-pJ-TbN" customClass="AcceptQueueButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="30" y="562" width="262.5" height="0.0"/>
                                 <state key="normal" title="Accept">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -685,23 +685,59 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BQ-jk-UVm">
-                                <rect key="frame" x="15" y="500" width="570" height="30"/>
+                                <rect key="frame" x="15" y="477" width="570" height="30"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzC-cd-G6P" userLabel="AutoOn" customClass="OnButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="263" y="555" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3qS-Qr-oB2"/>
+                                    <constraint firstAttribute="width" constant="30" id="oj2-Jt-Fel"/>
+                                    <constraint firstAttribute="width" secondItem="PzC-cd-G6P" secondAttribute="height" multiplier="1:1" id="qyn-7G-21q"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedAutoAcceptOn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hl1-ly-uLR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept time is short, use auto accept?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqf-qd-hEL">
+                                <rect key="frame" x="113" y="547" width="375" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Hq7-8G-VGk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BH-jQ-vbt" userLabel="AutoOff" customClass="OffButton" customModule="GameQ" customModuleProvider="target">
+                                <rect key="frame" x="308" y="555" width="30" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedAutoAcceptOff:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bBb-hb-4dw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tJe-wp-gZZ" secondAttribute="trailing" constant="15" id="1n3-AZ-kra"/>
                             <constraint firstItem="P5Z-zM-bQs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="2XY-Qc-O1F"/>
+                            <constraint firstAttribute="centerX" secondItem="cqf-qd-hEL" secondAttribute="centerX" id="51S-dU-6M4"/>
                             <constraint firstItem="7BQ-jk-UVm" firstAttribute="top" secondItem="Vva-BU-mlM" secondAttribute="bottom" constant="30" id="5bC-Kj-0n3"/>
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="height" secondItem="hZP-Gz-4fD" secondAttribute="height" id="6Fb-BM-Qcf"/>
+                            <constraint firstItem="6BH-jQ-vbt" firstAttribute="trailing" secondItem="cqf-qd-hEL" secondAttribute="trailing" constant="-150" id="6ih-ET-CUy"/>
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="centerY" secondItem="hZP-Gz-4fD" secondAttribute="centerY" id="6o8-VZ-4B4"/>
+                            <constraint firstItem="PzC-cd-G6P" firstAttribute="height" secondItem="6BH-jQ-vbt" secondAttribute="height" id="8Ro-vf-63n"/>
                             <constraint firstAttribute="centerY" secondItem="Vva-BU-mlM" secondAttribute="centerY" priority="999" constant="-50" id="9ex-id-cVM"/>
                             <constraint firstItem="HHG-pJ-TbN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="EHr-t5-YSe"/>
                             <constraint firstItem="Vva-BU-mlM" firstAttribute="top" secondItem="P5Z-zM-bQs" secondAttribute="bottom" constant="20" id="GAN-9i-Nrd"/>
                             <constraint firstItem="HHG-pJ-TbN" firstAttribute="centerY" secondItem="niE-dl-fAT" secondAttribute="centerY" id="Hl5-wb-KPP"/>
+                            <constraint firstItem="PzC-cd-G6P" firstAttribute="width" secondItem="6BH-jQ-vbt" secondAttribute="width" id="JJ4-UC-sVx"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="niE-dl-fAT" secondAttribute="bottom" constant="15" id="JQ2-Sk-7sM"/>
                             <constraint firstItem="tJe-wp-gZZ" firstAttribute="top" secondItem="7BQ-jk-UVm" secondAttribute="bottom" constant="10" id="MdG-fH-LjH"/>
                             <constraint firstItem="niE-dl-fAT" firstAttribute="top" secondItem="tJe-wp-gZZ" secondAttribute="bottom" constant="15" id="Pmb-tD-Cv2"/>
@@ -709,9 +745,15 @@
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="centerX" secondItem="hZP-Gz-4fD" secondAttribute="centerX" id="Ub8-D6-XST"/>
                             <constraint firstItem="niE-dl-fAT" firstAttribute="leading" secondItem="HHG-pJ-TbN" secondAttribute="trailing" constant="15" id="W0I-t4-dHa"/>
                             <constraint firstItem="HHG-pJ-TbN" firstAttribute="height" secondItem="niE-dl-fAT" secondAttribute="height" id="XGo-zf-BcJ"/>
+                            <constraint firstItem="PzC-cd-G6P" firstAttribute="centerY" secondItem="6BH-jQ-vbt" secondAttribute="centerY" id="cxl-Mh-SuR"/>
                             <constraint firstAttribute="centerX" secondItem="P5Z-zM-bQs" secondAttribute="centerX" constant="4" id="f0Y-nd-QJ2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PzC-cd-G6P" secondAttribute="bottom" constant="15" id="fFV-8J-Upe"/>
+                            <constraint firstItem="PzC-cd-G6P" firstAttribute="leading" secondItem="cqf-qd-hEL" secondAttribute="leading" constant="150" id="il0-EY-3TI"/>
                             <constraint firstItem="7BQ-jk-UVm" firstAttribute="height" secondItem="tJe-wp-gZZ" secondAttribute="height" id="ka3-vj-6yk"/>
                             <constraint firstAttribute="centerX" secondItem="Vva-BU-mlM" secondAttribute="centerX" id="kwt-WX-evU"/>
+                            <constraint firstItem="cqf-qd-hEL" firstAttribute="top" secondItem="tJe-wp-gZZ" secondAttribute="bottom" id="lTy-f8-lzX"/>
+                            <constraint firstItem="6BH-jQ-vbt" firstAttribute="leading" secondItem="PzC-cd-G6P" secondAttribute="trailing" constant="15" id="oSr-Fs-beZ"/>
+                            <constraint firstItem="PzC-cd-G6P" firstAttribute="top" secondItem="cqf-qd-hEL" secondAttribute="bottom" constant="8" id="px2-Hl-9zu"/>
                             <constraint firstItem="HHG-pJ-TbN" firstAttribute="width" secondItem="niE-dl-fAT" secondAttribute="width" id="rAN-bD-PdV"/>
                             <constraint firstItem="1cG-Su-1dH" firstAttribute="width" secondItem="hZP-Gz-4fD" secondAttribute="width" id="rwK-Te-yBS"/>
                             <constraint firstAttribute="trailing" secondItem="7BQ-jk-UVm" secondAttribute="trailing" constant="15" id="unE-UR-oje"/>
@@ -726,6 +768,8 @@
                         <outlet property="bottomInnerCircleInset" destination="mRG-Dm-Y0o" id="2pn-iA-xx6"/>
                         <outlet property="bottomYConstraint" destination="JQ2-Sk-7sM" id="3BA-FS-Gmh"/>
                         <outlet property="btnAccept" destination="HHG-pJ-TbN" id="SpS-jt-jvc"/>
+                        <outlet property="btnAutoAcceptOff" destination="6BH-jQ-vbt" id="3Yj-rj-YN2"/>
+                        <outlet property="btnAutoAcceptOn" destination="PzC-cd-G6P" id="EVo-UF-138"/>
                         <outlet property="btnDecline" destination="niE-dl-fAT" id="9gG-Qx-T3l"/>
                         <outlet property="crossHair" destination="Vva-BU-mlM" id="92W-hW-C5r"/>
                         <outlet property="crosshairLength1" destination="5SW-VJ-qLQ" id="oJF-Av-ieH"/>
@@ -736,12 +780,15 @@
                         <outlet property="lblCountdown" destination="rpj-HY-4Rj" id="hGY-Zf-mvs"/>
                         <outlet property="lblGame" destination="7BQ-jk-UVm" id="DIa-dj-QRW"/>
                         <outlet property="lblStatus" destination="tJe-wp-gZZ" id="ZfG-ae-yXf"/>
+                        <outlet property="lblSuggestAutoAccept" destination="cqf-qd-hEL" id="Bmr-if-FYl"/>
                         <outlet property="leftCrosshairArm" destination="Rzr-pJ-XIb" id="zep-n4-ckn"/>
                         <outlet property="leftInnerCircleInset" destination="HuK-x4-Isw" id="grT-Q2-2OI"/>
+                        <outlet property="marginSuggestAutoAcceptTop" destination="lTy-f8-lzX" id="zOY-p5-5G4"/>
                         <outlet property="readyTimer" destination="1cG-Su-1dH" id="Ats-Fe-vdz"/>
                         <outlet property="rightCrosshairArm" destination="TbD-6z-NmM" id="QiH-lS-OF5"/>
                         <outlet property="rightInnerCircleInset" destination="p0D-6L-hsE" id="6fA-eE-SjI"/>
                         <outlet property="spinner" destination="1w0-3n-Xjp" id="3Qn-qn-KBw"/>
+                        <outlet property="suggestAutoAcceptHeight" destination="Hq7-8G-VGk" id="qZi-uv-hb6"/>
                         <outlet property="thirdYConstraint" destination="5bC-Kj-0n3" id="hFE-JI-AlO"/>
                         <outlet property="topCrosshairArm" destination="38M-f2-Csr" id="vma-lu-YGf"/>
                         <outlet property="topInnerCircleInset" destination="s8e-zd-Np6" id="rj4-pM-Rcs"/>
