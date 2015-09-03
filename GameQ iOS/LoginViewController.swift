@@ -175,7 +175,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 self.createMainView()
                             }
                         } else {
-                            self.lblStatus.text = error!
+                            if let e = error {
+                                self.lblStatus.text = e
+                            } else {
+                                self.lblStatus.text = "An unknown error occured"
+                            }
                         }
                     }
                 })
