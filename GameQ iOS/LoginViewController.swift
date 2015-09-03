@@ -89,7 +89,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             self.lblStatus.text = "A new password has been sent to your e-mail address."
                             self.lblStatus.textColor = Colors().LightBlue
                         } else {
-                            self.lblStatus.text = error!
+                            if let e = error {
+                                self.lblStatus.text = e
+                            } else {
+                                self.lblStatus.text = "An unknown error occured"
+                            }
                             self.lblStatus.textColor = Colors().Orange
                         }
                     }
@@ -133,7 +137,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 self.createMainView()
                             }
                         } else {
-                            self.lblStatus.text = error!
+                            if let e = error {
+                                self.lblStatus.text = e
+                            } else {
+                                self.lblStatus.text = "An unknown error occured"
+                            }
                         }
                     }
                 })
