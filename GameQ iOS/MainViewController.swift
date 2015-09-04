@@ -513,8 +513,8 @@ class MainViewController: UIViewController {
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
             dispatch_async(dispatch_get_main_queue(), {
                 self.deflateAccept(0, duration: 0.4)
-                self.deflateDecline(0, duration: 1)
-                self.deflateAcceptButtonHeights(1)
+                self.deflateDecline(0, duration: 0.75)
+                self.deflateAcceptButtonHeights(0.7)
             })
         })
     }
@@ -524,8 +524,8 @@ class MainViewController: UIViewController {
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
             dispatch_async(dispatch_get_main_queue(), {
                 self.deflateDecline(0, duration: 0.4)
-                self.deflateAccept(0, duration: 1)
-                self.deflateAcceptButtonHeights(1)
+                self.deflateAccept(0, duration: 0.75)
+                self.deflateAcceptButtonHeights(0.7)
             })
         })
         
@@ -544,7 +544,7 @@ class MainViewController: UIViewController {
             }, completion: nil)
     }
     private func deflateAcceptButtonHeights(delay:NSTimeInterval) {
-        UIView.animateWithDuration(1, delay: delay, options: .CurveEaseInOut, animations: {
+        UIView.animateWithDuration(0.5, delay: delay, options: .CurveEaseInOut, animations: {
             self.acceptButtonHeight.constant = self.acceptButtonHeightDeflated
             self.view.layoutIfNeeded()
             }, completion: { (success:Bool) in
@@ -602,7 +602,7 @@ class MainViewController: UIViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
             dispatch_async(dispatch_get_main_queue(), {
-                UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: {
+                UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseInOut, animations: {
                     self.marginSuggestAutoAcceptTop.constant = self.marginSuggestAutoAcceptTopInflatedConstant
                     self.suggestAutoAcceptHeight.constant = self.suggestAutoAcceptHeightConstantInflated
                     self.btnAutoAcceptOff.setNeedsDisplay()
@@ -628,7 +628,7 @@ class MainViewController: UIViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
             dispatch_async(dispatch_get_main_queue(), {
-                UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: {
+                UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseInOut, animations: {
                     self.marginSuggestAutoAcceptTop.constant = self.marginSuggestAutoAcceptTopDeflatedConstant
                     self.suggestAutoAcceptHeight.constant = self.suggestAutoAcceptHeightConstantDeflated
                     self.btnAutoAcceptOff.enabled = false
