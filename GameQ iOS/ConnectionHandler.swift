@@ -159,6 +159,7 @@ class ConnectionHandler : NSObject {
                     }
                 } else {
                     println("json parse fail")
+                    err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
@@ -193,6 +194,7 @@ class ConnectionHandler : NSObject {
                 }
             } else {
                 println("json parse fail")
+                err = "Connection failure"
             }
             self.saveEmail("")
             self.savePassword("")
@@ -238,6 +240,7 @@ class ConnectionHandler : NSObject {
                 }
             } else {
                 println("json parse fail")
+                err = "Connection failure"
             }
             
             finalCallBack(success: success, err: err)
@@ -286,6 +289,7 @@ class ConnectionHandler : NSObject {
                 }
             } else {
                 println("json parse fail")
+                err = "Connection failure"
             }
             finalCallBack(success: success, err: err, status:status, game:game, acceptBefore:acceptBefore)
         })
@@ -319,6 +323,7 @@ class ConnectionHandler : NSObject {
                 }
             } else {
                 println("json parse fail")
+                err = "Connection failure"
             }
             
             finalCallBack(success: success, err: err)
@@ -352,6 +357,7 @@ class ConnectionHandler : NSObject {
                     }
                 } else {
                     println("json parse fail")
+                    err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
@@ -387,6 +393,7 @@ class ConnectionHandler : NSObject {
                 }
             } else {
                 println("json parse fail")
+                err = "Connection failure"
             }
             
             finalCallBack(success: success, err: err, newestVersion:newestVersion, link:downloadLink)
@@ -416,6 +423,7 @@ class ConnectionHandler : NSObject {
                     }
                 } else {
                     println("json parse fail")
+                    err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
@@ -458,6 +466,7 @@ class ConnectionHandler : NSObject {
                     }
                 } else {
                     println("json parse fail")
+                    err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
                 finalCallBack(success: success, err: err)
@@ -486,6 +495,7 @@ class ConnectionHandler : NSObject {
                 }
             } else {
                 println("json parse fail")
+                err = "Connection failure"
             }
             
             finalCallBack(success: success, err: err)
@@ -536,6 +546,7 @@ class ConnectionHandler : NSObject {
                     }
                 } else {
                     println("json parse fail")
+                    err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
                 if self.autoAccepts != enabled {
@@ -577,6 +588,7 @@ class ConnectionHandler : NSObject {
                     }
                 } else {
                     println("json parse fail")
+                    err = "Connection failure"
                     self.autoAccepts = previousSetting
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
