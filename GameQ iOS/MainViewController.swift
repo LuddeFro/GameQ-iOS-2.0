@@ -313,7 +313,7 @@ class MainViewController: UIViewController {
         animateThis({
             
             self.lblCountdown.text = ""
-            self.lblCountdown.stopPulsating()
+            
         })
         
         if let ll = deflateLeft {
@@ -361,9 +361,7 @@ class MainViewController: UIViewController {
         totalCountdown = endTime - startTime
         tmrCountdown.invalidate()
         tmrCountdown = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("decrement"), userInfo: nil, repeats: true)
-        animateThis({
-            self.lblCountdown.startPulsating(Colors().LightBlue)
-        })
+        
     }
     
     func restartReadyCountdown(to:Int) {
@@ -387,9 +385,7 @@ class MainViewController: UIViewController {
         totalCountdown = endTime - startTime
         tmrCountdown.invalidate()
         tmrCountdown = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("decrement"), userInfo: nil, repeats: true)
-        animateThis({
-            self.lblCountdown.startPulsating(Colors().LightBlue)
-        })
+        
     }
     
     func decrement() {
@@ -414,14 +410,12 @@ class MainViewController: UIViewController {
             })
             tmrCountdown.invalidate()
             bolTimerRunning = false
+            deflateAcceptButtons()
         } else {
             animateThis({
                 self.lblCountdown.text = "\(self.endTime - Int(NSDate().timeIntervalSince1970))"
             })
         }
-        animateThis({
-            self.lblCountdown.stopPulsating()
-        })
     }
     
     private func setCrosshairColor(color:UIColor)->() {
