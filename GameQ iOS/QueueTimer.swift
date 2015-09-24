@@ -22,9 +22,9 @@ class QueueTimer: UIView {
     override func drawRect(dirtyRect: CGRect) {
         
         
-        var rect:CGRect = circleFrame()
+        let rect:CGRect = circleFrame()
         
-        var path = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
+        let path = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
         
         path.lineWidth = lineWidth
         Colors().fadedTimerGray.setStroke()
@@ -35,16 +35,16 @@ class QueueTimer: UIView {
         path.stroke()
         
         if(isRotating){
-            var path2 = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: -π/4, clockwise: true)
+            let path2 = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: -π/4, clockwise: true)
             path2.lineWidth = lineWidth
             Colors().Orange.setStroke()
             path2.stroke()
         }
     }
     
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         if self.isRotating == true {
-            self.rotate360Degrees(duration: 4, completionDelegate: self)
+            self.rotate360Degrees(4, completionDelegate: self)
         } else {
             self.reset()
         }
@@ -56,7 +56,7 @@ class QueueTimer: UIView {
         self.backgroundColor = UIColor.clearColor()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         circleRadius = frame.width / 4 - 10
         self.backgroundColor = UIColor.clearColor()
@@ -67,7 +67,7 @@ class QueueTimer: UIView {
         if(isRotating == false){
             self.isRotating = true
             self.setNeedsDisplay()
-            self.rotate360Degrees(duration: 4, completionDelegate: self)
+            self.rotate360Degrees(4, completionDelegate: self)
         }
     }
     
@@ -106,7 +106,7 @@ class QueueTimer: UIView {
     }
     
     func circlePath() -> UIBezierPath {
-        var rect:CGRect = circleFrame()
+        let rect:CGRect = circleFrame()
         return UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
     }
 }

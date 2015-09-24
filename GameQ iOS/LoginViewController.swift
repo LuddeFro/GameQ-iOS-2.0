@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Fabian Wikström on 6/27/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import Foundation
@@ -76,12 +76,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func pressedTopButton(sender: AnyObject) {
         if bolReportingForgottenPassword {
             //reporting forgotten pass
-            if !txtEmail.text.validEmail() {
+            if !txtEmail.text!.validEmail() {
                 lblStatus.text = "Invalid e-mail address."
                 lblStatus.textColor = Colors().Orange
             } else {
                 disableAll()
-                ConnectionHandler.forgotPassword(txtEmail.text, finalCallBack: {
+                ConnectionHandler.forgotPassword(txtEmail.text!, finalCallBack: {
                     (success:Bool, error:String?) in
                     dispatch_async(dispatch_get_main_queue()) {
                         self.enableAll()
@@ -103,9 +103,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         } else if bolSigningUp {
             //signing up
-            if !txtEmail.text.validEmail() {
+            if !txtEmail.text!.validEmail() {
                 lblStatus.text = "Invalid e-mail address."
-            } else if !txtPassword.text.validPassword() {
+            } else if !txtPassword.text!.validPassword() {
                 lblStatus.text = "Invalid password, must contain at least 6 characters."
                 txtPassword.text = ""
             } else if txtPassword.text != txtConfirmPassword.text {
@@ -114,13 +114,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 txtConfirmPassword.text = ""
             } else {
                 disableAll()
-                ConnectionHandler.register(txtEmail.text, password: txtPassword.text, finalCallBack: {
+                ConnectionHandler.register(txtEmail.text!, password: txtPassword.text!, finalCallBack: {
                     (success:Bool, error:String?) in
                     dispatch_async(dispatch_get_main_queue()) {
                         self.enableAll()
                         if success {
                             if ConnectionHandler.firstLaunch() {
-                                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
                                 tutViewController.delegate = tutViewController
                                 tutViewController.dataSource = tutViewController
@@ -131,7 +131,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 
                                 tutViewController.setViewControllers([tutViewController1], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
                                     (success:Bool) in
-                                    println("setup pageController")
+                                    print("setup pageController")
                                 })
                             } else {
                                 self.createMainView()
@@ -149,24 +149,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             //signing in
-            if !txtEmail.text.validEmail() {
+            if !txtEmail.text!.validEmail() {
                 lblStatus.text = "Invalid e-mail address."
-            } else if !txtPassword.text.validPassword() {
+            } else if !txtPassword.text!.validPassword() {
                 lblStatus.text = "Invalid password, must contain at least 6 characters."
                 txtPassword.text = ""
             } else {
                 disableAll()
-                println("trying login")
-                ConnectionHandler.login(txtEmail.text, password: txtPassword.text, finalCallBack: {
+                print("trying login")
+                ConnectionHandler.login(txtEmail.text!, password: txtPassword.text!, finalCallBack: {
                     (success:Bool, error:String?) in
-                    println("returned from login")
+                    print("returned from login")
                     self.enableAll()
                     dispatch_async(dispatch_get_main_queue()) {
                         self.enableAll()
                         if success {
                             //go to main menu
                             if ConnectionHandler.firstLaunch() {
-                                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
                                 tutViewController.delegate = tutViewController
                                 tutViewController.dataSource = tutViewController
@@ -177,7 +177,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 
                                 tutViewController.setViewControllers([tutViewController1], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
                                     (success:Bool) in
-                                    println("setup pageController")
+                                    print("setup pageController")
                                 })
                             } else {
                                 self.createMainView()
@@ -193,7 +193,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 })
             }
         }
-        println("top button pressed")
+        print("top button pressed")
     }
     
     @IBAction func pressedForgotPassword(sender: AnyObject) {
@@ -210,7 +210,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     func showSignUp() {
-        println("showS")
+        print("showS")
         UIView.setAnimationsEnabled(false)
 
         self.btnBottom.setTitle("Back", forState: UIControlState.Normal)
@@ -230,7 +230,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func hideSignUp() {
-        println("hideS")
+        print("hideS")
         self.txtConfirmPassword.text = ""
         UIView.setAnimationsEnabled(false)
         self.btnBottom.setTitle("Join", forState: UIControlState.Normal)
@@ -250,7 +250,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showForgotPassword() {
-        println("showF")
+        print("showF")
         UIView.setAnimationsEnabled(false)
         self.btnBottom.setTitle("Back", forState: UIControlState.Normal)
         self.btnTop.setTitle("Submit Email", forState: UIControlState.Normal)
@@ -269,7 +269,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func hideForgotPassword() {
-        println("hideF")
+        print("hideF")
         
         
         
@@ -315,7 +315,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func createMainView() {
         
         // create viewController code...
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
@@ -397,33 +397,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func keyboardWillShow(notification: NSNotification) {
         
         var info = notification.userInfo!
-        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        println("Will show")
-        println(UIScreen.mainScreen().bounds.height - 200)
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        print("Will show")
+        print(UIScreen.mainScreen().bounds.height - 200)
         
         
         if bolReportingForgottenPassword {
-            println("movingforgotten")
+            print("movingforgotten")
             if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtEmail.frame.origin.y + txtEmail.frame.height {
-                println("will move")
+                print("will move")
                 UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.bottomConstraint.constant = -(UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtEmail.frame.origin.y - self.txtEmail.frame.height)
                     self.view.layoutIfNeeded()
                 })
             }
         } else if bolSigningUp {
-            println("movingsignup")
+            print("movingsignup")
             if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtConfirmPassword.frame.origin.y + txtConfirmPassword.frame.height {
-                println("will move")
+                print("will move")
                 UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.bottomConstraint.constant = -(UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtConfirmPassword.frame.origin.y - self.txtConfirmPassword.frame.height)
                     self.view.layoutIfNeeded()
                 })
             }
         } else {
-            println("movingsignin")
+            print("movingsignin")
             if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtPassword.frame.origin.y + txtPassword.frame.height {
-                println("will move")
+                print("will move")
                 UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.bottomConstraint.constant = -(UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtPassword.frame.origin.y - self.txtPassword.frame.height)
                     self.view.layoutIfNeeded()
@@ -439,8 +439,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        var info = notification.userInfo!
-        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+//        var info = notification.userInfo!
+//        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.bottomConstraint.constant = 5

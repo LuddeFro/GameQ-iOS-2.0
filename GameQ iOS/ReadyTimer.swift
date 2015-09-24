@@ -33,9 +33,9 @@ class ReadyTimer: UIView {
     }
     
     override func drawRect(dirtyRect: CGRect) {
-        var rect:CGRect = circleFrame()
+        let rect:CGRect = circleFrame()
         
-        var path = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
+        let path = UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
         
         path.lineWidth = lineWidth
         Colors().fadedTimerGray.setStroke()
@@ -47,7 +47,7 @@ class ReadyTimer: UIView {
         configure()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configure()
     }
@@ -78,7 +78,7 @@ class ReadyTimer: UIView {
     }
     
     func circlePath() -> UIBezierPath {
-        var rect:CGRect = circleFrame()
+        let rect:CGRect = circleFrame()
         return UIBezierPath(arcCenter: CGPoint(x: CGRectGetMidX(rect), y:  CGRectGetMidY(rect)), radius: circleRadius, startAngle: -π/2, endAngle: (3.0*π/2.0), clockwise: true)
     }
 }

@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Fabian Wikström on 6/25/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import UIKit
@@ -18,16 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        println("launching")
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
-            UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        print("launching")
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
         
         application.registerForRemoteNotifications()
         application.setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
         application.statusBarStyle = UIStatusBarStyle.LightContent
         
         if let launchOs = launchOptions {
-            var alert = UIAlertController(title: "GameQ", message: launchOs.description, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "GameQ", message: launchOs.description, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
             
@@ -37,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if tmp.validEmail() {
                 
                 ////
-                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
                 let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
                 let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
@@ -61,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         } else {
                             //if credentials no longer viable
                             //logout
-                            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
                             UIApplication.sharedApplication().delegate?.window?!.rootViewController = loginViewController
                             UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
@@ -89,27 +88,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Push notifications
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        println("got Push inApp")
-        var message:String = "Your queue has ended!"
-        println("what am i getting? \(userInfo)")
+        print("got Push inApp")
+//        var message:String = "Your queue has ended!"
+        print("what am i getting? \(userInfo)")
         if let aps:Dictionary<String, AnyObject> = userInfo["aps"] as AnyObject? as? Dictionary<String, AnyObject> {
-            println("aps dictionary constructed")
-            println("aps: \(aps)")
-            if let alert:String = aps["alert"] as? String {
-                message = alert
-            }
+            print("aps dictionary constructed")
+            print("aps: \(aps)")
+//            if let alert:String = aps["alert"] as? String {
+//                message = alert
+//            }
             if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
             {
                 //opened from a push notification when the app was on background
             } else {
                 if let sound:String = aps["sound"] as? String {
                     var soundID:SystemSoundID = SystemSoundID()
-                    let soundArr = split(sound) {$0 == "."}
+                    let soundArr = sound.characters.split {$0 == "."}.map { String($0) }
                     let path = NSBundle.mainBundle().pathForResource(soundArr[0], ofType: soundArr[1])
-                    var bodyf:NSFileHandle = NSFileHandle(forReadingAtPath: path!)!
-                    let body = bodyf.availableData
                     let url = NSURL(fileURLWithPath: path!, isDirectory: false)
-                    AudioServicesCreateSystemSoundID(url as! CFURLRef, &soundID)
+                    AudioServicesCreateSystemSoundID(url as CFURLRef, &soundID)
                     AudioServicesPlaySystemSound(soundID)
                 }
             }
@@ -117,8 +114,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if let acceptBefore:Int = userInfo["accept_before"] as AnyObject? as? Int {
             mainViewController.startReadyCountdown(acceptBefore)
-            println("accept time:")
-            println(acceptBefore - Int(NSDate().timeIntervalSince1970))
+            print("accept time:")
+            print(acceptBefore - Int(NSDate().timeIntervalSince1970))
         }
         /*
         var alert = UIAlertController(title: "GameQ", message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -127,13 +124,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("APNS register successful")
+        print("APNS register successful")
         
         let newToken:String = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "")
         if let oldToken:String = ConnectionHandler.loadToken() {
-            println("newToken: \(newToken) oldToken: \(oldToken)")
+            print("newToken: \(newToken) oldToken: \(oldToken)")
             if newToken == oldToken {
-                println("same old token as usual")
+                print("same old token as usual")
                 
                 //if token exists and is same, do nothing
                 return
@@ -144,12 +141,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     ConnectionHandler.updateToken(newToken, finalCallBack: {
                         (success:Bool, error:String?) in
                         if success {
-                            println("successfully updated token")
+                            print("successfully updated token")
                         } else {
-                            println("error: \(error)")
+                            print("error: \(error)")
                             dispatch_async(dispatch_get_main_queue(), {
-                                println("Unsuccessful token update")
-                                var alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)
+                                print("Unsuccessful token update")
+                                let alert = UIAlertController(title: "GameQ", message: "There were difficulties connecting to the server. Push notifications may not be received properly.", preferredStyle: UIAlertControllerStyle.Alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                                 self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
                             })
@@ -158,17 +155,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-            println("replacing old token \(oldToken) with new token \(newToken)")
+            print("replacing old token \(oldToken) with new token \(newToken)")
             return
         }
         
         ConnectionHandler.saveToken(newToken)
-        println("saving token")
+        print("saving token")
         return
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        println("APNS did fail to rgister for remote notifications with error: \(error)")
+        print("APNS did fail to rgister for remote notifications with error: \(error)")
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -200,7 +197,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "GameQ.GameQ_iOS" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -216,7 +213,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("GameQ_iOS.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        do {
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch var error1 as NSError {
+            error = error1
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -228,6 +228,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
+        } catch {
+            fatalError()
         }
         
         return coordinator
@@ -249,11 +251,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }

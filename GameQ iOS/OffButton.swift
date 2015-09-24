@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Fabian Wikström on 6/26/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import UIKit
@@ -24,7 +24,7 @@ import UIKit
         let plusWidth: CGFloat = min(bounds.width, bounds.height) * 0.6
         
         //create the path
-        var plusPath = UIBezierPath()
+        let plusPath = UIBezierPath()
         
         //set the path's line width to the height of the stroke
         plusPath.lineWidth = plusHeight

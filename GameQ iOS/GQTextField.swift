@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Ludvig Fröberg on 10/07/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import UIKit
@@ -23,7 +23,7 @@ class GQTextField: UITextField {
         self.addSubview(lblStatus)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         lblStatus.frame = CGRectMake(70, 10, self.frame.width-80, 10)
         lblStatus.textAlignment = NSTextAlignment.Right
@@ -50,7 +50,7 @@ class GQTextField: UITextField {
         self.layer.backgroundColor = UIColor.clearColor().CGColor
         self.backgroundColor  = UIColor.clearColor()
         
-        var attrString:NSMutableAttributedString = NSMutableAttributedString(string: self.placeholder!)
+        let attrString:NSMutableAttributedString = NSMutableAttributedString(string: self.placeholder!)
         attrString.addAttribute(NSForegroundColorAttributeName, value: Colors().MenuTextGray, range: NSMakeRange(0, attrString.length))
         self.attributedPlaceholder = attrString
         self.textColor = UIColor.whiteColor()

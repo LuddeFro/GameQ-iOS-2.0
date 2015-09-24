@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Ludvig Fröberg on 13/07/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import UIKit
@@ -45,15 +45,15 @@ class TutorialPageController: UIPageViewController, UIPageViewControllerDelegate
     // MARK: - Datasource (required)
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         if viewController.isKindOfClass(TutorialController1) {
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tutViewController = storyboard.instantiateViewControllerWithIdentifier("Tutorial2") as! TutorialController2
             return tutViewController
         } else if viewController.isKindOfClass(TutorialController2) {
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tutViewController = storyboard.instantiateViewControllerWithIdentifier("Tutorial3") as! TutorialController3
             return tutViewController
         } else if viewController.isKindOfClass(TutorialController3) {
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tutViewController = storyboard.instantiateViewControllerWithIdentifier("Tutorial4") as! TutorialController4
             return tutViewController
         } else if viewController.isKindOfClass(TutorialController4) {
@@ -70,15 +70,15 @@ class TutorialPageController: UIPageViewController, UIPageViewControllerDelegate
             if pageCount == 3 {
                 return nil
             }
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tutViewController = storyboard.instantiateViewControllerWithIdentifier("Tutorial1") as! TutorialController1
             return tutViewController
         } else if viewController.isKindOfClass(TutorialController3) {
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tutViewController = storyboard.instantiateViewControllerWithIdentifier("Tutorial2") as! TutorialController2
             return tutViewController
         } else if viewController.isKindOfClass(TutorialController4) {
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tutViewController = storyboard.instantiateViewControllerWithIdentifier("Tutorial3") as! TutorialController3
             return tutViewController
         } else {

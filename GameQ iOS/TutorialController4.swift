@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Ludvig Fröberg on 13/07/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import UIKit
@@ -25,7 +25,7 @@ class TutorialController4: UIViewController {
     @IBOutlet weak var lblBreadText: UILabel!
     @IBOutlet weak var imageTut: UIImageView!
     @IBAction func pressedBackToMain(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController

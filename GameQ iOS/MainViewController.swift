@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Fabian Wikström on 6/25/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import UIKit
@@ -293,9 +293,9 @@ class MainViewController: UIViewController {
                 CATransaction.setCompletionBlock({
                     dispatch_semaphore_signal(self.animationSemaphore)
                 })
-                var ba:CABasicAnimation = CABasicAnimation(keyPath: "")
                 
                 
+//                var ba:CABasicAnimation = CABasicAnimation(keyPath: "")
 //                CABasicAnimation *animation =
 //                    [CABasicAnimation animationWithKeyPath:@"position"];
 //                [animation setFromValue:[NSValue valueWithPoint:startPoint]];
@@ -401,7 +401,7 @@ class MainViewController: UIViewController {
     
     private func decrementCountdownLabel() {
         lblCountdown.alpha = 1.0
-        UIView.animateWithDuration(1, delay: 0, options:nil, animations: {
+        UIView.animateWithDuration(1, delay: 0, options:[], animations: {
             self.lblCountdown.alpha = 0
             }, completion: nil)
         if endTime - Int(NSDate().timeIntervalSince1970) < 0 {
@@ -427,7 +427,7 @@ class MainViewController: UIViewController {
     
     private func startRotateCrosshair() {
         if bolCrosshairRotationShouldStop {
-            crossHair.setTranslatesAutoresizingMaskIntoConstraints(false)
+            crossHair.translatesAutoresizingMaskIntoConstraints = false
             bolCrosshairRotationShouldStop = false
             rotateOnce(false)
         }
@@ -462,7 +462,7 @@ class MainViewController: UIViewController {
     
     private func inflateAcceptButtons() {
         //        println("infalting buttons")
-        println("waiting 3")
+        print("waiting 3")
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
@@ -477,7 +477,7 @@ class MainViewController: UIViewController {
                     self.btnDecline.enabled = true
                     self.view.layoutIfNeeded()
                     }, completion: { (success:Bool) in
-                        println("signal 3")
+                        print("signal 3")
                         dispatch_semaphore_signal(self.animationSemaphore)
                 })
             })
@@ -489,7 +489,7 @@ class MainViewController: UIViewController {
     
     private func deflateAcceptButtons() {
         //        println("deflating buttons")
-        println("waiting 4")
+        print("waiting 4")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
             dispatch_async(dispatch_get_main_queue(), {
@@ -502,7 +502,7 @@ class MainViewController: UIViewController {
     }
     
     private func deflateAcceptButtonFirst() {
-        println("waiting 5")
+        print("waiting 5")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
             dispatch_async(dispatch_get_main_queue(), {
@@ -513,7 +513,7 @@ class MainViewController: UIViewController {
         })
     }
     private func deflateDeclineButtonFirst() {
-        println("waiting 6")
+        print("waiting 6")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             dispatch_semaphore_wait(self.animationSemaphore, DISPATCH_TIME_FOREVER)
             dispatch_async(dispatch_get_main_queue(), {
@@ -542,7 +542,7 @@ class MainViewController: UIViewController {
             self.acceptButtonHeight.constant = self.acceptButtonHeightDeflated
             self.view.layoutIfNeeded()
             }, completion: { (success:Bool) in
-                println("signal 456")
+                print("signal 456")
                 dispatch_semaphore_signal(self.animationSemaphore)
                 
         })
@@ -609,7 +609,7 @@ class MainViewController: UIViewController {
                     self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
                     }, completion: { (success:Bool) in
-                        println("signal 3")
+                        print("signal 3")
                         dispatch_semaphore_signal(self.animationSemaphore)
                 })
             })
@@ -633,7 +633,7 @@ class MainViewController: UIViewController {
                     self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
                     }, completion: { (success:Bool) in
-                        println("signal 3")
+                        print("signal 3")
                         dispatch_semaphore_signal(self.animationSemaphore)
                 })
             })
@@ -642,7 +642,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func pressedAutoAcceptOff(sender: AnyObject) {
-        println("off2")
+        print("off2")
         dispatch_async(dispatch_get_main_queue(), {
             self.btnAutoAcceptOff.off = true
             self.btnAutoAcceptOff.setNeedsDisplay()
@@ -666,7 +666,7 @@ class MainViewController: UIViewController {
         })
     }
     @IBAction func pressedAutoAcceptOn(sender: AnyObject) {
-        println("on2")
+        print("on2")
         dispatch_async(dispatch_get_main_queue(), {
             self.btnAutoAcceptOn.on = true
             self.btnAutoAcceptOn.setNeedsDisplay()

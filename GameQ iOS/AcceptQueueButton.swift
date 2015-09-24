@@ -3,7 +3,7 @@
 //  GameQ iOS
 //
 //  Created by Ludvig Fröberg on 14/08/15.
-//  Copyright (c) 2015 Fabian Wikström. All rights reserved.
+//  Copyright (c) 2015 GameQ AB. All rights reserved.
 //
 
 import UIKit
@@ -21,7 +21,7 @@ import UIKit
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
         self.setTitleColor(Colors().NavGray, forState: UIControlState.Selected)
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
-        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
+        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState())
         self.layer.borderColor = Colors().readyGreen.CGColor
     }
 

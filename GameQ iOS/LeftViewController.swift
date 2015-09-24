@@ -58,8 +58,8 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     @IBAction func pressedMail(sender: AnyObject) {
         let emailTitle = "Contact from iOS"
         let body = "Dear GameQ Team, "
-        let recipients:[AnyObject] = ["contact@gameq.io"]
-        var mc:MFMailComposeViewController = MFMailComposeViewController()
+        let recipients:[String] = ["contact@gameq.io"]
+        let mc:MFMailComposeViewController = MFMailComposeViewController()
         mc.mailComposeDelegate = self
         mc.setSubject(emailTitle)
         mc.setMessageBody(body, isHTML: false)
@@ -85,7 +85,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         }
     }
     @IBAction func pressedFeedback(sender: AnyObject) {
-        println("pressed Feedback")
+        print("pressed Feedback")
         if bolGivingFeedback {
             hideFeedbackField()
         } else {
@@ -99,7 +99,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func pressedChangePassword(sender: AnyObject) {
-        println("pressed ChangePassword")
+        print("pressed ChangePassword")
         if bolChangingPassword {
             hideChangePasswordFields()
         } else {
@@ -113,9 +113,9 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func pressedTutorial(sender: AnyObject) {
-        println("pressed Tutorial")
+        print("pressed Tutorial")
         slideMenuController()?.closeLeftNonAnimation()
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tutViewController = storyboard.instantiateViewControllerWithIdentifier("TutorialPageControl") as! TutorialPageController
         tutViewController.pageCount = 3
         tutViewController.automaticallyAdjustsScrollViewInsets = false
@@ -128,7 +128,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         
         tutViewController.setViewControllers([tutViewController2], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: {
             (success:Bool) in
-            println("setup pageController")
+            print("setup pageController")
         })
         
         
@@ -136,27 +136,24 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func pressedSubmitPassword(sender: AnyObject) {
-        println("pressed SubmitPassword")
-        println(txtOldPassword.text.validPassword())
-        println(txtNewPassword.text.validPassword())
-        println(txtConfirmPassword.text != txtNewPassword.text)
+        print("pressed SubmitPassword")
         
-        if !txtOldPassword.text.validPassword() {
-            println("password to short")
+        if !txtOldPassword.text!.validPassword() {
+            print("password to short")
             hideErrors()
             txtOldPassword.showError("Password too short")
-        } else if !txtNewPassword.text.validPassword() {
-            println("password to short")
+        } else if !txtNewPassword.text!.validPassword() {
+            print("password to short")
             hideErrors()
             txtNewPassword.showError("Password too short")
         } else if txtConfirmPassword.text != txtNewPassword.text {
-            println("password to short")
+            print("password to short")
             hideErrors()
             txtConfirmPassword.showError("Password mismatch")
             txtNewPassword.showError("Password mismatch")
         } else {
             disableAll()
-            ConnectionHandler.updatePassword(ConnectionHandler.loadEmail()!, password: txtOldPassword.text, newPassword: txtNewPassword.text, finalCallBack: {
+            ConnectionHandler.updatePassword(ConnectionHandler.loadEmail()!, password: txtOldPassword.text!, newPassword: txtNewPassword.text!, finalCallBack: {
                 (success:Bool, error:String?) in
                 dispatch_async(dispatch_get_main_queue(), {
                     if success {
@@ -185,8 +182,8 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         txtConfirmPassword.hideError()
     }
     @IBAction func pressedSubmitFeedback(sender: AnyObject) {
-        println("pressed SubmitFeedback")
-        if count(txtFeedback.text) < 5 {
+        print("pressed SubmitFeedback")
+        if txtFeedback.text.characters.count < 5 {
             hideFeedbackField()
         } else {
             disableAll()
@@ -211,7 +208,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         txtOldPassword.resignFirstResponder()
     }
     @IBAction func pressedOnButtonOne(sender: OnButton) {
-        println("on1")
+        print("on1")
         dispatch_async(dispatch_get_main_queue(), {
             sender.on = true
             sender.setNeedsDisplay()
@@ -220,7 +217,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         })
         
         let actualToken:String? = ConnectionHandler.loadToken()
-        println("actual token: \(actualToken!)")
+        print("actual token: \(actualToken!)")
         ConnectionHandler.updateToken(actualToken!, finalCallBack: {
             (success:Bool, error:String?) in
             if success {
@@ -239,7 +236,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func pressedOffButtonOne(sender: OffButton) {
-        println("off1")
+        print("off1")
         self.offButtonOne.off = true
         self.onButtonOne.on = false
         self.offButtonOne.setNeedsDisplay()
@@ -264,7 +261,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func pressedOnButtonThree(sender: OnButton) {
-        println("on2")
+        print("on2")
         dispatch_async(dispatch_get_main_queue(), {
             sender.on = true
             sender.setNeedsDisplay()
@@ -289,7 +286,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func pressedOffButtonThree(sender: OffButton) {
-        println("off2")
+        print("off2")
         dispatch_async(dispatch_get_main_queue(), {
             sender.off = true
             sender.setNeedsDisplay()
@@ -324,9 +321,9 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
             dispatch_async(dispatch_get_main_queue(), {
                 self.enableAll()
                 if !success {
-                    println("logout error: \(error!)")
+                    print("logout error: \(error!)")
                 }
-                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
                 UIApplication.sharedApplication().delegate?.window?!.rootViewController = loginViewController
                 UIApplication.sharedApplication().delegate?.window?!.makeKeyAndVisible()
@@ -440,7 +437,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     var mainViewController: UIViewController!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -456,7 +453,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         txtFeedback.delegate = self
         if let smth = ConnectionHandler.loadOldToken() {
             if smth == LeftViewController.emptyString {
-                println("off1")
+                print("off1")
                 offButtonOne.off = true
                 offButtonOne.setNeedsDisplay()
                 onButtonOne.on = false
@@ -475,7 +472,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
         btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
         btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
-        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
+        btnLogout.setTitleColor(UIColor.whiteColor(), forState: UIControlState())
         btnLogout.layer.borderColor = Colors().Orange.CGColor
         
         btnSubmitFeedback.setTitle("Submit", forState: UIControlState.Normal)
@@ -488,7 +485,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
         btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
         btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
-        btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
+        btnSubmitFeedback.setTitleColor(UIColor.whiteColor(), forState: UIControlState())
         btnSubmitFeedback.layer.borderColor = Colors().Orange.CGColor
         btnSubmitFeedback.clipsToBounds = true
         
@@ -502,7 +499,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
         btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Disabled)
         btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
         btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Reserved)
-        btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState.allZeros)
+        btnSubmitPassword.setTitleColor(UIColor.whiteColor(), forState: UIControlState())
         btnSubmitPassword.layer.borderColor = Colors().Orange.CGColor
         btnSubmitPassword.clipsToBounds = true
         
@@ -536,7 +533,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let maskLayer = CAShapeLayer()
-        maskLayer.path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: .BottomRight | .TopRight, cornerRadii: CGSize(width: 10.0, height: 10.0)).CGPath
+        maskLayer.path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.BottomRight, .TopRight], cornerRadii: CGSize(width: 10.0, height: 10.0)).CGPath
         
         self.view.layer.mask = maskLayer;
         
@@ -578,7 +575,7 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     func textFieldDidBeginEditing(textField: UITextField) {
         btnResignFirstResponder.hidden = false
         currentTextField = textField
-        println("didbegin")
+        print("didbegin")
     }
     func textFieldDidEndEditing(textField: UITextField) {
         btnResignFirstResponder.hidden = true
@@ -586,10 +583,10 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     func textViewDidBeginEditing(textView: UITextView) {
         btnResignFirstResponder.hidden = false
-        println("didbegin")
+        print("didbegin")
     }
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        println("shouldbegin")
+        print("shouldbegin")
         currentTextField = textView
         return true
     }
@@ -601,12 +598,12 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     func keyboardWillShow(notification: NSNotification) {
         
         var info = notification.userInfo!
-        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        println("Will show")
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        print("Will show")
         self.view.layoutIfNeeded()
         if currentTextField == txtFeedback {
             
-            println(txtFeedback.frame.origin.y)
+            print(txtFeedback.frame.origin.y)
             if UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 < txtFeedback.frame.origin.y + txtFeedback.frame.height {
                 UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.topConstraint.constant = UIScreen.mainScreen().bounds.height - keyboardFrame.size.height - 20 - self.txtFeedback.frame.origin.y - self.txtFeedback.frame.height
@@ -629,8 +626,8 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        var info = notification.userInfo!
-        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+//        var info = notification.userInfo!
+//        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.topConstraint.constant = 0
@@ -641,20 +638,20 @@ class LeftViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     
     //MARK Maildelegate
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
-        switch (result.value)
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        switch (result.rawValue)
         {
-        case MFMailComposeResultCancelled.value :
-            println("mail cancelled")
+        case MFMailComposeResultCancelled.rawValue :
+            print("mail cancelled")
             break;
-        case MFMailComposeResultSaved.value:
-            println("mail saved")
+        case MFMailComposeResultSaved.rawValue:
+            print("mail saved")
             break;
-        case MFMailComposeResultSent.value:
-            println("mail sent")
+        case MFMailComposeResultSent.rawValue:
+            print("mail sent")
             break;
-        case MFMailComposeResultFailed.value:
-            println("mail send failure")
+        case MFMailComposeResultFailed.rawValue:
+            print("mail send failure")
             break;
         default:
             break;

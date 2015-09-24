@@ -15,6 +15,7 @@ import CoreData
 class ConnectionHandler : NSObject {
     
     static let baseURL:String = "http://server.gameq.io:8080/ios/"
+    static let devURL:String = "http://dev.gameq.io:8080/ios/"
     static let deviceIdKey:String = "device_id_key"
     static let passwordKey:String = "password_key"
     static let emailKey:String = "email_key"
@@ -45,13 +46,13 @@ class ConnectionHandler : NSObject {
     
     private static func postRequest(arguments:String, apiExtension:String, responseHandler:(responseJSON:AnyObject!) -> ()) {
         let urlString = "\(baseURL)\(apiExtension)?"
-        println(urlString)
+        print(urlString)
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
         request.HTTPBody = "key=68440fe0484ad2bb1656b56d234ca5f463f723c3d3d58c3398190877d1d963bb&\(arguments)".dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             if error != nil {
-                println("error=\(error)")
+                print("error=\(error)")
                 let Json:Dictionary<String, AnyObject> = [
                     "success": 0,
                     "error": 404
@@ -61,11 +62,47 @@ class ConnectionHandler : NSObject {
             }
             
             //println("response = \(response)")
-            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("responseString = \(responseString!)")
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString!)")
             
-            var jsonErrorOptional:NSError?
-            let responseJSON:AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &jsonErrorOptional)
+            let responseJSON:AnyObject!
+            do {
+                responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+            } catch _ {
+                responseJSON = nil
+            }
+            responseHandler(responseJSON: responseJSON)
+        }
+        task.resume()
+    }
+    
+    private static func postDevRequest(arguments:String, apiExtension:String, responseHandler:(responseJSON:AnyObject!) -> ()) {
+        let urlString = "\(devURL)\(apiExtension)?"
+        print(urlString)
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = "key=68440fe0484ad2bb1656b56d234ca5f463f723c3d3d58c3398190877d1d963bb&\(arguments)".dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            if error != nil {
+                print("error=\(error)")
+                let Json:Dictionary<String, AnyObject> = [
+                    "success": 0,
+                    "error": 404
+                ]
+                responseHandler(responseJSON: Json)
+                return
+            }
+            
+            //println("response = \(response)")
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString!)")
+            
+            let responseJSON:AnyObject!
+            do {
+                responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+            } catch _ {
+                responseJSON = nil
+            }
             responseHandler(responseJSON: responseJSON)
         }
         task.resume()
@@ -73,14 +110,14 @@ class ConnectionHandler : NSObject {
     
     private static func postBack(arguments:String, apiExtension:String, responseHandler:(responseJSON:AnyObject!) -> ()) {
         let urlString = "http://\(acceptServerIp):8080/ios/\(apiExtension)?"
-        println(urlString)
+        print(urlString)
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
         
         request.HTTPBody = "key=68440fe0484ad2bb1656b56d234ca5f463f723c3d3d58c3398190877d1d963bb&\(arguments)".dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             if error != nil {
-                println("error=\(error)")
+                print("error=\(error)")
                 let Json:Dictionary<String, AnyObject> = [
                     "success": 0,
                     "error": 404
@@ -90,11 +127,15 @@ class ConnectionHandler : NSObject {
             }
             
             //println("response = \(response)")
-            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("responseString = \(responseString!)")
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString!)")
             
-            var jsonErrorOptional:NSError?
-            let responseJSON:AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &jsonErrorOptional)
+            let responseJSON:AnyObject!
+            do {
+                responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+            } catch _ {
+                responseJSON = nil
+            }
             responseHandler(responseJSON: responseJSON)
         }
         task.resume()
@@ -106,7 +147,7 @@ class ConnectionHandler : NSObject {
         var password:String = password1
         if !self.firstLogin {
             password = self.sha256(password1)
-            println()
+            print("")
             self.firstLogin = false
         }
         
@@ -130,15 +171,15 @@ class ConnectionHandler : NSObject {
         
         
         let arguments = "email=\(email)&password=\(password)&\(tokenString)&\(diString)"
-        println("???")
-        println(password)
-        println(password1)
-        println(email)
+        print("???")
+        print(password)
+        print(password1)
+        print(email)
         
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
                 var success:Bool = false
                 var err:String? = nil
-                println("post request done")
+                print("post request done")
                 if let json = responseJSON as? Dictionary<String, AnyObject> {
                     let serverTime = self.getIntFrom(json, key: "time")
                     self.delayToServer = Int(NSDate().timeIntervalSince1970) - serverTime
@@ -149,16 +190,16 @@ class ConnectionHandler : NSObject {
                         self.savePassword(password)
                         self.saveEmail(email)
                         let retDI = self.getIntFrom(json, key: "device_id")
-                        println("returned DI: \(retDI)")
+                        print("returned DI: \(retDI)")
                         if retDI != 0 {
                             self.saveDeviceId("\(retDI)")
-                            println("saved DI")
+                            print("saved DI")
                             
                         }
                         self.sessionId = self.getStringFrom(json, key: "session_token")
                     }
                 } else {
-                    println("json parse fail")
+                    print("json parse fail")
                     err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
@@ -193,7 +234,7 @@ class ConnectionHandler : NSObject {
                     self.sessionId = ""
                 }
             } else {
-                println("json parse fail")
+                print("json parse fail")
                 err = "Connection failure"
             }
             self.saveEmail("")
@@ -239,7 +280,7 @@ class ConnectionHandler : NSObject {
                     self.sessionId = self.getStringFrom(json, key: "session_token")
                 }
             } else {
-                println("json parse fail")
+                print("json parse fail")
                 err = "Connection failure"
             }
             
@@ -258,9 +299,9 @@ class ConnectionHandler : NSObject {
         if let deviceId = loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
-        println()
+        print("")
         let arguments = "session_token=\(sessionId)&\(diString)"
-        println(arguments)
+        print(arguments)
         
         
         self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
@@ -269,7 +310,6 @@ class ConnectionHandler : NSObject {
             var game:Int? = nil
             var status:Int = 0
             var acceptBefore:Int = 0
-            var ip:String = "127.0.0.1"
             
             if let json = responseJSON as? Dictionary<String, AnyObject> {
                 success = self.getIntFrom(json, key: "success") != 0
@@ -288,7 +328,7 @@ class ConnectionHandler : NSObject {
                     }
                 }
             } else {
-                println("json parse fail")
+                print("json parse fail")
                 err = "Connection failure"
             }
             finalCallBack(success: success, err: err, status:status, game:game, acceptBefore:acceptBefore)
@@ -309,7 +349,7 @@ class ConnectionHandler : NSObject {
             aa = 1
         }
         let arguments = "session_token=\(sessionId)&\(diString)&accept=\(aa)"
-        println(arguments)
+        print(arguments)
         postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
             var success:Bool = false
             var err:String? = nil
@@ -322,7 +362,7 @@ class ConnectionHandler : NSObject {
                     //success
                 }
             } else {
-                println("json parse fail")
+                print("json parse fail")
                 err = "Connection failure"
             }
             
@@ -341,14 +381,14 @@ class ConnectionHandler : NSObject {
             diString = "device_id=\(deviceId)"
         }
         let arguments = "session_token=\(self.sessionId)&\(diString)&push_token=\(token)"
-        println(arguments)
+        print(arguments)
         
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
                 var success:Bool = false
                 var err:String? = nil
                 
                 if let json = responseJSON as? Dictionary<String, AnyObject> {
-                    println(json)
+                    print(json)
                     success = self.getIntFrom(json, key: "success") != 0
                     if !success {
                         err = self.getStringFrom(json, key: "error")
@@ -356,7 +396,7 @@ class ConnectionHandler : NSObject {
                         //success
                     }
                 } else {
-                    println("json parse fail")
+                    print("json parse fail")
                     err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
@@ -392,7 +432,7 @@ class ConnectionHandler : NSObject {
                     downloadLink = self.getStringFrom(json, key: "download_link")
                 }
             } else {
-                println("json parse fail")
+                print("json parse fail")
                 err = "Connection failure"
             }
             
@@ -404,13 +444,13 @@ class ConnectionHandler : NSObject {
     static func submitFeedback(feedbackString:String, finalCallBack:(success:Bool, err:String?)->()) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             dispatch_semaphore_wait(self.loginSemaphore, DISPATCH_TIME_FOREVER)
-        let apiExtension = "submitFeedback"
+        let apiExtension = "storeFeedback"
         var diString = ""
         if let deviceId = self.loadDeviceId() {
             diString = "device_id=\(deviceId)"
         }
         let arguments = "session_token=\(self.sessionId)&\(diString)&feedback=\(feedbackString)"
-            self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
+            self.postDevRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
                 var success:Bool = false
                 var err:String? = nil
                 
@@ -422,7 +462,7 @@ class ConnectionHandler : NSObject {
                         //csv submission succeeded
                     }
                 } else {
-                    println("json parse fail")
+                    print("json parse fail")
                     err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
@@ -465,7 +505,7 @@ class ConnectionHandler : NSObject {
                         self.sessionId = self.getStringFrom(json, key: "session_token")
                     }
                 } else {
-                    println("json parse fail")
+                    print("json parse fail")
                     err = "Connection failure"
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
@@ -494,7 +534,7 @@ class ConnectionHandler : NSObject {
                     //success mothafucka
                 }
             } else {
-                println("json parse fail")
+                print("json parse fail")
                 err = "Connection failure"
             }
             
@@ -530,12 +570,11 @@ class ConnectionHandler : NSObject {
             diString = "device_id=\(deviceId)"
         }
         let arguments = "session_token=\(self.sessionId)&\(diString)"
-        println("AA arguments: \(arguments)")
+        print("AA arguments: \(arguments)")
         finalCallBack(autoAcceptEnabled: self.autoAccepts)
             self.postRequest(arguments, apiExtension: apiExtension, responseHandler: {(responseJSON:AnyObject!) in
                 
                 var success:Bool = false
-                var err:String? = nil
                 var enabled = false
                 if let json = responseJSON as? Dictionary<String, AnyObject> {
                     success = self.getIntFrom(json, key: "success") != 0
@@ -545,8 +584,7 @@ class ConnectionHandler : NSObject {
                         enabled = false
                     }
                 } else {
-                    println("json parse fail")
-                    err = "Connection failure"
+                    print("json parse fail")
                 }
                 dispatch_semaphore_signal(self.loginSemaphore)
                 if self.autoAccepts != enabled {
@@ -587,7 +625,7 @@ class ConnectionHandler : NSObject {
                         //update auto accept success
                     }
                 } else {
-                    println("json parse fail")
+                    print("json parse fail")
                     err = "Connection failure"
                     self.autoAccepts = previousSetting
                 }
@@ -662,41 +700,42 @@ class ConnectionHandler : NSObject {
         let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName:entity)
         
-        var error: NSError?
         
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]?
+        var fetchedResults = []
+        do {
+            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch _ {
+            
+        }
         
-        if let results = fetchedResults {
-            if results.count > 0 {
-                for result in results {
-                    result.setValue(value, forKey:attribute)
-                }
-                var error2: NSError?
-                if !managedContext.save(&error2) {
-                    //                    println("saveSingle1 Could not save \(error2), \(error2?.userInfo)")
-                }
-            } else {
-                //-----
-                let entityDesc =  NSEntityDescription.entityForName(entity,
-                    inManagedObjectContext:
-                    managedContext)
-                
-                let managedObject = NSManagedObject(entity: entityDesc!,
-                    insertIntoManagedObjectContext:managedContext)
-                
-                managedObject.setValue(value, forKey: attribute)
+        if fetchedResults.count > 0 {
+            for result in fetchedResults {
+                result.setValue(value, forKey:attribute)
+            }
+            do {
+                try managedContext.save()
+            } catch _ {
+                //                    println("saveSingle1 Could not save \(error2), \(error2?.userInfo)")
             }
         } else {
-            //            println("Could not fetch \(error), \(error!.userInfo)")
+            //-----
+            let entityDesc =  NSEntityDescription.entityForName(entity,
+                inManagedObjectContext:
+                managedContext)
+            
+            let managedObject = NSManagedObject(entity: entityDesc!,
+                insertIntoManagedObjectContext:managedContext)
+            
+            managedObject.setValue(value, forKey: attribute)
         }
         
         
         
         
-        var error2: NSError?
-        if !managedContext.save(&error2) {
+        
+        do {
+            try managedContext.save()
+        } catch _ {
             //            println("saveSingle2 Could not save \(error2), \(error2?.userInfo)")
         }
         
@@ -717,25 +756,23 @@ class ConnectionHandler : NSObject {
         let fetchRequest = NSFetchRequest(entityName:entity)
         
         //3
-        var error: NSError?
         
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]?
+        var fetchedResults = []
+        do {
+            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch _ {
+            
+        }
         
-        if let results = fetchedResults {
-            if results.count > 0 {
-                //                println("found entries")
-                //                println("\(results[0].valueForKey(attribute))")
-                return results[0].valueForKey(attribute)
-            } else {
-                //                println("no results")
-                return nil
-            }
+        if fetchedResults.count > 0 {
+            //                println("found entries")
+            //                println("\(results[0].valueForKey(attribute))")
+            return fetchedResults[0].valueForKey(attribute)
         } else {
-            //            println("Could not fetch \(error), \(error!.userInfo)")
+            //                println("no results")
             return nil
         }
+        
         
     }
     
@@ -753,7 +790,7 @@ class ConnectionHandler : NSObject {
     
     
     static func sha256(aString : String) -> String {
-        var data:NSData = aString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+        let data:NSData = aString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
         var hash = [UInt8](count: Int(CC_SHA256_DIGEST_LENGTH), repeatedValue: 0)
         CC_SHA256(data.bytes, CC_LONG(data.length), &hash)
         let res = NSData(bytes: hash, length: Int(CC_SHA256_DIGEST_LENGTH))

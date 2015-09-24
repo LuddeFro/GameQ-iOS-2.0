@@ -289,7 +289,9 @@
 		AE7E5F741B3C5DCC00DEB007 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Fabian Wikström";
 				TargetAttributes = {
 					AE7E5F7B1B3C5DCC00DEB007 = {
@@ -447,6 +449,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -513,15 +516,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gustaf Håkansson (8SESAM49N2)";
 				INFOPLIST_FILE = "GameQ iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GameQ.$(PRODUCT_NAME:rfc1034identifier)-iOS-2.0";
 				PRODUCT_NAME = GameQ;
 				PROVISIONING_PROFILE = "e95d4b97-c768-4cdd-82f7-27e374b68757";
 				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
@@ -533,15 +538,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gustaf Håkansson (8SESAM49N2)";
 				INFOPLIST_FILE = "GameQ iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GameQ.$(PRODUCT_NAME:rfc1034identifier)-iOS-2.0";
 				PRODUCT_NAME = GameQ;
 				PROVISIONING_PROFILE = "7634ca20-e4bb-48f9-8887-354e21370859";
 				SWIFT_OBJC_BRIDGING_HEADER = "GameQ iOS-Bridging-Header.h";
@@ -562,6 +569,7 @@
 				);
 				INFOPLIST_FILE = "GameQ iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "GameQ.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ.app/GameQ";
 			};
@@ -577,6 +585,7 @@
 				);
 				INFOPLIST_FILE = "GameQ iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "GameQ.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameQ.app/GameQ";
 			};

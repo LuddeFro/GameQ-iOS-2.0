@@ -79,8 +79,8 @@ class Encoding {
                 switch status{
                 case .Offline: return "Offline"
                 case .Online: return  "Online"
-                case .InLobby: return "Detecting Game"
-                case .InQueue: return "Detecting Game"
+                case .InLobby: return "In Game Lobby"
+                case .InQueue: return "In Game Lobby"
                 case .GameReady: return "Your Match is Ready"
                 case .InGame:return "In Match"
                 }
@@ -88,8 +88,8 @@ class Encoding {
                 switch status{
                 case .Offline: return "Offline"
                 case .Online: return  "Online"
-                case .InLobby: return "Detecting Game"
-                case .InQueue: return "Detecting Game"
+                case .InLobby: return "In Game Lobby"
+                case .InQueue: return "In Game Lobby"
                 case .GameReady: return "Your Match is Starting"
                 case .InGame:return "In Match"
                 }
@@ -97,8 +97,8 @@ class Encoding {
                 switch status{
                 case .Offline: return "Offline"
                 case .Online: return  "Online"
-                case .InLobby: return "Detecting Game"
-                case .InQueue: return "Detecting Game"
+                case .InLobby: return "In Game Lobby"
+                case .InQueue: return "In Game Lobby"
                 case .GameReady: return "Your Match is Ready"
                 case .InGame:return "In Match"
                 }
@@ -106,8 +106,8 @@ class Encoding {
                 switch status{
                 case .Offline: return "Offline"
                 case .Online: return  "Online"
-                case .InLobby: return "Detecting Game"
-                case .InQueue: return "Detecting Game"
+                case .InLobby: return "In Game Lobby"
+                case .InQueue: return "In Game Lobby"
                 case .GameReady: return "Your Match is Starting"
                 case .InGame:return "In Match"
                 }
@@ -115,8 +115,8 @@ class Encoding {
                 switch status{
                 case .Offline: return "Offline"
                 case .Online: return  "Online"
-                case .InLobby: return "Detecting Game"
-                case .InQueue: return "Detecting Game"
+                case .InLobby: return "In Game Lobby"
+                case .InQueue: return "In Game Lobby"
                 case .GameReady: return "Your Match is Ready"
                 case .InGame:return "In Match"
                 }
